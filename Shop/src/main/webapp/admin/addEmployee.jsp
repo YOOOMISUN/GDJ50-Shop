@@ -16,10 +16,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-	
+	<div style="position: relative; top: 100px;">
 	<!-- ID 중복검사 폼 -->
 
-		<div>
+		<div style=" margin-left:auto; margin-right:auto; text-align: center;" >
 			ID Check
 			<input type="text" name="ckid" id="ckid">
 			<button type="button" id="ckidBtn">아이디 중복검사</button>
@@ -45,7 +45,7 @@
 		}
 	%>
 	<form action="<%=request.getContextPath()%>/admin/addEmployeeAction.jsp " method="post" id="addEmployeeForm">
-		<table border="1">
+		<table style=" margin-left:auto; margin-right:auto; text-align: center;" class="table table-bordered" >
 			<tr>
 				<td>Employee Id</td>
 				<td><input type="text" name="employeeId" class="form-control" id="employeeId" readonly="readonly" value="<%=ckId%>"></td>
@@ -60,9 +60,10 @@
 			</tr>
 		</table>
 		<br>
-			<button type="button" id="addEmployeeBtn" class="btn btn-info">회원가입</button>
-			<a href="javascript:history.go(-1)" class="btn btn-danger" title="뒤로">BACK</a>
-			<a><input type="reset" class="btn btn-success"></a>
+			<a><input type="reset" class="btn btn-dark" style="float: right; "></a>
+			<a href="javascript:history.go(-1)" class="btn btn-info" title="뒤로" style="float: right; margin-right :30px;">BACK</a>
+			<button type="button" id="addEmployeeBtn" class="btn btn-info" style="float: right; margin-right :30px;">회원가입</button>
+			
 			<%
 				if(request.getParameter("errorMsg") != null) {
 			%>
@@ -72,7 +73,7 @@
 			%>
 	</form>
 	</div>
-	
+	</div>
 </body>
 	<script>
 	// ID 중복검사

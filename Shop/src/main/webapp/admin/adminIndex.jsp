@@ -6,11 +6,11 @@
 			response.sendRedirect(request.getContextPath() + "/loginForm.jsp");
 			return;
 		} 
-
+	
 	CounterService counterService = new CounterService();
 	int totalCounter = counterService.getTotalCount();		// 전체 접속자 수 호출
 	int todayCounter = counterService.getTodayCount();		// 오늘 접속자 수 호출
-	int currentCount = (Integer)(application.getAttribute("currenteCounter")); 
+	int currentCount = (Integer)(application.getAttribute("currentCounter")); // 현재 접속자 수
 	
 	%>
 
@@ -29,21 +29,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-	<div style="position: relative; top: 200px; text-align:center; font-weight :bold;"> <!-- 로그인 화면 -->
-		<p><%=session.getAttribute("name")%>님 반갑습니다!   (<%=session.getAttribute("user")%>) </p> 	<!-- customer / employee -->
-		<br>
-		<p><%=session.getAttribute("id")%></p>		<!-- 로그인 아이디 -->
-		<br>
-		<p><%=session.getAttribute("name")%></p>	<!-- 로그인 이름 -->
-		<br>
-		<a href="<%=request.getContextPath()%>/logout.jsp" class="btn btn-success">로그아웃</a>	
-		<a href="<%=request.getContextPath()%>/removeForm.jsp" class="btn btn-danger">회원탈퇴</a>	
-		
-	</div>
-	
 	<div>
-		<br>
-	
 		<ul>
 			<li><a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp">고객관리</a></li>
 			<li><a href="<%=request.getContextPath()%>/admin/employeeList.jsp">사원관리</a></li>
@@ -53,7 +39,21 @@
 		</ul>
 	
 	</div>
+
+	<div style="position: relative; top: 200px; text-align:center; font-weight :bold;"> <!-- 로그인 화면 -->
+		<p style="font-size:30px;"><%=session.getAttribute("name")%>님 반갑습니다!   (<%=session.getAttribute("user")%>) </p> 	<!-- customer / employee -->
+		<br>
+		<p style="font-size:20px;"><%=session.getAttribute("id")%></p>		<!-- 로그인 아이디 -->
+		<br>
+		<p style="font-size:20px;"><%=session.getAttribute("name")%></p>	<!-- 로그인 이름 -->
+		<br>
+		<a href="<%=request.getContextPath()%>/logout.jsp" class="btn btn-info">로그아웃</a>	
+		<a href="<%=request.getContextPath()%>/removeForm.jsp" class="btn btn-danger">회원탈퇴</a>	
+		
+	</div>
 	
+
+	<br>
 	<div>
 		<table>
 			<tr>

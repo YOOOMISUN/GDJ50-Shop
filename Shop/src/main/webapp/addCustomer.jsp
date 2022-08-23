@@ -16,14 +16,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-	
+	<div style="position: relative; top: 100px;">
 	<!-- id 체크 폼 -->
 	
-		<div>
+		<div style=" margin-left:auto; margin-right:auto; text-align: center;" >
 			ID Check
-			<input type="text" name="ckid" id="ckid">
-			<button type="button" id="ckidBtn">아이디 중복검사</button>
-			<input type="hidden" name="type" value="Customer"  class="form-control">
+			<input type="text" name="ckid" id="ckid" >
+			<button type="button" id="ckidBtn" >아이디 중복검사</button>
+			<input type="hidden" name="type" value="Customer" >
 	<%
 			if(request.getParameter("errorMsg") != null) {
 	%>
@@ -45,7 +45,7 @@
 		}
 	%>
 	<form action="<%=request.getContextPath()%>/addCustomerAction.jsp " method="post" id="addCustomerForm">
-		<table border="1">
+		<table style=" margin-left:auto; margin-right:auto; text-align: center;" class="table table-bordered" >
 			<tr>
 				<td>Customer Id</td>
 				<td><input type="text" name="customerId" id="customerId"  class="form-control" readonly="readonly" value="<%=ckId%>"></td>
@@ -67,12 +67,12 @@
 			</tr>
 			<tr>
 				<td>Customer Telephone</td>
-				<td><input type="text" name="customerTelephone" id="customerTelephone" ></td>
+				<td><input type="text" name="customerTelephone" id="customerTelephone" class="form-control"></td>
 			</tr>
 		</table>
-			<button type="submit" id="addCustomerBtn" class="btn btn-info">회원가입</button>
-			<a href="javascript:history.go(-1)" class="btn btn-danger" title="뒤로">BACK</a>
-			<a><input type="reset" class="btn btn-success"></a>
+			<a href="javascript:history.go(-1)" class="btn btn-info" title="뒤로" style="float: right; ">BACK</a>
+			<a><input type="reset" class="btn btn-dark" style="float: right; margin-right :30px;"></a>
+			<button type="submit" id="addCustomerBtn" class="btn btn-info" style="float: right; margin-right :30px;">회원가입</button>
 			<%
 				if(request.getParameter("errorMsg") != null) {
 			%>
@@ -86,7 +86,7 @@
 <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
 <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
 </div>
-
+</div>
 <script>
 	#('#addrBtn').click(function(){
 		sample2_execDaumPostcode();

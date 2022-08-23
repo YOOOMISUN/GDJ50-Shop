@@ -24,16 +24,16 @@
 		<div class="col-sm-6" style="position: relative; top: 200px;">
 		<form method="post" action="<%=request.getContextPath()%>/customerLoginAction.jsp" id="customerForm" >
 			<fieldset>
-				<legend style="text-align:center; font-weight :bold;">쇼핑몰 고객 로그인</legend>	<!-- customer  -->
+				<legend style="text-align:center; font-weight :bold;">Customer Login</legend>	<!-- customer  -->
 				<br>
 				<table style=" margin-left:auto; margin-right:auto; text-align:center;" class="table table-bordered" >
 					<tr>
 						<td>ID</td>
-						<td><input type="text" name="customerId" id="customerId"></td>
+						<td><input type="text" name="customerId" id="customerId" class="form-control"></td>
 					</tr>
 					<tr>
 						<td>PASSWORD</td>
-						<td><input type="password" name="customerPass" id="customerPass"></td>
+						<td><input type="password" name="customerPass" id="customerPass" class="form-control"></td>
 					</tr>
 				</table>
 				<br>
@@ -46,16 +46,16 @@
 		<div class="col-sm-6"  style="position: relative; top: 200px;">
 		<form method="post" action="<%=request.getContextPath()%>/admin/employeeLoginAction.jsp" id="employeeForm">
 			<fieldset>
-				<legend style="text-align:center; font-weight :bold;">쇼핑몰 관리자 로그인</legend>	<!-- Employee  -->
+				<legend style="text-align:center; font-weight :bold;">Employee Login</legend>	<!-- Employee  -->
 				<br>
 				<table style=" margin-left:auto; margin-right:auto; text-align:center;" class="table table-bordered" >
 					<tr>
 						<td>ID</td>
-						<td><input type="text" name="employeeId" id="employeeId"></td>
+						<td><input type="text" name="employeeId" id="employeeId" class="form-control"></td>
 					</tr>
 					<tr>
 						<td>PASSWORD</td>
-						<td><input type="password" name="employeePass" id="employeePass"></td>
+						<td><input type="password" name="employeePass" id="employeePass" class="form-control"></td>
 					</tr>
 				</table>
 				<br>

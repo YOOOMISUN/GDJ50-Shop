@@ -331,7 +331,7 @@ public class GoodsService {
 			if(goodsImgDao.deleteGoodsImg(conn, goodsImg) != 0) {
 				removeGoods = goodsDao.deleteGoods(conn, goods);
 			
-				if(goodsDao.deleteGoods(conn, goods) == 0) {
+				if(removeGoods == 0) {
 					throw new Exception();					// 이미지 삭제 실패시 예외처리로
 				}	
 			}

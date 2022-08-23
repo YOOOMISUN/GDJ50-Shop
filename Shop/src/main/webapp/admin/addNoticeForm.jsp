@@ -41,7 +41,7 @@
 
 
 	<div>
-	<h2 style="text-align: center;">공지사항 추가</h2>
+	<h2 style="text-align:center; font-weight :bold;">공지사항 추가</h2>
 		<form action="<%=request.getContextPath()%>/admin/addNoticeAction.jsp" method="post" id="updateNoticeForm">
 			<table style=" margin-left:auto; margin-right:auto; " class="table table-bordered" >
 					<tr>

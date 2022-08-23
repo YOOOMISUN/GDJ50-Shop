@@ -61,9 +61,9 @@
 	
 	<!-- 주문목록 -->
 	<div>
-		<h2 style="text-align: center;">주문 관리</h2>
+		<h2 style="text-align:center; font-weight :bold;">주문 관리</h2>
 		<br>
-		<table style=" margin-left:auto; margin-right:auto; " class="table table-bordered" >
+		<table style=" margin-left:auto; text-align: center; margin-right:auto; " class="table table-bordered" >
 		<thead>
 			<tr>
 				<td>Order No</td>

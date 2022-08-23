@@ -232,16 +232,26 @@ public class OrdersDao {
 		int lastPage = 0;
 		int totalRow = 0;
 		
-		stmt = conn.prepareStatement(sql);
-		rs = stmt.executeQuery();
-		
-		if(rs.next()) {
-			totalRow = rs.getInt("COUNT(*)");
-		}
-		
-		lastPage = totalRow / rowPerPage;
-		if(totalRow % rowPerPage != 0) {
-			lastPage += 1;
+		try {
+			stmt = conn.prepareStatement(sql);
+			rs = stmt.executeQuery();
+
+			if(rs.next()) {
+				totalRow = rs.getInt("COUNT(*)");
+			}
+			
+			lastPage = totalRow / rowPerPage;
+			if(totalRow % rowPerPage != 0) {
+				lastPage += 1;
+			}
+			
+		} finally {
+			  if(rs != null) {
+		            rs.close();
+		         }
+		         if(stmt != null) {
+		            stmt.close();
+		         }
 		}
 		
 		// 디버깅
@@ -249,7 +259,40 @@ public class OrdersDao {
 		
 		return lastPage;
 		
+	}	// end ordersCustomerLastPage
+	
+	// 주문하기 (ordersAction.jsp)	
+	public int insertOrders(Connection conn, Orders orders) throws SQLException {
 		
-	}
+		String sql = "INSERT INTO orders (order_no, goods_no, customer_id, order_quantity, order_price, order_addr, order_detailAddr,order_state, create_date,update_date) VALUES (?,?,?,?,?,?,?,?,NOW(),NOW())";
+		PreparedStatement stmt = null;
+		int insertOrders = 0;
+		
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, orders.getOrderNo());
+			stmt.setInt(2, orders.getGoodsNo());
+			stmt.setString(3, orders.getCustomerId());
+			stmt.setInt(4, orders.getOrderQuantity());
+			stmt.setInt(5, orders.getOrderPrice());
+			stmt.setString(6, orders.getOrderAddr());
+			stmt.setString(7, orders.getOrderDetailAddr());
+			stmt.setString(8, orders.getOrderState());
+			
+			insertOrders = stmt.executeUpdate();
+			
+			// 디버깅
+			System.out.println("insertOrders : " + insertOrders);
+			
+		} finally {
+			if(stmt!=null) {
+				stmt.close();
+			}
+		}
+		return insertOrders;
+		
+	}	//	end insertOrders
+	
+	
 
 }

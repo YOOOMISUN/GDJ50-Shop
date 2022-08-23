@@ -55,7 +55,7 @@
 	</div>
 	
 	<div>
-	<h2 style="text-align: center;">공지사항</h2>
+	<h2 style="text-align:center; font-weight :bold;">공지사항</h2>
 	<br>
 		<form action="<%=request.getContextPath()%>/admin/addNoticeForm.jsp" method="post" >
 			<table style=" margin-left:auto; margin-right:auto; " class="table table-bordered" >

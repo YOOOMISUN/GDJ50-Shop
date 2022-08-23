@@ -58,7 +58,7 @@
 
 
 	<div>
-	<h2 style="text-align: center;">고객 리스트</h2>		
+	<h2 style="text-align:center; font-weight :bold;">고객 리스트</h2>		
 	<table style=" margin-left:auto; margin-right:auto; " class="table table-bordered" >
 			<thead>
 				<tr>

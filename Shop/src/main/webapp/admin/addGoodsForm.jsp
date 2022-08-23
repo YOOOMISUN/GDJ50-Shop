@@ -36,10 +36,10 @@
 	</div>
 
 	<div>
-	<h2 style="text-align: center;">상품 추가하기</h2>
+	<h2 style="text-align:center; font-weight :bold;">상품 추가하기</h2>
 	<br>
 	<form action="<%=request.getContextPath()%>/admin/addGoodsAction.jsp" method="post" enctype="multipart/form-data" id="insertForm">
-		<table style=" margin-left:auto; margin-right:auto; " class="table table-bordered" >
+		<table style=" margin-left:auto; margin-right:auto; text-align: center;" class="table table-bordered" >
 		<thead>
 			<tr>
 				<td>Goods Name</td>

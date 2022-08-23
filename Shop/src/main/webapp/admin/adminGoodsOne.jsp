@@ -67,7 +67,7 @@
 		</ul>
 		
 	</div>
-
+<div style="position: relative; top: 200px;">
 	<h2 style="text-align: center;">상품 상세페이지</h2>
 	<br>
 	<form action="<%=request.getContextPath()%>/admin/updateGoodsForm.jsp?goodsNo=<%=map.get("goodsNo")%>" method="post" >
@@ -123,7 +123,7 @@
 	%>
 	<input type="hidden" name="reviewNo" value="<%=re.get("reviewNo")%>">
 	<input type="hidden" name="goodsNo" value="<%=goodsNo%>">
-	<table style=" margin-left:auto; margin-right:auto; " class="table table-bordered" >
+	<table style=" margin-left:auto; text-align: center; margin-right:auto; " class="table table-bordered" >
 			<thead>
 				<tr>
 					<td>번호</td>
@@ -179,7 +179,7 @@
 		<%
 		  }	
 		%>
-		
+	</div>	
 	</div>	
 
 </body>

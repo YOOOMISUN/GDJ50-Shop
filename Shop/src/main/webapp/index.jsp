@@ -25,15 +25,15 @@
 </head>
 <body>
 	<div  style="position: relative; top: 200px; text-align:center; font-weight :bold;"> <!-- 로그인 하면 -->
-		<p><%=session.getAttribute("name")%>님 반갑습니다!   (<%=session.getAttribute("user")%>) </p> 	<!-- customer / employee -->
+		<p style="font-size:30px;"><%=session.getAttribute("name")%>님 반갑습니다!   (<%=session.getAttribute("user")%>) </p> 	<!-- customer / employee -->
 		<br>
-		<p><%=session.getAttribute("id")%></p>		<!-- 로그인 아이디 -->
+		<p style="font-size:20px;"><%=session.getAttribute("id")%></p>		<!-- 로그인 아이디 -->
 		<br>
-		<p><%=session.getAttribute("name")%></p>	<!-- 로그인 이름 -->
+		<p style="font-size:20px;"><%=session.getAttribute("name")%></p>	<!-- 로그인 이름 -->
 		<br>
-		<a href="<%=request.getContextPath()%>/logout.jsp" class="btn btn-success">로그아웃</a>	
-		<a href="<%=request.getContextPath()%>/removeForm.jsp" class="btn btn-danger">회원탈퇴</a>	
 		<a href="<%=request.getContextPath()%>/customerGoodsList.jsp" class="btn btn-info">상품리스트</a>	
+		<a href="<%=request.getContextPath()%>/logout.jsp" class="btn btn-info">로그아웃</a>	
+		<a href="<%=request.getContextPath()%>/removeForm.jsp" class="btn btn-danger">회원탈퇴</a>	
 		
 	</div>
 	

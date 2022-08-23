@@ -50,9 +50,9 @@
 	</div>
 
 
-	<h2 style="text-align: center;">주문 상세페이지</h2>
+	<h2 style="text-align:center; font-weight :bold;">주문 상세페이지</h2>
 	<br>
-	<table style=" margin-left:auto; margin-right:auto; " class="table table-bordered" >
+	<table style=" margin-left:auto; margin-right:auto; text-align:center;" class="table table-bordered" >
 		<thead>
 			<tr>
 				<th>Order No</th>

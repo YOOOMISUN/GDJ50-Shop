@@ -42,7 +42,7 @@
 	</div>
 
 
-	<h2 style="text-align: center;">공지사항 수정</h2>
+	<h2 style="text-align:center; font-weight :bold;">공지사항 수정</h2>
 	<br>
 	<form action="<%=request.getContextPath()%>/admin/updateNoticeAction.jsp?noticeNo=<%=map.get("noticeNo")%>" method="post" id="updateNotice">
 		<table style=" margin-left:auto; margin-right:auto; " class="table table-bordered" >
