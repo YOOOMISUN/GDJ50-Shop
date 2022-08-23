@@ -226,7 +226,7 @@ public class OrdersDao {
 	// 2-1) 고객 한명의 주문 목록 (마지막페이지)
 	public int ordersCustomerLastPage(Connection conn, int rowPerPage) throws SQLException {
 		
-		String sql = "SELECT COUNT(*) FROM orders WHERE ";
+		String sql = "SELECT COUNT(*) FROM orders";
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		int lastPage = 0;

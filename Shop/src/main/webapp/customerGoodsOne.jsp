@@ -23,12 +23,12 @@
 	int goodsNo = Integer.parseInt(request.getParameter("goodsNo")); 
 	
 	GoodsService goodsService = new GoodsService();
-	Map<String, Object> map = goodsService.getGoodsAndImgOne(goodsNo);		// 상품 상세페이지
+	Map<String, Object> map = goodsService.getGoodsAndImgOne(goodsNo);				// 상품 상세페이지
 	
 	ReviewService reviewService = new ReviewService();
 	List<Map<String,Object>> list = new ArrayList<>(); 
 	list = reviewService.getReviewListByPage(rowPerPage, currentPage, goodsNo);		// 리뷰 목록
-	lastPage = reviewService.ReviewListLastPage(rowPerPage);				// 리뷰 목록 페이징
+	lastPage = reviewService.ReviewListLastPage(rowPerPage);						// 리뷰 목록 페이징
 	
 	// 디버깅
 	System.out.println("map # " + map);
@@ -62,38 +62,41 @@
 			<img src="<%=request.getContextPath()%>/upload/<%=map.get("fileName")%>" width="300" height="300">
 			</div>
 			<div class="col-sm-6">
-		<table style=" margin-left:auto; margin-right:auto; " class="table table-bordered" >	
-			<tr>	
-				<td>No</td>
-				<td><%=map.get("goodsNo")%></td>
-			</tr>
-			<tr>
-				<td>Name</td>
-				<td><%=map.get("goodsName")%></td>
-			</tr>
-			<tr>
-				<td>Price</td>
-				<td><%=map.get("goodsPrice")%></td>
-			</tr>
-			<tr>
-				<td>Update Date</td>
-				<td><%=map.get("updateDate")%></td>
-			</tr>
-			<tr>
-				<td>Create Date</td>
-				<td><%=map.get("createDate")%></td>
-			</tr>
-			<tr>
-				<td>Sold Out</td>
-				<td><%=map.get("soldOut")%></td>
-			</tr>	
-		</table>
+				<form action="<%=request.getContextPath()%>/orderForm.jsp?goodsNo=<%=goodsNo%>" method="post" >
+				<table style=" margin-left:auto; margin-right:auto; " class="table table-bordered" >	
+					<tr>	
+						<td>No</td>
+						<td><%=map.get("goodsNo")%></td>
+					</tr>
+					<tr>
+						<td>Name</td>
+						<td><%=map.get("goodsName")%></td>
+					</tr>
+					<tr>
+						<td>Price</td>
+						<td><%=map.get("goodsPrice")%></td>
+					</tr>
+					<tr>
+						<td>Update Date</td>
+						<td><%=map.get("updateDate")%></td>
+					</tr>
+					<tr>
+						<td>Create Date</td>
+						<td><%=map.get("createDate")%></td>
+					</tr>
+					<tr>
+						<td>Sold Out</td>
+						<td><%=map.get("soldOut")%></td>
+					</tr>	
+				</table>
+					<button type="submit" class="btn btn-info">주문하기</button>
+				</form>
 			</div>
 		</div>
 	</div>
 	<br>
 	<a href="<%=request.getContextPath()%>/customerGoodsList.jsp" type="button" class="btn btn-dark" style="text-align: center;">상품목록</a>
-
+	
 	
 	<br>
 	<%

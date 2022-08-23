@@ -58,6 +58,10 @@ public class ReviewDao {
 			rs = stmt.executeQuery();
 			
 			
+			// 디버깅
+			System.out.println("rs ++ " + rs);
+			
+			
 			while(rs.next()) {
 				map = new HashMap<String,Object>();
 				map.put("reviewNo", rs.getInt("review_no"));
