@@ -12,6 +12,11 @@
 	Orders orders = new Orders();
 	orders.setGoodsNo(goodsNo);
 	orders.setCustomerId(customerId);
+	/* orders.setOrderQuantity(orderQuantity); */
+	orders.setOrderAddr(ordersAddress);
+	orders.setOrderDetailAddr(ordersDetailAddr);
+	
+	
 	
 	
 	

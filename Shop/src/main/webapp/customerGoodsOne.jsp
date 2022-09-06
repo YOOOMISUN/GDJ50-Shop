@@ -130,7 +130,7 @@
 					if( session.getAttribute("id").equals(re.get("customerId"))){		// 로그인한 아이디와 리뷰 등록한 아이디가 같으면 수정과 삭제 보이게..
 				%> 
 				
-				<td><a href="<%=request.getContextPath()%>/updateReviewForm.jsp?reviewNo=<%=re.get("reviewNo")%>&goodsNo=<%=goodsNo%>&updateDate=<%=re.get("updateDate")%>&=reviewContent<%=re.get("reviewContent")%>&customerId<%=re.get("customerId")%>" class="btn btn-dark">리뷰수정</a></td>
+				<td><a href="<%=request.getContextPath()%>/updateReviewForm.jsp?reviewNo=<%=re.get("reviewNo")%>&goodsNo=<%=goodsNo%>&updateDate=<%=re.get("updateDate")%>&reviewContent=<%=re.get("reviewContent")%>&customerId=<%=re.get("customerId")%>" class="btn btn-dark">리뷰수정</a></td>
 				<td><a href="<%=request.getContextPath()%>/admin/deleteReviewAction.jsp?reviewNo=<%=re.get("reviewNo")%>&goodsNo=<%=goodsNo%>" class="btn btn-dark">리뷰삭제</a></td>
 				
 			</tr>
