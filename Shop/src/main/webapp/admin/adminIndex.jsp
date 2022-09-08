@@ -7,11 +7,6 @@
 			return;
 		} 
 	
-	CounterService counterService = new CounterService();
-	int totalCounter = counterService.getTotalCount();		// 전체 접속자 수 호출
-	int todayCounter = counterService.getTodayCount();		// 오늘 접속자 수 호출
-	int currentCount = (Integer)(application.getAttribute("currentCounter")); // 현재 접속자 수
-	
 	%>
 
 <!DOCTYPE html>
@@ -53,23 +48,5 @@
 	</div>
 	
 
-	<br>
-	<div>
-		<table>
-			<tr>
-				<td>전체 접속자 수</td>
-				<td><%=totalCounter %></td>
-			</tr>
-			<tr>
-				<td>오늘 접속자 수</td>
-				<td><%=todayCounter %></td>
-			</tr>
-			<tr>
-				<td>현재 접속자 수</td>
-				<td><%=currentCount %></td>
-			</tr>
-		</table>
-	
-	</div> 
 </body>
 </html>

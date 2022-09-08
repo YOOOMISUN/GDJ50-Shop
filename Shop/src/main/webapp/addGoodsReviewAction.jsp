@@ -25,9 +25,9 @@
 	
 	if(insertReview == 1){
 		System.out.println("리뷰 추가 성공!");
-		response.sendRedirect(request.getContextPath() + "/admin/adminGoodsOne.jsp?goodsNo="+goodsNo);
+		response.sendRedirect(request.getContextPath() + "/customerGoodsOne.jsp?goodsNo="+goodsNo);
 	} else {
 		System.out.println("리뷰 추가 실패!");
-		response.sendRedirect(request.getContextPath() + "/admin/adminGoodsList.jsp?goodsNo="+goodsNo);
+		response.sendRedirect(request.getContextPath() + "/customerGoodsOne.jsp?goodsNo="+goodsNo);
 	}
 %>

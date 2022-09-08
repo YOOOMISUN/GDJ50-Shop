@@ -7,13 +7,14 @@
 	}  
 	// 상세페이지에서 상품 번호 받아오기
 	int goodsNo = Integer.parseInt(request.getParameter("goodsNo")); 
-	String customerId = request.getParameter("customerId");
+	String customerId = (String)session.getAttribute("id");
 	
 	// 디버깅
 	System.out.println("goodsNo : " + goodsNo);
 	System.out.println("customerId : " + customerId);
 	
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +34,7 @@
 <div style="position: relative; top: 200px;">
 	<h2 style="text-align:center; font-weight :bold;">주문하기</h2>
 	<br>
-		<form action="<%=request.getContextPath()%>/ordersAction.jsp" method="post" id="ordersForm">
+		<form action="<%=request.getContextPath()%>/customerOrdersAction.jsp" method="post" id="ordersForm">
 			<table style=" margin-left:auto; margin-right:auto; " class="table table-bordered" >
 				<tr>
 					<td>상품 번호</td>

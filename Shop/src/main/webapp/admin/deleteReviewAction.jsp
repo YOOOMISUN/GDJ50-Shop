@@ -18,7 +18,7 @@
 		response.sendRedirect(request.getContextPath() + "/admin/adminGoodsOne.jsp?goodsNo="+goodsNo);
 	} else {
 		System.out.println("삭제 실패!");
-		response.sendRedirect(request.getContextPath() + "/admin/adminGoodsOne.jsp?goodsNO="+goodsNo);
+		response.sendRedirect(request.getContextPath() + "/admin/adminGoodsOne.jsp?goodsNo="+goodsNo);
 	}
 	
 %>

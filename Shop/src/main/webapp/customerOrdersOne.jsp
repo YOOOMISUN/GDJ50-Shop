@@ -4,11 +4,11 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	// 로그인 안되어 있거나 user가 Employee가 아니면 로그인 폼으로...
-	if(session.getAttribute("id") == null || (!(session.getAttribute("user").equals("Employee"))) ){
+ 	// 로그인 안되어 있거나 로그인한 사람이 주문한사람 아이디와 일치하지 않으면 로그인 폼으로 
+	if(session.getAttribute("id") == null){
 		response.sendRedirect(request.getContextPath() + "/loginForm.jsp");
 		return;
-	} 
+		} 
 	
 	int ordersNo = Integer.parseInt(request.getParameter("ordersNo"));
 	Map<String, Object> map = null;
@@ -35,21 +35,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-	<!-- 목록 -->
-	<div>
-		<br>
-	
-		<ul>
-			<li><a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp">고객관리</a></li><!-- 고객목록/강제탈퇴/비밀번호수정(수정된 비밀번호 전달 구현X) -->
-			<li><a href="<%=request.getContextPath()%>/admin/employeeList.jsp">사원관리</a></li>
-			<li><a href="<%=request.getContextPath()%>/admin/adminGoodsList.jsp">상품	관리</a></li>	<!-- 상품목록/등록/수정/삭제(장바구니,주문이 없는 경우=> 품절처리) -->
-			<li><a href="<%=request.getContextPath()%>/admin/adminOrdersList.jsp">주문관리</a></li><!-- 주문목록/수정 -->
-			<li><a href="<%=request.getContextPath()%>/admin/adminNoticeList.jsp">공지관리(게시판)</a></li><!-- 공지 CRUD -->
-		</ul>
-	</div>
 
-
-	<h2 style="text-align:center; font-weight :bold;">주문 상세페이지</h2>
+	<h2 style="text-align:center; font-weight :bold;"><%=session.getAttribute("id")%>주문 상세페이지</h2>
 	<br>
 	<table style=" margin-left:auto; margin-right:auto; text-align:center;" class="table table-bordered" >
 		<thead>
@@ -87,6 +74,8 @@
 			</tr>
 		</tbody>
 	</table>
-	<a href="<%=request.getContextPath()%>/admin/adminOrdersList.jsp" type="button" class="btn btn-dark">주문목록</a>
+
+
+
 </body>
 </html>

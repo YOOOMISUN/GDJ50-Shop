@@ -62,7 +62,7 @@
 			<img src="<%=request.getContextPath()%>/upload/<%=map.get("fileName")%>" width="300" height="300">
 			</div>
 			<div class="col-sm-6">
-				<form action="<%=request.getContextPath()%>/orderForm.jsp?goodsNo=<%=goodsNo%>" method="post" >
+				<form action="<%=request.getContextPath()%>/customerOrderForm.jsp?goodsNo=<%=goodsNo%>" method="post" >
 				<table style=" margin-left:auto; margin-right:auto; " class="table table-bordered" >	
 					<tr>	
 						<td>No</td>
@@ -141,13 +141,12 @@
 			</tbody>
 		</table>
 	</form>
-	
-	
+
 		<!-- 리뷰 페이징 -->
 		<%
 		if (currentPage > 1) {
 		%>
-		<a href="<%=request.getContextPath()%>/customerGoodsOne.jsp?currentPage=<%=currentPage-1%>" type="button" class="btn btn-dark">이전</a>
+		<a href="<%=request.getContextPath()%>/customerGoodsOne.jsp?currentPage=<%=currentPage-1%>&goodsNo=<%=goodsNo%>" type="button" class="btn btn-dark">이전</a>
 		<%
 				}
 			// 페이지 번호
@@ -159,14 +158,14 @@
 		   	for (int i = startPage; i <= endPage; i++) {
 		   		if (i <= lastPage) {
 		%>			
-		    <a href="<%=request.getContextPath()%>/customerGoodsOne.jsp?currentPage=<%=i%>"><%=i%></a>		    	
+		    <a href="<%=request.getContextPath()%>/customerGoodsOne.jsp?currentPage=<%=i%>&goodsNo=<%=goodsNo%>"><%=i%></a>	    	
 	   <%	 
 	   			}
 	    	}
 	    
 		if (currentPage < lastPage) {
 		%>
-		<a href="<%=request.getContextPath()%>/customerGoodsOne.jsp?currentPage=<%=currentPage+1%>" type="button" class="btn btn-dark">다음</a>
+		<a href="<%=request.getContextPath()%>/customerGoodsOne.jsp?currentPage=<%=currentPage+1%>&goodsNo=<%=goodsNo%>" type="button" class="btn btn-dark">다음</a>
 
 		<%
 		  }	

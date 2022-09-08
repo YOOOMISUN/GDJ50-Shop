@@ -64,8 +64,8 @@
 				<tr>
 					<th>Customer Id</th>
 					<th>Customer Name</th>
-					<th>Customer Address</th>
 					<th>Customer Telephone</th>
+					<th>Customer Address</th>
 					<th>Create Date</th>
 				</tr>
 			</thead>

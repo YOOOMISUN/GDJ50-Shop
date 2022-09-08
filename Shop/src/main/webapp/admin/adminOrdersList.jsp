@@ -28,7 +28,6 @@
 	
 	lastPage = orderService.getOrdersLastPage(rowPerPage);
 	
-
 %>
 <!DOCTYPE html>
 <html>
