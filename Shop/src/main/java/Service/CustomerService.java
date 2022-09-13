@@ -250,7 +250,48 @@ public class CustomerService {
 	      return rowPerPage;
 	}	// end getCustomerLastPage
 	
-	
+	// updateCustomerAction.jsp (정보수정)
+		public int modifyCustomer(Customer customer) {
+			
+			Connection conn = null;
+			int updateCustomer = 0;
+			
+			try {
+				conn = new DBUtil().getConnection();
+				
+				this.customerDao = new CustomerDao();
+				updateCustomer = customerDao.updateCustomer(conn, customer);
+				
+				// 디버깅
+				System.out.println("updateCustomer : " + updateCustomer);
+				
+				if(updateCustomer==0) {
+					throw new Exception();
+				}	
+				
+				conn.commit();
+				
+			} catch (Exception e){
+				e.printStackTrace();
+				try {
+					conn.rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+
+			} finally {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+
+			}
+			return updateCustomer;
+			
+			
+		}	// end modifyCustomer 
+		
 	
 	
 	

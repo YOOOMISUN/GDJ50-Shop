@@ -136,7 +136,7 @@ public class OrdersService {
 	
 	}	// end getOrdersList
 	
-	// 페이징
+	// 5-1) 전체 주문 목록(관리자) 페이징
 	public int getOrdersLastPage(int rowPerPage) {
 		
 		Connection conn = null;
@@ -215,6 +215,45 @@ public class OrdersService {
 		return list;
 		
 	}	// end getOrdersListByCustomer
+	
+	// 2-1) 고객 한명의 주문 목록(관리자, 고객) 페이징
+		public int getordersCustomerLastPage(int rowPerPage,String customerId) {
+			
+			Connection conn = null;
+			
+			try {
+				conn = new DBUtil().getConnection();
+				conn.setAutoCommit(false);
+				
+				OrdersDao orderDao = new OrdersDao();
+				rowPerPage = orderDao.ordersCustomerLastPage(conn, customerId, rowPerPage);
+				
+				if(rowPerPage==0) {
+					throw new Exception();
+				}
+				
+				conn.commit();
+			} catch(Exception e) {
+				e.printStackTrace();
+				
+				try {
+					conn.rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			} finally {
+				
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			return rowPerPage;
+			
+		}	// end ordersCustomerLastPage
+		
 	
 	// 주문하기 (ordersAction.jsp)	
 	public int addOrders(Orders orders) {

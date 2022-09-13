@@ -3,6 +3,7 @@
 <%@page import="Repository.OrdersDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
+	// 주문 상태 변경
 	request.setCharacterEncoding("utf-8");
 	int ordersNo = Integer.parseInt(request.getParameter("ordersNo"));
 	String State = request.getParameter("State");

@@ -224,9 +224,9 @@ public class OrdersDao {
 	   }
 	
 	// 2-1) 고객 한명의 주문 목록 (마지막페이지)
-	public int ordersCustomerLastPage(Connection conn, int rowPerPage) throws SQLException {
+	public int ordersCustomerLastPage(Connection conn,String customerId, int rowPerPage) throws SQLException {
 		
-		String sql = "SELECT COUNT(*) FROM orders";
+		String sql = "SELECT COUNT(*) FROM orders WHERE customer_id = ?";
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		int lastPage = 0;
@@ -234,6 +234,7 @@ public class OrdersDao {
 		
 		try {
 			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, customerId);
 			rs = stmt.executeQuery();
 
 			if(rs.next()) {

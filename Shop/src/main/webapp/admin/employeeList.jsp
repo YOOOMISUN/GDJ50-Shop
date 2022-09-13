@@ -67,6 +67,7 @@
 					<th>Update Date</th>
 					<th>Create Date</th>
 					<th>Active</th>
+					<th>Active Update</th>
 				</tr>
 			</thead>
 			<tbody>

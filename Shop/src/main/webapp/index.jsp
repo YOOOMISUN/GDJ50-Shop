@@ -24,7 +24,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-	<div  style="position: relative; top: 200px; text-align:center; font-weight :bold;"> <!-- 로그인 하면 -->
+	<div style="position: relative; top: 200px; text-align:center; font-weight :bold;"> <!-- 로그인 하면 -->
 		<p style="font-size:30px;"><%=session.getAttribute("name")%>님 반갑습니다!   (<%=session.getAttribute("user")%>) </p> 	<!-- customer / employee -->
 		<br>
 		<p style="font-size:20px;"><%=session.getAttribute("id")%></p>		<!-- 로그인 아이디 -->
@@ -32,6 +32,7 @@
 		<p style="font-size:20px;"><%=session.getAttribute("name")%></p>	<!-- 로그인 이름 -->
 		<br>
 		<a href="<%=request.getContextPath()%>/customerGoodsList.jsp" class="btn btn-info">상품리스트</a>	
+		<a href="<%=request.getContextPath()%>/customerOrderOne.jsp?customerId=<%=session.getAttribute("id")%>" class="btn btn-info">주문목록</a>	
 		<a href="<%=request.getContextPath()%>/logout.jsp" class="btn btn-info">로그아웃</a>	
 		<a href="<%=request.getContextPath()%>/removeForm.jsp" class="btn btn-danger">회원탈퇴</a>	
 		

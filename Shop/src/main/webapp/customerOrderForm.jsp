@@ -1,13 +1,20 @@
+<%@page import="Service.GoodsService"%>
+<%@page import="java.util.Map"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
  	// id가 없으면 로그인 폼으로
 	if(session.getAttribute("id") == null){
 		response.sendRedirect(request.getContextPath() + "/loginForm.jsp");
 		return;
-	}  
-	// 상세페이지에서 상품 번호 받아오기
+		}  
+
+	// 상세페이지에서 
 	int goodsNo = Integer.parseInt(request.getParameter("goodsNo")); 
 	String customerId = (String)session.getAttribute("id");
+	
+	// 상품 가격 가져오기
+	GoodsService goodsService = new GoodsService();
+	Map<String, Object> map = goodsService.getGoodsAndImgOne(goodsNo);
 	
 	// 디버깅
 	System.out.println("goodsNo : " + goodsNo);
@@ -34,7 +41,7 @@
 <div style="position: relative; top: 200px;">
 	<h2 style="text-align:center; font-weight :bold;">주문하기</h2>
 	<br>
-		<form action="<%=request.getContextPath()%>/customerOrdersAction.jsp" method="post" id="ordersForm">
+		<form action="<%=request.getContextPath()%>/customerOrderAction.jsp" method="post" id="ordersForm">
 			<table style=" margin-left:auto; margin-right:auto; " class="table table-bordered" >
 				<tr>
 					<td>상품 번호</td>
@@ -42,7 +49,7 @@
 				</tr>
 				<tr>
 					<td>아이디</td>
-					<td><input type="text" name="ordersId" id="ordersId" class="form-control" readonly="readonly" value="<%=customerId%>"></td>
+					<td><input type="text" name="customerId" id="customerId" class="form-control" readonly="readonly" value="<%=customerId%>"></td>
 				</tr>
 				<tr>
 					<td>수량</td>
@@ -52,6 +59,12 @@
 							<option >2</option>
 							<option >3</option>
 							<option >4</option>
+							<option >5</option>
+							<option >6</option>
+							<option >7</option>
+							<option >8</option>
+							<option >9</option>
+							<option >10</option>
 						</select>
 					</td>
 				</tr>
@@ -63,8 +76,9 @@
 					<td><input type="text" name="ordersDetailAddr" id="ordersDetailAddr" class="form-control"></td>
 				</tr>
 				<tr>
-					<td></td>
-					<td></td>
+					<td><input type="hidden" name="ordersState" value="결제완료"></td>
+					<td><input type="hidden" name="goodsPrice" value="<%=(Integer)map.get("goodsPrice")%>"></td>
+					<td><input type="hidden" name="orderPrice" value="0"></td>
 				</tr>
 			</table>
 			<a href="<%=request.getContextPath()%>/customerGoodsList.jsp" type="button" class="btn btn-dark" style="float: right;">상품목록</a>

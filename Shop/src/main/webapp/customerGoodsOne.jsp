@@ -51,6 +51,7 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 
@@ -62,7 +63,7 @@
 			<img src="<%=request.getContextPath()%>/upload/<%=map.get("fileName")%>" width="300" height="300">
 			</div>
 			<div class="col-sm-6">
-				<form action="<%=request.getContextPath()%>/customerOrderForm.jsp?goodsNo=<%=goodsNo%>" method="post" >
+				<form action="<%=request.getContextPath()%>/customerOrderForm.jsp?goodsNo=<%=goodsNo%>" method="post" id="goodsOneForm">
 				<table style=" margin-left:auto; margin-right:auto; " class="table table-bordered" >	
 					<tr>	
 						<td>No</td>
@@ -88,8 +89,9 @@
 						<td>Sold Out</td>
 						<td><%=map.get("soldOut")%></td>
 					</tr>	
-				</table>
-					<button type="submit" class="btn btn-info" >주문하기</button>
+				</table>	
+				<!-- soldOut이 Y인 상태로 주문하기 버튼 누르면 "품절입니다" 알림창 뜨기 -->
+					<button type="submit" class="btn btn-info" id="orderBtn">주문하기</button>
 					<a href="<%=request.getContextPath()%>/customerGoodsList.jsp" type="button" class="btn btn-dark"  style="float: right; margin-right :30px;">상품목록</a>
 				</form>
 			</div>
@@ -188,6 +190,21 @@
 				<button type="submit" class="btn btn-info">리뷰입력</button>
 		</form>
 	</div>
+
+<%-- 	<%
+		if(map.get("soldOut").equals("Y")){
+	%>
+	<script>
+		$(document).ready(function(){
+				$("#orderBtn").on("click", function(){ // 버튼을 클릭하면 처리
+					alert("품절입니다!");  });
+			});
+	</script>
+	
+	<%
+		}
+	%> --%>
+
 
 </body>
 </html>

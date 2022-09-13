@@ -106,22 +106,26 @@ public class CustomerDao {
 		PreparedStatement stmt = null;
 		int row = 0;
 		
-         stmt = conn.prepareStatement(sql);
-         stmt.setString(1, customeradd.getCustomerId());
-         stmt.setString(2, customeradd.getCustomerPass());
-         stmt.setString(3, customeradd.getCustomerName());
-         stmt.setString(4, customeradd.getCustomerAddress());
-         stmt.setString(5, customeradd.getCustomerDetailAddr());
-         stmt.setString(6, customeradd.getCustomerTelephone());
-		 
-         row = stmt.executeUpdate();
+		try {
+	         stmt = conn.prepareStatement(sql);
+	         stmt.setString(1, customeradd.getCustomerId());
+	         stmt.setString(2, customeradd.getCustomerPass());
+	         stmt.setString(3, customeradd.getCustomerName());
+	         stmt.setString(4, customeradd.getCustomerAddress());
+	         stmt.setString(5, customeradd.getCustomerDetailAddr());
+	         stmt.setString(6, customeradd.getCustomerTelephone());
+			 
+	         row = stmt.executeUpdate();
          
-         // 디버깅
-         System.out.println("row : " + row);
+	         // 디버깅
+	         System.out.println("row : " + row);
          
-         stmt.close();
-         
-		return row;
+		} finally {
+			if(stmt!=null) {
+				stmt.close();
+			}
+		}
+			return row;
 		 
 	
 	}	// end insertCustomer
@@ -131,7 +135,7 @@ public class CustomerDao {
 	public List<Customer> selectCustomerListByPage(Connection conn, int rowPerPage, int beginRow) throws SQLException{
 		List<Customer> list = new ArrayList<>();
 		
-		String sql = "SELECT customer_id, customer_name, customer_address, customer_detailAddr, customer_telephone, update_date, create_date FROM customer LIMIT ?,?";
+		String sql = "SELECT customer_id, customer_pass, customer_name, customer_address, customer_detailAddr, customer_telephone, update_date, create_date FROM customer LIMIT ?,?";
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
@@ -147,6 +151,7 @@ public class CustomerDao {
 			while(rs.next()) {
 				Customer customer = new Customer();
 				customer.setCustomerId(rs.getString("customer_id"));
+				customer.setCustomerPass(rs.getString("customer_pass"));
 				customer.setCustomerName(rs.getString("customer_name"));
 				customer.setCustomerAddress(rs.getString("customer_address"));
 				customer.setCustomerDetailAddr(rs.getString("customer_detailAddr"));
@@ -203,6 +208,32 @@ public class CustomerDao {
 		return lastPage;
 		
 	} // end goodsLastPage
+	
+	// updateCustomerAction.jsp (정보수정)
+	public int updateCustomer(Connection conn, Customer customer) throws SQLException {
+		
+		String sql = "UPDATE customer SET customer_pass = PASSWORD(?), customer_name=?, customer_address=?, customer_detailAddr=?, customer_telephone=?, update_date=NOW() WHERE customer_id=?";
+		PreparedStatement stmt = null;
+		int row = 0;
+		
+		try {
+			stmt = conn.prepareStatement(sql);
+	         stmt.setString(1, customer.getCustomerPass());
+	         stmt.setString(2, customer.getCustomerName());
+	         stmt.setString(3, customer.getCustomerAddress());
+	         stmt.setString(4, customer.getCustomerDetailAddr());
+	         stmt.setString(5, customer.getCustomerTelephone());
+	         stmt.setString(6, customer.getUpdateDate());
+	         stmt.setString(7, customer.getCustomerId());
+			row = stmt.executeUpdate();
+		
+		} finally {
+			if(stmt!=null) {
+				stmt.close();
+			}
+		}
+		return row;
+	}
 	
 	
 }

@@ -8,11 +8,11 @@
 		return;
 	} 
 	
-	int rowPerPage = 5;
+	int rowPerPage = 1;
 	int currentPage = 1;
 	int lastPage = 0;
 	
-	if(request.getParameter("currentPage") !=(null)){
+	if(request.getParameter("currentPage") != null ){
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 	}
 	
@@ -21,14 +21,13 @@
 	List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 	list = ordersService.getOrdersListByCustomer(customerId, rowPerPage, currentPage);
 	
-	lastPage = ordersService.getOrdersLastPage(rowPerPage);
+	lastPage = ordersService.getordersCustomerLastPage(rowPerPage, customerId);
 			
-	
 	// 디버깅
 	System.out.println("list >> " + list);
 	System.out.println("lastPage >> " + lastPage);	
-
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,15 +94,52 @@
 				<td>CreateDate</td>
 				<td><%=m.get("createDate")%></td>
 			</tr>
+			
+			<tr>
+				<td>
+					<br>
+					<br>
+				</td>
+			</tr>
 			<%
 				}
 			%>
 			
 		</table>
+			
+		<!-- 페이징 -->
+		<%
+			if (currentPage > 1) {
+		%>
+			<a href="<%=request.getContextPath()%>/admin/adminCustomerOrderOne.jsp?currentPage=<%=currentPage-1%>&customerId=<%=customerId%>" type="button" class="btn btn-dark">이전</a>
+		<%
+			}
+			
+			// 페이지 번호
+		 	int pageCount = 10;
+			int startPage = ((currentPage - 1) / pageCount) * pageCount + 1;
+		   	int endPage = (((currentPage - 1) / pageCount) + 1) * pageCount;
+		   	if (lastPage < endPage) { endPage = lastPage; }
+		    	
+		   	for (int i = startPage; i <= endPage; i++) {
+		   		if (i <= lastPage) {
+	    %>			
+		    <a href="<%=request.getContextPath()%>/admin/adminCustomerOrderOne.jsp?currentPage=<%=i%>&customerId=<%=customerId%>"><%=i%></a>		    	
+	   <%	 
+	   			}
+	    	}
+	    
+			if (currentPage < lastPage) {
+		%>
+			<a href="<%=request.getContextPath()%>/admin/adminCustomerOrderOne.jsp?currentPage=<%=currentPage+1%>&customerId=<%=customerId%>" type="button" class="btn btn-dark">다음</a>
+		<%
+			  }
+		%>				
 
 	<br>
-		<button type="submit" class="btn btn-info" style="text-align: center;">수정하기</button>
-		<a href="<%=request.getContextPath()%>/admin/adminGoodsList.jsp" type="button" class="btn btn-dark" style="text-align: center;">상품목록</a>
+		<a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp" type="button" class="btn btn-dark" style="text-align: center;">고객목록</a>
 	</form>
+	
+	
 </body>
 </html>

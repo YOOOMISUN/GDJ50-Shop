@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<%
+	// id가 있으면 로그인 폼으로
+	if(session.getAttribute("id") != null){
+		response.sendRedirect(request.getContextPath() + "/logout.jsp");
+		return;
+	}  
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -98,14 +105,17 @@
 	});
 	
 	$('#addEmployeeBtn').click(function(){
-		if($('#employeeId').val() == '') {
-			window.alert('아이디를 입력하세요!');
+		if($('#ckid').val() == '') {
+			alert('아이디를 입력하고 중복검사를 진행해주세요!');
+			$("#ckid").focus();
 		} else if ($('#employeePw').val() == '') {
-			window.alert('비밀번호를 입력하세요!');
+			alert('비밀번호를 입력하세요!');
+			$("#employeePw").focus();
 		} else if ($('#employeeName').val() == '') {
-			window.alert('이름을 입력하세요!');
+			alert('이름을 입력하세요!');
+			$("#employeeName").focus();
 		} else {
-			employeeForm.submit();
+			addEmployeeForm.submit();
 		}
 	});
 	

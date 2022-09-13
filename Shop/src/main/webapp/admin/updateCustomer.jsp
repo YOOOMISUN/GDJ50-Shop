@@ -1,12 +1,24 @@
+<%@page import="Service.CustomerService"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="vo.Customer"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% 
+		// 로그인 안되어 있거나 user가 Employee가 아니면 로그인 폼으로...
+		if(session.getAttribute("id") == null || (!(session.getAttribute("user").equals("Employee"))) ){
+			response.sendRedirect(request.getContextPath() + "/loginForm.jsp");
+			return;
+		} 
+	
+	String customerId = request.getParameter("customerId");
+	String updateDate = request.getParameter("updateDate");
+	
+	// 디버깅
+	System.out.println("updateDate >> " + updateDate);
+	System.out.println("customerId >> " + customerId);	
 
-<%
-	// id가 있으면 로그인 폼으로
-	if(session.getAttribute("id") != null){
-		response.sendRedirect(request.getContextPath() + "/logout.jsp");
-		return;
-	}  
-%>
+	%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,39 +35,23 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-	<div style="position: relative; top: 100px;">
-	<!-- id 체크 폼 -->
+<!-- 목록 -->
+	<div>
+		<br>
+		<ul>
+			<li><a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp">고객관리</a></li><!-- 고객목록/강제탈퇴/비밀번호수정(수정된 비밀번호 전달 구현X) -->
+			<li><a href="<%=request.getContextPath()%>/admin/employeeList.jsp">사원관리</a></li>
+			<li><a href="<%=request.getContextPath()%>/admin/adminGoodsList.jsp">상품	관리</a></li>	<!-- 상품목록/등록/수정/삭제(장바구니,주문이 없는 경우=> 품절처리) -->
+			<li><a href="<%=request.getContextPath()%>/admin/adminOrdersList.jsp">주문관리</a></li><!-- 주문목록/수정 -->
+			<li><a href="<%=request.getContextPath()%>/admin/adminNoticeList.jsp">공지관리(게시판)</a></li><!-- 공지 CRUD -->
+		</ul>
+	</div>
 	
-		<div style=" margin-left:auto; margin-right:auto; text-align: center;" >
-			ID Check
-			<input type="text" name="ckid" id="ckid" >
-			<button type="button" id="ckidBtn" >아이디 중복검사</button>
-			<input type="hidden" name="type" value="Customer" >
-	<%
-			if(request.getParameter("errorMsg") != null) {
-	%>
-			<span style="color:red;"><%=request.getParameter("errorMsg")%></span>	
-	<%		
-		}
-	%>
-		</div>	
-	
-	<br>
-	<br>
-	
-	
-	<!-- 고객 회원가입 폼 -->
-	<%
-		String ckId = "";
-		if(request.getParameter("ckId") != null) {
-			ckId = request.getParameter("ckId");			
-		}
-	%>
-	<form action="<%=request.getContextPath()%>/addCustomerAction.jsp " method="post" id="addCustomerForm">
+	<form action="<%=request.getContextPath()%>/admin/updateCustomerAction.jsp?customerId=<%=customerId%>" method="post" id="updateCustomerForm">
 		<table style=" margin-left:auto; margin-right:auto; text-align: center;" class="table table-bordered" >
 			<tr>
 				<td>Customer Id</td>
-				<td><input type="text" name="customerId" id="customerId"  class="form-control" readonly="readonly" value="<%=ckId%>"></td>
+				<td><input type="text" name="customerId" class="form-control" readonly="readonly" value="<%=customerId%>"></td>
 			</tr>
 			<tr>
 				<td>Customer Pw</td>
@@ -76,10 +72,14 @@
 				<td>Customer Telephone</td>
 				<td><input type="text" name="customerTelephone" id="customerTelephone" class="form-control"></td>
 			</tr>
+			<tr>
+				<td>Update Date</td>
+				<td><%=updateDate%></td>
+			</tr>
 		</table>
 			<a href="javascript:history.go(-1)" class="btn btn-info" title="뒤로" style="float: right; ">BACK</a>
 			<a><input type="reset" class="btn btn-dark" style="float: right; margin-right :30px;"></a>
-			<button type="button" id="addCustomerBtn" class="btn btn-info" style="float: right; margin-right :30px;">회원가입</button>
+			<button type="button" id="updateCustomerBtn" class="btn btn-info" style="float: right; margin-right :30px;">정보수정</button>
 			<%
 				if(request.getParameter("errorMsg") != null) {
 			%>
@@ -92,7 +92,6 @@
 <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
 <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
 <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
-</div>
 </div>
 <script>
 	#('#addrBtn').click(function(){
@@ -197,35 +196,10 @@
 </script>
 
 	
-	
-</body>
-	<script>
-	// ID 중복검사
-	$('#ckidBtn').click(function(){
-		if($('#ckid').val().length < 4) {
-			window.alert('아이디는 4자 이상 입력해주세요!');
-		}else {
-			$.ajax({
-				url : '/Shop/IdCkController',
-				type : 'post',
-				data : {ckid : $('#ckid').val()},
-				success : function(json) {
-					if(json == 'y') {
-						$('#customerId').val($('#ckid').val());
-					} else {
-						alert('이미 사용중인 아이디 입니다.');
-						$('#customerId').val('');
-					}
-				}
-			});
-		}
-	});
-	
-	$('#addCustomerBtn').click(function(){
-		if($('#ckid').val() == '') {
-			alert('아이디를 입력하고 중복검사를 진행해주세요!');
-			$("#ckid").focus();
-		} else if ($('#customerPw').val() == '') {
+
+<script>	
+	$('#updateCustomerBtn').click(function(){
+		if ($('#customerPw').val() == '') {
 			alert('비밀번호를 입력하세요!');
 			$("#customerPw").focus();
 		} else if ($('#customerName').val() == '') {
@@ -241,17 +215,10 @@
 			window.alert('핸드폰번호를 입력하세요!');
 			$("#customerTelephone").focus();
 		} else {
-			addCustomerForm.submit();
+			updateCustomerForm.submit();
 		}
 	});
 	
 	</script>
+</body>
 </html>
-
-<% 
-/* addCustomer(addEmployee)
-
-1) 아이디 중복 체크 : addCustomer > idCheckAcion > SignService > SignDao
-2) 회원가입 : addCustomer > addCustomerAction > CustomerService > CustomerDao */
-
-%>

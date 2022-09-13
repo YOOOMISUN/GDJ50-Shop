@@ -11,7 +11,8 @@ public class DriverListener implements ServletContextListener {
     	
          try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			System.out.println(" 드라이버 로딩 성공!");
+			System.out.println("드라이버 로딩 성공!");
+			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}

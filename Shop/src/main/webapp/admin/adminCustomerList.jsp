@@ -67,6 +67,7 @@
 					<th>Customer Telephone</th>
 					<th>Customer Address</th>
 					<th>Create Date</th>
+					<th>Information Update</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -75,17 +76,22 @@
 			%>
 				<tr>
 					<td>
-						<a href="<%=request.getContextPath()%>/admin/CustomerOrderOne.jsp?customerId=<%=customer.getCustomerId()%>">
+						<a href="<%=request.getContextPath()%>/admin/adminCustomerOrderOne.jsp?customerId=<%=customer.getCustomerId()%>">
 						<%=customer.getCustomerId()%></a></td>
 					<td><%=customer.getCustomerName()%></td>
 					<td><%=customer.getCustomerTelephone()%></td>
 					<td><%=customer.getCustomerAddress()%><%=customer.getCustomerDetailAddr()%></td>
 					<td><%=customer.getCreateDate()%></td>
+					<td><a href="<%=request.getContextPath()%>/admin/updateCustomer.jsp?customerId=<%=customer.getCustomerId()%>&updateDate=<%=customer.getUpdateDate()%>">정보수정</a></td>
 				</tr>
 					<%	
+					System.out.println("updateDate @@ " + customer.getUpdateDate());
 						}
 					%>	
 		</table>
+		
+		
+		
 	</div>
 	
 		<!-- 페이징 -->
