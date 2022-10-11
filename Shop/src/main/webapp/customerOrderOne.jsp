@@ -45,11 +45,13 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-
+	<!-- Header -->
+	<%@ include file="/inc/Header.jsp" %>
+	
 <h2 style="text-align: center;"><%=customerId%> 주문목록</h2>
 <br>
 	<form>
-	<table style=" margin-left:auto; margin-right:auto; " class="table table-bordered" >
+	<table style="margin-left:auto; margin-right:auto; text-align:center;"  class="table table-bordered" >
 		<% 
 			for(Map<String, Object> m : list){
 		%>	
@@ -86,18 +88,20 @@
 			<td><%=m.get("createDate")%></td>
 		</tr>
 		
-		<tr>
-			<td>
-				<br>
-				<br>
-			</td>
-		</tr>
 		<%
 			}
 		%>
 		
 	</table>
-		<a href="<%=request.getContextPath()%>/customerGoodsList.jsp" type="button" class="btn btn-dark"  style="float: right; margin-right :30px;">상품목록</a>
+	
+	<br>
+	<br>
+	
+	<a href="<%=request.getContextPath()%>/Index.jsp" type="button" class="btn btn-dark"  style="float: right; margin-right :30px;">상품목록</a>
+	
+	
+	
+	<div style="text-align: center;">
 	<!-- 페이징 -->
 	<%
 		if (currentPage > 1) {
@@ -126,10 +130,16 @@
 	<%
 		  }
 	%>				
-
+	</div>
 <br>
 </form>
 
+
+
+	<!-- Footer -->
+	<%@ include file="/inc/Footer.jsp" %>
+	
+ 
 
 </body>
 </html>

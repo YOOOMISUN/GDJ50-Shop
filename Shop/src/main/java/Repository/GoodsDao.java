@@ -14,7 +14,7 @@ import vo.Goods;
 
 public class GoodsDao {
 
-	// 고객 상품 리스트 페이지에서 사용 (customerGoodsList.jsp)
+	// 고객 상품 리스트 페이지에서 사용 (Index.jsp)
 	public List<Map<String,Object>> selectCustomerGoodsListByPage (Connection conn, int rowPerPage, int beginRow) throws SQLException{
 		
 		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
@@ -77,7 +77,7 @@ public class GoodsDao {
 		
 	}
 	
-	// customerGoodsList.jsp 페이징
+	// Index.jsp 페이징
 	public int CustomerGoodsListLastPage (Connection conn, int rowPerPage) throws SQLException {
 		
 		String sql = "SELECT COUNT(*) FROM goods";
@@ -110,7 +110,7 @@ public class GoodsDao {
 		 
 		return lastPage;
 		
-	}	// end CustomerGoodsListLastPage
+	}	// end IndexLastPage
 	
 	
 	// 상품 수정(updateGoodsAction.jsp)

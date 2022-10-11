@@ -23,13 +23,20 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
+
+
+  
+	<!-- Header -->
+	<%@ include file="/inc/Header.jsp" %>
+	
+
 	<div style="position: relative; top: 100px;">
 	<!-- id 체크 폼 -->
 	
 		<div style=" margin-left:auto; margin-right:auto; text-align: center;" >
-			ID Check
-			<input type="text" name="ckid" id="ckid" >
-			<button type="button" id="ckidBtn" >아이디 중복검사</button>
+			ID Check&nbsp;&nbsp;&nbsp;
+			<input type="text" name="ckid" id="ckid" style="border-radius: 30px;">&nbsp;&nbsp;
+			<button type="button" id="ckidBtn" class="btn btn-primary">아이디 중복검사</button>
 			<input type="hidden" name="type" value="Customer" >
 	<%
 			if(request.getParameter("errorMsg") != null) {
@@ -52,7 +59,7 @@
 		}
 	%>
 	<form action="<%=request.getContextPath()%>/addCustomerAction.jsp " method="post" id="addCustomerForm">
-		<table style=" margin-left:auto; margin-right:auto; text-align: center;" class="table table-bordered" >
+		<table style=" margin-left:auto; margin-right:auto; text-align: center; " class="table table-bordered" >
 			<tr>
 				<td>Customer Id</td>
 				<td><input type="text" name="customerId" id="customerId"  class="form-control" readonly="readonly" value="<%=ckId%>"></td>
@@ -68,7 +75,7 @@
 			<tr>
 				<td>Customer Address</td>
 				<td><input type="text" name="customerAddress" id="customerAddress" readonly="readonly" class="form-control"></td>
-				<td><button type="button" id="addrBtn" onclick="sample2_execDaumPostcode()">주소검색</button></td>
+				<td><button type="button" id="addrBtn" onclick="sample2_execDaumPostcode()" class="btn btn-info">주소검색</button></td>
 				<td>DetailAddr</td>
 				<td><input type="text" name="customerDetailAddr" id="customerDetailAddr" class="form-control"></td>
 			</tr>
@@ -88,6 +95,14 @@
 				}
 			%>
 	</form>
+	
+	
+	<!-- Footer -->
+	<%@ include file="/inc/Footer.jsp" %>
+	
+	
+	
+	
 	
 <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
 <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">

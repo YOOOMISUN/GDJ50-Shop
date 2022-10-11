@@ -26,6 +26,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
+
+	<!-- header -->
+	<%@ include file="/inc/Header.jsp" %>
+	
+
+
 	<!-- 목록 -->
 	<div>
 		<br>
@@ -61,6 +67,10 @@
 		%>
 		</form>
 	</div>
+		
+		<!-- Footer -->
+	<%@ include file="/inc/Footer.jsp" %>
+		
 		
 </body>
 <script>	// 유효성 검사

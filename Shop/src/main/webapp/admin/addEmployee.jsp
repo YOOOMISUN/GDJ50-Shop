@@ -23,6 +23,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
+
+	<!-- Header -->
+	<%@ include file="/inc/Header.jsp" %>
+	
+
 	<div style="position: relative; top: 100px;">
 	<!-- ID 중복검사 폼 -->
 
@@ -81,6 +86,13 @@
 	</form>
 	</div>
 	</div>
+	
+	
+	<!-- Footer -->
+	<%@ include file="/inc/Footer.jsp" %>
+	
+	
+	
 </body>
 	<script>
 	// ID 중복검사

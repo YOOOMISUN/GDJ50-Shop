@@ -44,6 +44,13 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+
+	<!-- Header -->
+	<%@ include file="/inc/Header.jsp" %>
+	
+
+
+
 	<!-- 목록 -->
 	<div>
 		<br>
@@ -142,6 +149,14 @@
 		  }
 	%>
 	</div>
+	
+	
+	
+	<!-- Footer -->
+	<%@ include file="/inc/Footer.jsp" %>
+	
+ 
+	
 
 </body>
 </html>

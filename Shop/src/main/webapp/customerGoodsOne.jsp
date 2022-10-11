@@ -55,6 +55,10 @@
 </head>
 <body>
 
+	<!-- Header -->
+	<%@ include file="/inc/Header.jsp" %>
+	
+
 	<h2 style="text-align:center; font-weight :bold;">상품 상세페이지</h2>
 	<br>
 	<div class="container">
@@ -92,7 +96,7 @@
 				</table>	
 				<!-- soldOut이 Y인 상태로 주문하기 버튼 누르면 "품절입니다" 알림창 뜨기 -->
 					<button type="submit" class="btn btn-info" id="orderBtn">주문하기</button>
-					<a href="<%=request.getContextPath()%>/customerGoodsList.jsp" type="button" class="btn btn-dark"  style="float: right; margin-right :30px;">상품목록</a>
+					<a href="<%=request.getContextPath()%>/Index.jsp" type="button" class="btn btn-dark"  style="float: right; margin-right :30px;">상품목록</a>
 				</form>
 			</div>
 		</div>
@@ -204,6 +208,12 @@
 	<%
 		}
 	%> 
+
+	<!-- Footer -->
+	<%@ include file="/inc/Footer.jsp" %>
+	
+ 
+
 
 
 </body>

@@ -27,6 +27,13 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+
+	<!-- Header -->
+	<%@ include file="/inc/Header.jsp" %>
+	
+
+
+
 		<!-- 리뷰 입력 폼 -->
 	<div>
 		<form action="<%=request.getContextPath()%>/updateReviewAction.jsp?reviewNo=<%=reviewNo%>&goodsNo=<%=goodsNo%>" method="post">
@@ -48,5 +55,13 @@
 				<button type="submit" class="btn btn-info">리뷰입력</button>
 		</form>
 	</div>
+	
+	
+	<!-- Footer -->
+	<%@ include file="/inc/Footer.jsp" %>
+	
+ 
+	
+	
 </body>
 </html>

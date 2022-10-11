@@ -24,6 +24,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+
+	<!-- header -->
+	<%@ include file="/inc/Header.jsp" %>
+	
+
+
 	<div>
 		<ul>
 			<li><a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp">고객관리</a></li>
@@ -47,6 +53,12 @@
 		
 	</div>
 	
+	<!-- Footer -->
+	<%@ include file="/inc/Footer.jsp" %>
+	
+
+
+
 
 </body>
 </html>

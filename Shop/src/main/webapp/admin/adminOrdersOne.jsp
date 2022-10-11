@@ -35,6 +35,13 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+
+	<!-- Header -->
+	<%@ include file="/inc/Header.jsp" %>
+	
+
+
+
 	<!-- 목록 -->
 	<div>
 		<br>
@@ -88,5 +95,12 @@
 		</tbody>
 	</table>
 	<a href="<%=request.getContextPath()%>/admin/adminOrdersList.jsp" type="button" class="btn btn-dark">주문목록</a>
+	
+	
+
+	<!-- Footer -->
+	<%@ include file="/inc/Footer.jsp" %>
+	
+ 
 </body>
 </html>

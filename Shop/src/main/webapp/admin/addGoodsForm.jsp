@@ -23,6 +23,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
+
+	<!-- Header -->
+	<%@ include file="/inc/Header.jsp" %>
+	
+
+
 	<!-- 목록 -->
 	<div>
 		<br>
@@ -74,6 +80,13 @@
 		<a href="javascript:history.go(-1)" class="btn btn-danger" title="뒤로">돌아가기</a>
 	</form>
 	</div>
+	
+	
+	<!-- Footer -->
+	<%@ include file="/inc/Footer.jsp" %>
+	
+	
+	
 </body>
 <script>	// 유효성 검사
 	$('#insertBtn').click(function(){			

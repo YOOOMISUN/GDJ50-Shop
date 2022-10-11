@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-	<%
-		session.invalidate();		// 로그아웃
-	%>
+	  <% 	// id가 있으면 로그아웃
+      	if(session.getAttribute("id") != null){
+      		session.invalidate();		// 로그아웃
+      		response.sendRedirect(request.getContextPath() + "/Index.jsp");
+    		return;
+      		}
+       %>
 
 <!DOCTYPE html>
 <html>
@@ -20,12 +24,17 @@
 </head>
 <body>
 	
+		<!-- Header -->
+	<%@ include file="/inc/Header.jsp" %>
+	
+	
+	
 	<div class="container" >
 	<div class="row">
 		<div class="col-sm-6" style="position: relative; top: 200px;">
 		<form method="post" action="<%=request.getContextPath()%>/customerLoginAction.jsp" id="customerForm" >
 			<fieldset>
-				<legend style="text-align:center; font-weight :bold;">Customer Login</legend>	<!-- customer  -->
+				<legend style="text-align:center; font-weight :bold;">고객 로그인</legend>	<!-- customer  -->
 				<br>
 				<table style=" margin-left:auto; margin-right:auto; text-align:center;" class="table table-bordered" >
 					<tr>
@@ -47,7 +56,7 @@
 		<div class="col-sm-6"  style="position: relative; top: 200px;">
 		<form method="post" action="<%=request.getContextPath()%>/admin/employeeLoginAction.jsp" id="employeeForm">
 			<fieldset>
-				<legend style="text-align:center; font-weight :bold;">Employee Login</legend>	<!-- Employee  -->
+				<legend style="text-align:center; font-weight :bold;">관리자 로그인</legend>	<!-- Employee  -->
 				<br>
 				<table style=" margin-left:auto; margin-right:auto; text-align:center;" class="table table-bordered" >
 					<tr>
@@ -60,13 +69,21 @@
 					</tr>
 				</table>
 				<br>
-				<button type="button" id="employeeBtn" class="btn btn-info" style="width:150px; margin:auto; display:block;">관리자 로그인</button>
+				<button type="button" id="employeeBtn" class="btn btn-info" style="width:170px; margin:auto; display:block;">관리자 로그인</button>
 				<a href="<%=request.getContextPath()%>/admin/addEmployee.jsp" class="btn btn-dark" style="float: right;">관리자 회원가입</a>
 			</fieldset>
 		</form>
 		</div>
 	</div>
 	</div>
+	
+	
+	
+	<!-- Footer -->
+	<%@ include file="/inc/Footer.jsp" %>
+	
+	
+	
 </body>
 	<script>
 	$('#customerBtn').click(function(){

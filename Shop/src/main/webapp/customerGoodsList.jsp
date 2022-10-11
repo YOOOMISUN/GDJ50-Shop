@@ -31,10 +31,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Customer Goods List</title>
+
+<title>Index</title>
 </head>
 <body>
+
+	<!-- Header  -->
+	<%@ include file="/inc/Header.jsp" %>
+	
+	<div class="container" style="background-color:light;">
 	<!-- for / if 대체기술 : 커스텀태그(JSTL & EL) JSP -->
 	<!-- JSP를 쓸수 밖에 없음. HTML은 자바코드랑 커스텀태그를 쓸수 없음 -->
 	<div>
@@ -90,7 +95,7 @@
 		<%
 		if (currentPage > 1) {
 		%>
-		<a href="<%=request.getContextPath()%>/customerGoodsList.jsp?currentPage=<%=currentPage-1%>" type="button" class="btn btn-dark">이전</a>
+		<a href="<%=request.getContextPath()%>/Index.jsp?currentPage=<%=currentPage-1%>" type="button" class="btn btn-dark">이전</a>
 		<%
 		}
 		// 페이지 번호
@@ -103,18 +108,25 @@
 	    	for (int j = startPage; j <= endPage; j++) {
 	    		if (j <= lastPage) {
 	    %>			
-		    <a href="<%=request.getContextPath()%>/customerGoodsList.jsp?currentPage=<%=j%>"><%=j%></a>		    	
+		    <a href="<%=request.getContextPath()%>/Index.jsp?currentPage=<%=j%>"><%=j%></a>		    	
 	   <%	 
 	   			}
 	    	}
 	    
 		if (currentPage < lastPage) {
 		%>
-		<a href="<%=request.getContextPath()%>/customerGoodsList.jsp?currentPage=<%=currentPage+1%>" type="button" class="btn btn-dark">다음</a>
+		<a href="<%=request.getContextPath()%>/Index.jsp?currentPage=<%=currentPage+1%>" type="button" class="btn btn-dark">다음</a>
 
 	<%
 		  }
 	%>
+	
+	</div>
+	
+	
+	<!-- Footer  -->
+	<%@ include file="/inc/Footer.jsp" %>
+	
 </body>
 </html>
 

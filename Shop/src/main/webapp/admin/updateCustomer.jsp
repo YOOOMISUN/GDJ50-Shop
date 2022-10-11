@@ -35,6 +35,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
+  
+	<!-- Header -->
+	<%@ include file="/inc/Header.jsp" %>
+	
+
+
 <!-- 목록 -->
 	<div>
 		<br>
@@ -88,6 +94,10 @@
 				}
 			%>
 	</form>
+		
+
+	<!-- Footer -->
+	<%@ include file="/inc/Footer.jsp" %>
 	
 <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
 <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
