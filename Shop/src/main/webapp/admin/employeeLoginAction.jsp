@@ -18,10 +18,10 @@
 	System.out.println("employeeId : " + employeeId);
 	System.out.println("employeePass : " + employeePass);
 	
-	// CustomerLogin 객체생성
+	// EmployeeLogin 객체생성
 	Employee employeelogin = new Employee();
 	
-	// customerlogin 안에 불러온 값 넣어주기
+	// EmployeeLogin 안에 불러온 값 넣어주기
 	employeelogin.setEmployeeId(employeeId);
 	employeelogin.setEmployeePass(employeePass);
 
@@ -32,7 +32,7 @@
 	System.out.println("employee : " + employee );
 	
 	// 세션에 값 넣어주기
-	if(employee != null ){
+	if(employee != null ){		// && employee.getActive().equals("Y")
 		session.setAttribute("user", "Employee");
 		session.setAttribute("id", employee.getEmployeeId());
 		session.setAttribute("name", employee.getEmployeeName());

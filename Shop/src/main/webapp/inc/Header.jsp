@@ -35,7 +35,7 @@
             <div class="row">
                 <div class="col-md-6 text-center text-lg-left mb-2 mb-lg-0">
                     <div class="d-inline-flex align-items-center">
-                        <a class="text-white pr-3" href="">FAQs</a>
+                        <a class="text-white pr-3" href="">Cart</a>
                         <span class="text-white">|</span>
                         <a class="text-white px-3" href="">Help</a>
                         <span class="text-white">|</span>
@@ -87,12 +87,13 @@
                     <div class="navbar-nav ml-auto py-0">
                         <a href="<%=request.getContextPath()%>/Index.jsp" class="nav-item nav-link active">Home</a>
                         <a href="<%=request.getContextPath()%>/product.jsp" class="nav-item nav-link">Product</a>
+                         <a href="<%=request.getContextPath()%>/gallery.jsp" class="nav-item nav-link">Gallery</a>
                     </div>
                     <a href="<%=request.getContextPath()%>/Index.jsp" class="navbar-brand mx-5 d-none d-lg-block">
                         <h1 class="m-0 display-4 text-primary"><span class="text-secondary">i</span>CREAM</h1>
                     </a>
                     <div class="navbar-nav mr-auto py-0">
-                        <a href="<%=request.getContextPath()%>/gallery.jsp" class="nav-item nav-link">Gallery</a>
+                        <a href="<%=request.getContextPath()%>/customerNoticeList.jsp" class="nav-item nav-link">Notice</a>
                     <% if(session.getAttribute("id") != null)
 						{
 					%>

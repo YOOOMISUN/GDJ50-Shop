@@ -62,7 +62,7 @@
                     <h4 class="font-weight-bold mb-3">About Us</h4>
                     <h5 class="text-muted mb-3">Eos kasd eos dolor vero vero, lorem stet diam rebum. Ipsum amet sed vero dolor sea</h5>
                     <p>Takimata sed vero vero no sit sed, justo clita duo no duo amet et, nonumy kasd sed dolor eos diam lorem eirmod. Amet sit amet amet no. Est nonumy sed labore eirmod sit magna. Erat at est justo sit ut. Labor diam sed ipsum et eirmod</p>
-                    <a href="" class="btn btn-secondary mt-2">Learn More</a>
+                    
                 </div>
                 <div class="col-lg-4" style="min-height: 400px;">
                     <div class="position-relative h-100 rounded overflow-hidden">
@@ -83,35 +83,7 @@
     <!-- About End -->
 
 
-    <!-- Promotion Start -->
-    <div class="container-fluid my-5 py-5 px-0">
-        <div class="row bg-primary m-0">
-            <div class="col-md-6 px-0" style="min-height: 500px;">
-                <div class="position-relative h-100">
-                    <img class="position-absolute w-100 h-100" src="<%=request.getContextPath()%>/inc/img/promotion.jpg" style="object-fit: cover;">
-                    <button type="button" class="btn-play" data-toggle="modal"
-                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">
-                        <span></span>
-                    </button>
-                </div>
-            </div>
-            <div class="col-md-6 py-5 py-md-0 px-0">
-                <div class="h-100 d-flex flex-column align-items-center justify-content-center text-center p-5">
-                    <div class="d-flex align-items-center justify-content-center bg-white rounded-circle mb-4"
-                        style="width: 100px; height: 100px;">
-                        <h3 class="font-weight-bold text-secondary mb-0">$199</h3>
-                    </div>
-                    <h3 class="font-weight-bold text-white mt-3 mb-4">Chocolate Ice Cream</h3>
-                    <p class="text-white mb-4">Lorem justo clita dolor ipsum ut sed eos, ipsum et dolor kasd sit ea
-                        justo. Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum</p>
-                    <a href="" class="btn btn-secondary py-3 px-5 mt-2">Order Now</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Promotion End -->
-
-
+   
     <!-- Video Modal Start -->
     <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -201,7 +173,7 @@
         <div class="row m-0 portfolio-container">
             <div class="col-lg-4 col-md-6 p-0 portfolio-item">
                 <div class="position-relative overflow-hidden">
-                    <img class="img-fluid w-100" src="img/portfolio-1.jpg" alt="">
+                    <img class="img-fluid w-100" src="<%=request.getContextPath()%>/inc/img/portfolio-1.jpg" alt="">
                     <a class="portfolio-btn" href="<%=request.getContextPath()%>/inc/img/portfolio-1.jpg" data-lightbox="portfolio">
                         <i class="fa fa-plus text-primary" style="font-size: 60px;"></i>
                     </a>

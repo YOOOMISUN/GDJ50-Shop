@@ -6,11 +6,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%
-	// id가 없으면 로그인 폼으로
-	if(session.getAttribute("id") == null){
-		response.sendRedirect(request.getContextPath() + "/loginForm.jsp");
-		return;
-	} 
+
 
 	int rowPerPage = 5;
 	int currentPage = 1;
@@ -95,8 +91,15 @@
 					</tr>	
 				</table>	
 				<!-- soldOut이 Y인 상태로 주문하기 버튼 누르면 "품절입니다" 알림창 뜨기 -->
+				<%
+					// id가 없으면 로그인 폼으로
+					if(session.getAttribute("id") != null){
+				%>	
 					<button type="submit" class="btn btn-info" id="orderBtn">주문하기</button>
-					<a href="<%=request.getContextPath()%>/Index.jsp" type="button" class="btn btn-dark"  style="float: right; margin-right :30px;">상품목록</a>
+				<%
+					}
+				%>
+					<a href="<%=request.getContextPath()%>/customerGoodsList.jsp" type="button" class="btn btn-dark"  style="float: right; margin-right :30px;">상품목록</a>
 				</form>
 			</div>
 		</div>
@@ -120,8 +123,16 @@
 					<td>리뷰 내용</td>
 					<td>생성날짜</td>
 					<td>수정날짜</td>
+				<% 
+				if(session.getAttribute("id") != null){		// 로그인이 되어있고
+					if( session.getAttribute("id").equals(re.get("customerId"))){		// 로그인한 아이디와 리뷰 등록한 아이디가 같으면 수정과 삭제 보이게..
+				%> 
 					<td>수정</td>
 					<td>삭제</td>
+				<%
+						}
+				 	} 
+				%>
 				</tr>
 			</thead>
 			<tbody>
@@ -132,17 +143,19 @@
 				<td><%=re.get("reviewContent")%></td>
 				<td><%=re.get("createDate")%></td>
 				<td><%=re.get("updateDate")%></td>
-				<% 
+			<% 
+				if(session.getAttribute("id") != null){		// 로그인이 되어있고
 					if( session.getAttribute("id").equals(re.get("customerId"))){		// 로그인한 아이디와 리뷰 등록한 아이디가 같으면 수정과 삭제 보이게..
-				%> 
-				
+			%> 
 				<td><a href="<%=request.getContextPath()%>/updateReviewForm.jsp?reviewNo=<%=re.get("reviewNo")%>&goodsNo=<%=goodsNo%>&updateDate=<%=re.get("updateDate")%>&reviewContent=<%=re.get("reviewContent")%>&customerId=<%=re.get("customerId")%>" class="btn btn-dark">리뷰수정</a></td>
 				<td><a href="<%=request.getContextPath()%>/admin/deleteReviewAction.jsp?reviewNo=<%=re.get("reviewNo")%>&goodsNo=<%=goodsNo%>" class="btn btn-dark">리뷰삭제</a></td>
-				
+			<%
+					}
+			 	} 
+			%>
 			</tr>
 			<%
-				 	} 
-				}
+					}
 			%>
 			</tbody>
 		</table>
@@ -199,10 +212,9 @@
 		if(map.get("soldOut").equals("Y")){
 	%>
 	<script>
-		$(document).ready(function(){
-				$("#orderBtn").on("click", function(){ // 버튼을 클릭하면 처리
-					alert("품절입니다!");  });
-			});
+		$("#orderBtn").on("click", function(){ // 버튼을 클릭하면 처리
+			alert("품절입니다!");  });
+		});
 	</script>
 	
 	<%
