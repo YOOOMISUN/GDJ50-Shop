@@ -36,7 +36,7 @@
 	} else {
 		
 		System.out.println("탈퇴 실패!");
-		response.sendRedirect(request.getContextPath() + "/index.jsp");
+		response.sendRedirect(request.getContextPath() + "/myPage.jsp");
 	}
 	
 	

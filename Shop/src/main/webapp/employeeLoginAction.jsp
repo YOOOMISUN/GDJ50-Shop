@@ -8,7 +8,7 @@
  
 	// 로그인 되어 있으면 인덱스 폼으로 
 	if(session.getAttribute("id") != null){
-		response.sendRedirect(request.getContextPath() + "/index.jsp");
+		response.sendRedirect(request.getContextPath() + "/adminIndex.jsp");
 		return;
 	}
 
@@ -37,7 +37,7 @@
 		session.setAttribute("id", employee.getEmployeeId());
 		session.setAttribute("name", employee.getEmployeeName());
 		session.setAttribute("pw", employee.getEmployeePass());
-		response.sendRedirect(request.getContextPath() + "/index.jsp");
+		response.sendRedirect(request.getContextPath() + "/adminIndex.jsp");
 		System.out.println("로그인성공");
 	} else {
 		response.sendRedirect(request.getContextPath()+"/loginForm.jsp?");

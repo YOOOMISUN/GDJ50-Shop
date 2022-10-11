@@ -5,7 +5,7 @@
 <%
 	// 로그인 되어 있으면 인덱스 폼으로 
 	if(session.getAttribute("id") != null){
-		response.sendRedirect(request.getContextPath() + "/index.jsp");
+		response.sendRedirect(request.getContextPath() + "/myPage.jsp");
 		return;
 	}
 
@@ -38,7 +38,7 @@
 		session.setAttribute("id", customerLogin.getCustomerId());
 		session.setAttribute("name", customerLogin.getCustomerName());
 		session.setAttribute("pw", customerLogin.getCustomerPass());
-		response.sendRedirect(request.getContextPath() + "/index.jsp");
+		response.sendRedirect(request.getContextPath() + "/myPage.jsp");
 		System.out.println("로그인성공");
 	} else {
 		response.sendRedirect(request.getContextPath()+"/loginForm.jsp?errorMsg=Check Id or Pw");

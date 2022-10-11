@@ -228,9 +228,6 @@ public class OrdersService {
 				OrdersDao orderDao = new OrdersDao();
 				rowPerPage = orderDao.ordersCustomerLastPage(conn, customerId, rowPerPage);
 				
-				if(rowPerPage==0) {
-					throw new Exception();
-				}
 				
 				conn.commit();
 			} catch(Exception e) {

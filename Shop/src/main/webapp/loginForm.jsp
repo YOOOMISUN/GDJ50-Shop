@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%
-	session.invalidate();		// 로그아웃
-%>
+	<%
+		session.invalidate();		// 로그아웃
+	%>
 
 <!DOCTYPE html>
 <html>
@@ -19,6 +19,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
+	
 	<div class="container" >
 	<div class="row">
 		<div class="col-sm-6" style="position: relative; top: 200px;">

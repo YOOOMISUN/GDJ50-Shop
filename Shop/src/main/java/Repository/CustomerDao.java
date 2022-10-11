@@ -223,8 +223,7 @@ public class CustomerDao {
 	         stmt.setString(3, customer.getCustomerAddress());
 	         stmt.setString(4, customer.getCustomerDetailAddr());
 	         stmt.setString(5, customer.getCustomerTelephone());
-	         stmt.setString(6, customer.getUpdateDate());
-	         stmt.setString(7, customer.getCustomerId());
+	         stmt.setString(6, customer.getCustomerId());
 			row = stmt.executeUpdate();
 		
 		} finally {

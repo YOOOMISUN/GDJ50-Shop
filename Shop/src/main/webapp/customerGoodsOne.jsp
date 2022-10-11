@@ -191,7 +191,7 @@
 		</form>
 	</div>
 
-<%-- 	<%
+ 	<%
 		if(map.get("soldOut").equals("Y")){
 	%>
 	<script>
@@ -203,7 +203,7 @@
 	
 	<%
 		}
-	%> --%>
+	%> 
 
 
 </body>
