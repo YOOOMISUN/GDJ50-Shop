@@ -24,15 +24,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Admin Notice List</title>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-<!-- jQuery library -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-<!-- Popper JS -->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<!-- Latest compiled JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<title>Customer Notice List</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
 
@@ -41,10 +35,11 @@
 	
 
 
-	<div>
+	<div class="w3-container">
 	<h2 style="text-align:center; font-weight :bold;">공지사항</h2>
 	<br>
-			<table style=" margin-left:auto; margin-right:auto; text-align:center;" class="table table-bordered" >
+	<br>
+			<table style=" margin-left:auto; margin-right:auto; text-align:center;" class="w3-table-all">
 				<thead>
 					<tr>
 						<td>No</td>
@@ -59,7 +54,7 @@
 				%>
 					<tr>
 						<td><%=n.getNoticeNo()%></td>
-						<td><a href="<%=request.getContextPath()%>/admin/adminNoticeOne.jsp?noticeNo=<%=n.getNoticeNo()%>"><%=n.getNoticeTitle()%></a></td>
+						<td><a href="<%=request.getContextPath()%>/customerNoticeOne.jsp?noticeNo=<%=n.getNoticeNo()%>"><%=n.getNoticeTitle()%></a></td>
 						<td><%=n.getUpdateDate()%></td>
 						<td><%=n.getCreateDate()%></td>
 					</tr>
@@ -72,7 +67,7 @@
 		<%
 			if (currentPage > 1) {
 		%>
-			<a href="<%=request.getContextPath()%>/admin/adminGoodsList.jsp?currentPage=<%=currentPage-1%>" type="button" class="btn btn-dark">이전</a>
+			<a href="<%=request.getContextPath()%>/customerNoticeList.jsp?currentPage=<%=currentPage-1%>" type="button" class="btn btn-dark">이전</a>
 		<%
 			}
 		// 페이지 번호
@@ -84,19 +79,19 @@
 	    	for (int i = startPage; i <= endPage; i++) {
 	    		if (i <= lastPage) {
 	    %>			
-		    <a href="<%=request.getContextPath()%>/admin/adminGoodsList.jsp?currentPage=<%=i%>"><%=i%></a>		    	
+		    <a href="<%=request.getContextPath()%>/customerNoticeList.jsp?currentPage=<%=i%>"><%=i%></a>		    	
 	   <%	 
 	   			}
 	    	}
 	    
 		if (currentPage < lastPage) {
 		%>
-		<a href="<%=request.getContextPath()%>/admin/adminGoodsList.jsp?currentPage=<%=currentPage+1%>" type="button" class="btn btn-dark">다음</a>
+		<a href="<%=request.getContextPath()%>/customerNoticeList.jsp?currentPage=<%=currentPage+1%>" type="button" class="btn btn-dark">다음</a>
 
 		<%
 			  }
 		%>
-		</form>
+		
 	</div>
 	
 	
