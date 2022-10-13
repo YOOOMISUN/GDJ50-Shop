@@ -131,7 +131,7 @@ public class CustomerDao {
 	}	// end insertCustomer
 	
 	
-	// 고객 리스트, 페이징
+	// 고객 리스트, 페이징 (adminCustomerList) - admin
 	public List<Customer> selectCustomerListByPage(Connection conn, int rowPerPage, int beginRow) throws SQLException{
 		List<Customer> list = new ArrayList<>();
 		
@@ -173,7 +173,7 @@ public class CustomerDao {
 		
 	}	// end selectCustomerListByPage
 	
-	// 고객리스트 페이징
+	// 고객리스트 페이징 (adminCustomerList) - admin
 	public int customerLastPage(Connection conn, int rowPerPage) throws SQLException {
 		
 		String sql = "SELECT COUNT(*) FROM customer";
@@ -233,6 +233,8 @@ public class CustomerDao {
 		}
 		return row;
 	}
+
+	
 	
 	
 }

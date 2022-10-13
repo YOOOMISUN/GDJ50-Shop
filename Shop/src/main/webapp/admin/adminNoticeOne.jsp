@@ -34,7 +34,7 @@
 	
 
 
-
+	<div class="container">
 	<!-- 목록 -->
 	<div>
 		<br>
@@ -49,36 +49,39 @@
 
 
 	<h2 style="text-align: center;">공지사항 상세페이지</h2>
-	<div>
+	<br>
 		<form action="<%=request.getContextPath()%>/admin/updateNoticeForm.jsp?noticeNo=<%=map.get("noticeNo")%>" method="post">
-			<table style=" margin-left:auto; margin-right:auto; " class="table table-bordered">
-			<thead>
-				<tr>
-					<th>No</th>
-					<th>Title</th>
-					<th>Content</th>
-					<th>Update Date</th>
-					<th>Create Date</th>
-				</tr>	
-			</thead>
-			<tbody>
-				<tr>
-					<td><%=map.get("noticeNo")%></td>
-					<td><%=map.get("noticeTitle")%></td>
-					<td><%=map.get("noticeContent")%></td>
-					<td><%=map.get("updateDate")%></td>
-					<td><%=map.get("createDate")%></td>
-				</tr>
-			</tbody>
-			</table>
+		<table style=" margin-left:auto; margin-right:auto; text-align:center; " class="table-bordered" >
+		 	<tr>
+			    <td style="font-weight:bold; padding:20px 20px 20px 20px;">No</td>
+			    <td style="padding:1em;"><%=map.get("noticeNo")%></td>
+			</tr>
+			<tr>
+			    <td style="font-weight:bold; padding:20px 20px 20px 20px;">Create Date</td>
+			    <td style="padding:1em;"><%=map.get("createDate")%></td>
+			</tr>
+			<tr>
+			    <td style="font-weight:bold; padding:20px 20px 20px 20px;">Update Date</td>
+			 	<td style="padding:1em;"><%=map.get("updateDate")%></td>
+		    </tr> 
+		    <tr>
+			    <td style="font-weight:bold; padding:10px 10px 10px 10px; ">Title</td>
+			    <td style="size:50; maxlength:100; padding:1em;"><%=map.get("noticeTitle")%></td>
+		    </tr>
+		    <tr>
+			    <td style="font-weight:bold; padding:10px 10px 10px 10px;">Content</td>
+			    <td style="size:50; maxlength:100; padding:10em;"><%=map.get("noticeContent")%></td>
+		    </tr>
+		 </table>
+			<br>
 			<%
 				if(session.getAttribute("user").equals("Employee") && session.getAttribute("active").equals("Y") ){ %>
-				<button type="submit" class="btn btn-warning">수정하기</button>	<!-- 관리자 'Y' 인 사람만 수정 가능하게... -->
-				<a href="<%=request.getContextPath()%>/admin/removeNoticeAction.jsp?noticeNo=<%=map.get("noticeNo")%>" class="btn btn-dark">삭제하기</a>
+				<button type="submit" class="btn btn-warning" style="float: right;">수정하기</button>	<!-- 관리자 'Y' 인 사람만 수정 가능하게... -->
+				<a href="<%=request.getContextPath()%>/admin/removeNoticeAction.jsp?noticeNo=<%=map.get("noticeNo")%>" class="btn btn-dark" style="float: right; margin-right :20px;">삭제하기</a>
 			<%
 				}
 			%>
-			<a href="<%=request.getContextPath()%>/admin/adminNoticeList.jsp" type="button" class="btn btn-dark">공지사항목록</a>
+			<a href="<%=request.getContextPath()%>/admin/adminNoticeList.jsp" type="button" class="btn btn-dark" style="float: right; margin-right :20px;">공지사항목록</a>
 		</form>
 	</div>
 	

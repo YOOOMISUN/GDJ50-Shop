@@ -1,11 +1,12 @@
+<%@page import="vo.Orders"%>
+<%@page import="Service.OrdersService"%>
+<%@page import="java.util.Map"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="vo.Customer"%>
 <%@page import="java.util.List"%>
-<%@page import="Service.CustomerService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	// 로그인 안되어 있거나 id가 memberId와 같지 않으면 로그인 폼으로
-	if(session.getAttribute("id") == null || !(session.getAttribute("id").equals("memberId")) ){
+	if(session.getAttribute("id") == null || (!(session.getAttribute("id").equals("customerId"))) ){
 		response.sendRedirect(request.getContextPath() + "/loginForm.jsp");
 		return;
 	} 
@@ -18,10 +19,12 @@
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 	}
 
-	CustomerService customerService = new CustomerService();
-	List<Customer> list = new ArrayList<Customer>();
-	list = customerService.getCustomerList(rowPerPage, currentPage);	// 고객 리스트
-	lastPage = customerService.getCustomerLastPage(rowPerPage);
+	String customerId = (String)session.getAttribute("id");
+	
+	OrdersService ordersService = new OrdersService();
+	List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+	list = ordersService.getOrdersListByCustomer(customerId, rowPerPage, currentPage);
+	lastPage = ordersService.getordersCustomerLastPage(rowPerPage, customerId);
 	
 	// 디버깅
 	System.out.println("list >> " + list);
@@ -50,7 +53,7 @@
 
 
 	<div class="container">
-	<h2 style="text-align:center; font-weight :bold;">고객 리스트</h2>		
+	<h2 style="text-align:center; font-weight :bold;"><%=session.getAttribute("name")%>님의 주문 리스트</h2>		
 	<table style=" margin-left:auto; margin-right:auto; " class="table table-bordered" >
 			<thead>
 				<tr>
@@ -64,22 +67,22 @@
 			</thead>
 			<tbody>
 			<%
-				for(Customer customer : list) {
+				for(Map<String,Object> m : list) {
 			%>
-				<tr>
+	<%-- 			<tr>
 					<td>
-						<a href="<%=request.getContextPath()%>/admin/adminCustomerOrderOne.jsp?customerId=<%=customer.getCustomerId()%>">
-						<%=customer.getCustomerId()%></a></td>
-					<td><%=customer.getCustomerName()%></td>
-					<td><%=customer.getCustomerTelephone()%></td>
-					<td><%=customer.getCustomerAddress()%><%=customer.getCustomerDetailAddr()%></td>
-					<td><%=customer.getCreateDate()%></td>
-					<td><a href="<%=request.getContextPath()%>/admin/updateCustomer.jsp?customerId=<%=customer.getCustomerId()%>&updateDate=<%=customer.getUpdateDate()%>">정보수정</a></td>
-				</tr>
+						<a href="<%=request.getContextPath()%>/admin/adminCustomerOrderOne.jsp?customerId=<%=m.getCustomerId()%>">
+						<%=m.getCustomerId()%></a></td>
+					<td><%=m.getCustomerName()%></td>
+					<td><%=m.getCustomerTelephone()%></td>
+					<td><%=m.getCustomerAddress()%><%=m.getCustomerDetailAddr()%></td>
+					<td><%=m.getCreateDate()%></td>
+					<td><a href="<%=request.getContextPath()%>/admin/updateCustomer.jsp?customerId=<%=m.getCustomerId()%>&updateDate=<%=m.getUpdateDate()%>">정보수정</a></td>
+				</tr> --%>
 					<%	
-					System.out.println("updateDate @@ " + customer.getUpdateDate());
-						}
-					%>	
+					
+						}	
+					%>	 
 		</table>
 	
 		
@@ -90,7 +93,7 @@
 		<%
 		if (currentPage > 1) {
 		%>
-		<a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp?currentPage=<%=currentPage-1%>" type="button" class="btn btn-dark">이전</a>
+		<a href="<%=request.getContextPath()%>/customerOrderList.jsp?currentPage=<%=currentPage-1%>" type="button" class="btn btn-dark">이전</a>
 		<%
 		}
 		
@@ -103,14 +106,14 @@
 	   	for (int i = startPage; i <= endPage; i++) {
 	   		if (i <= lastPage) {
 	    %>			
-		    <a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp?currentPage=<%=i%>"><%=i%></a>		    	
+		    <a href="<%=request.getContextPath()%>/customerOrderList.jsp?currentPage=<%=i%>"><%=i%></a>		    	
 	   <%	 
 	   			}
 	    	}
 	    
 		if (currentPage < lastPage) {
 		%>
-			<a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp?currentPage=<%=currentPage+1%>" type="button" class="btn btn-dark">다음</a>
+			<a href="<%=request.getContextPath()%>/customerOrderList.jsp?currentPage=<%=currentPage+1%>" type="button" class="btn btn-dark">다음</a>
 		<%
 			  }
 		%>				
