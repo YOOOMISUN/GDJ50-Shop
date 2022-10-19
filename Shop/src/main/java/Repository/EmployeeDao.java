@@ -72,7 +72,8 @@ public class EmployeeDao {
 		// Employee 로그인
 		public Employee selectEmployeeByIdAdnPw(Connection conn, Employee employeeLogin) throws SQLException {
 			
-			String sql = "SELECT employee_id,employee_pass,employee_name,update_date,create_date,active FROM employee WHERE employee_id=? AND employee_pass=PASSWORD(?)";
+			String sql = "SELECT employee_id,employee_pass,employee_name,DATE_FORMAT(update_date,'%Y-%m-%d %T') update_date, DATE_FORMAT(create_date,'%Y-%m-%d %T') create_date, "
+					+ "active FROM employee WHERE employee_id=? AND employee_pass=PASSWORD(?)";
 			PreparedStatement stmt = null;
 			ResultSet rs = null;
 			Employee login = null;
@@ -136,7 +137,7 @@ public class EmployeeDao {
 			ArrayList<Employee> list = new ArrayList<Employee>();
 
 
-			String sql = "SELECT employee_id, employee_pass, employee_name, update_date, create_date, active FROM employee LIMIT ?,?";
+			String sql = "SELECT employee_id, employee_pass, employee_name, DATE_FORMAT(update_date,'%Y-%m-%d %T') update_date, DATE_FORMAT(create_date,'%Y-%m-%d %T') create_date, active FROM employee LIMIT ?,?";
 			PreparedStatement stmt = null;
 			ResultSet rs = null;
 			

@@ -72,7 +72,8 @@ public class CustomerDao {
 	// 로그인
 	public Customer selectCustomerByIdAdnPw(Connection conn, Customer customerLogin) throws SQLException  {
 		
-		String sql = "SELECT customer_id,customer_pass,customer_name,customer_address,customer_detailAddr, customer_telephone,update_date,create_date FROM customer WHERE customer_id=? AND customer_pass=PASSWORD(?)";
+		String sql = "SELECT customer_id,customer_pass,customer_name,customer_address,customer_detailAddr, customer_telephone,"
+				+ "DATE_FORMAT(update_date,'%Y-%m-%d %T') update_date, DATE_FORMAT(create_date,'%Y-%m-%d %T') create_date FROM customer WHERE customer_id=? AND customer_pass=PASSWORD(?)";
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		Customer login = null;
@@ -135,7 +136,8 @@ public class CustomerDao {
 	public List<Customer> selectCustomerListByPage(Connection conn, int rowPerPage, int beginRow) throws SQLException{
 		List<Customer> list = new ArrayList<>();
 		
-		String sql = "SELECT customer_id, customer_pass, customer_name, customer_address, customer_detailAddr, customer_telephone, update_date, create_date FROM customer LIMIT ?,?";
+		String sql = "SELECT customer_id, customer_pass, customer_name, customer_address, customer_detailAddr, customer_telephone,DATE_FORMAT(update_date,'%Y-%m-%d %T') update_date, DATE_FORMAT(create_date,'%Y-%m-%d %T') create_date "
+				+ "FROM customer LIMIT ?,?";
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		

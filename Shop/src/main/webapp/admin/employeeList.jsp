@@ -47,7 +47,7 @@
 	<%@ include file="/inc/Header.jsp" %>
 	
 
-
+<div class="container">
 	<!-- 목록 -->
 	<div>
 		<br>
@@ -58,14 +58,15 @@
 			<li><a href="<%=request.getContextPath()%>/admin/adminOrdersList.jsp">주문관리</a></li><!-- 주문목록/수정 -->
 			<li><a href="<%=request.getContextPath()%>/admin/adminNoticeList.jsp">공지관리(게시판)</a></li><!-- 공지 CRUD -->
 		</ul>
-		
 	</div>
-
-	<br>
-	<h2 style="text-align: center;">사원관리</h2>
-	<br>
-	<div>
-		<table style=" margin-left:auto; margin-right:auto; " class="table table-bordered" >
+	
+	
+	<div style="text-align:center;">
+		<h2 style="font-weight :bold;">사원관리</h2>
+		<br>
+		<br>
+		
+		<table style="margin-left:auto; margin-right:auto; text-align:center; vertical-align:middle;" class="table table-bordered" >
 			<thead>
 				<tr>
 					<th>Id</th>
@@ -104,6 +105,7 @@
 								}
 								%>
 							</select>
+							&nbsp;&nbsp;&nbsp;&nbsp;
 						<%
 							if(session.getAttribute("user").equals("Employee") && session.getAttribute("active").equals("Y") ){ %>
 							<button type="submit" class="btn btn-warning">수정하기</button>	<!-- 관리자 'Y' 인 사람만 수정 가능하게... -->
@@ -118,13 +120,17 @@
 				</tr>
 			</tbody>
 		</table>
-
+		
+		<br>
+		<br>
+		<br>
+		
 		<!-- 페이징 -->
 		<%
 		if (currentPage > 1) {
 		%>
 		<a
-			href="<%=request.getContextPath()%>/admin/employeeList.jsp?currentPage=<%=currentPage-1%>" type="button" class="btn btn-dark">이전</a>
+			href="<%=request.getContextPath()%>/admin/employeeList.jsp?currentPage=<%=currentPage-1%>" type="button" class="btn btn-dark" style="">이전</a>
 		<%
 		}
 		// 페이지 번호
@@ -137,7 +143,9 @@
 	    	for (int i = startPage; i <= endPage; i++) {
 	    		if (i <= lastPage) {
 	    %>			
-		    <a href="<%=request.getContextPath()%>/admin/mployeeList.jsp?currentPage=<%=i%>"><%=i%></a>		    	
+		&nbsp;
+			<a href="<%=request.getContextPath()%>/admin/mployeeList.jsp?currentPage=<%=i%>"><%=i%></a>
+		&nbsp; 	
 	   <%	 
 	    		}
 	    	}
@@ -151,7 +159,7 @@
 		%>
 
 	</div>
-		
+</div>		
 	
 
 	<!-- Footer -->

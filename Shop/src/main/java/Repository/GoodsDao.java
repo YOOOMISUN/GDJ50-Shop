@@ -183,7 +183,8 @@ public class GoodsDao {
 		// SELECT g.*, gi.* FROM goods g INNER JOIN goods_img gi 
 		// ON g.goods_no = gi.goods_no WHERE g.goods_no = 1
 
-		String sql = "SELECT g.goods_no,g.goods_name,g.goods_price,g.update_date,g.create_date,g.sold_out, gi.goods_no,gi.filename, gi.origin_filename,gi.content_type,gi.create_date FROM goods g INNER JOIN goods_img gi ON g.goods_no = gi.goods_no WHERE g.goods_no = ?";
+		String sql = "SELECT g.goods_no,g.goods_name,g.goods_price, DATE_FORMAT(g.update_date,'%Y-%m-%d %T') g.update_date,  DATE_FORMAT(g.create_date,'%Y-%m-%d %T') g.create_date,"
+				+ "g.sold_out, gi.goods_no,gi.filename, gi.origin_filename,gi.content_type,gi.create_date FROM goods g INNER JOIN goods_img gi ON g.goods_no = gi.goods_no WHERE g.goods_no = ?";
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 
@@ -226,7 +227,8 @@ public class GoodsDao {
 		List<Goods> goodsList = new ArrayList<Goods>();
 		// SELECT goods_no goodsNo FROM goods ORDER BY goods_no DESC LIMIT ?,?
 		
-		String sql = "SELECT goods_no,goods_name,goods_price,update_date,create_date,sold_out FROM goods ORDER BY goods_no asc LIMIT ?,?";
+		String sql = "SELECT goods_no,goods_name,goods_price, DATE_FORMAT(update_date,'%Y-%m-%d %T') update_date, DATE_FORMAT(create_date,'%Y-%m-%d %T') create_date,"
+				+ "sold_out FROM goods ORDER BY goods_no asc LIMIT ?,?";
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		

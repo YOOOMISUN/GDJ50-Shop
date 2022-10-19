@@ -43,6 +43,9 @@
 		<a href="<%=request.getContextPath()%>/removeForm.jsp" class="btn btn-danger">회원탈퇴</a>	
 		
 	</div>
+	<br>
+	<br>
+	<br>
 	
 		<!-- Footer -->
 	<%@ include file="/inc/Footer.jsp" %>

@@ -51,7 +51,7 @@
 	<br>
 	<br>
 		<form action="<%=request.getContextPath()%>/admin/addNoticeAction.jsp" method="post" id="updateNoticeForm">
-			<table style=" margin-left:auto; margin-right:auto; " class="table table-bordered" >
+			<table style=" margin-left:auto; margin-right:auto; text-align:center;" class="table table-bordered" >
 					<tr>
 						<td>Title</td>
 						<td><input type="text" class="form-control"  name="noticeTitle" id="noticeTitle"></td>
@@ -63,7 +63,7 @@
 			</table>
 		<%
 			if(session.getAttribute("user").equals("Employee") && session.getAttribute("active").equals("Y") ){ %>
-			<button type="submit" class="btn btn-info" style="color:white" id="addNoticeBtn">공지사항추가</button>		<!-- 관리자 'Y' 인 사람만 추가 가능하게... -->
+			<button type="submit" class="btn btn-info" style="color:white; float: right;" id="addNoticeBtn">공지사항추가</button>		<!-- 관리자 'Y' 인 사람만 추가 가능하게... -->
 		<%
 			}
 		%>

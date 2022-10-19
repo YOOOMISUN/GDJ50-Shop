@@ -27,60 +27,60 @@
 	<!-- Header -->
 	<%@ include file="/inc/Header.jsp" %>
 	
+	<div class="container">
+		<!-- 목록 -->
+		<div>
+			<br>
+			<ul>
+				<li><a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp">고객관리</a></li>
+				<li><a href="<%=request.getContextPath()%>/admin/employeeList.jsp">사원관리</a></li>
+				<li><a href="<%=request.getContextPath()%>/admin/adminGoodsList.jsp">상품	관리</a></li>	<!-- 상품목록/등록/수정/삭제(장바구니,주문이 없는 경우=> 품절처리) -->
+				<li><a href="<%=request.getContextPath()%>/admin/adminOrdersList.jsp">주문관리</a></li><!-- 주문목록/수정 -->
+				<li><a href="<%=request.getContextPath()%>/admin/adminNoticeList.jsp">공지관리(게시판)</a></li><!-- 공지 CRUD -->
+			</ul>
+		</div>
 
 
-	<!-- 목록 -->
-	<div>
+	<div style="text-align:center;">
+		<h2 style="font-weight :bold;">상품 추가</h2>
 		<br>
-		<ul>
-			<li><a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp">고객관리</a></li><!-- 고객목록/강제탈퇴/비밀번호수정(수정된 비밀번호 전달 구현X) -->
-			<li><a href="<%=request.getContextPath()%>/admin/employeeList.jsp">사원관리</a></li>
-			<li><a href="<%=request.getContextPath()%>/admin/adminGoodsList.jsp">상품	관리</a></li>	<!-- 상품목록/등록/수정/삭제(장바구니,주문이 없는 경우=> 품절처리) -->
-			<li><a href="<%=request.getContextPath()%>/admin/adminOrdersList.jsp">주문관리</a></li><!-- 주문목록/수정 -->
-			<li><a href="<%=request.getContextPath()%>/admin/adminNoticeList.jsp">공지관리(게시판)</a></li><!-- 공지 CRUD -->
-		</ul>
-	</div>
-
-	<div>
-	<h2 style="text-align:center; font-weight :bold;">상품 추가하기</h2>
-	<br>
-	<form action="<%=request.getContextPath()%>/admin/addGoodsAction.jsp" method="post" enctype="multipart/form-data" id="insertForm">
-		<table style=" margin-left:auto; margin-right:auto; text-align: center;" class="table table-bordered" >
-		<thead>
-			<tr>
-				<td>Goods Name</td>
-				<td><input type="text" class="form-control" name="name" id="name"></td>
-			</tr>
-			<tr>
-				<td>Goods Price</td>
-				<td><input type="text" class="form-control" name="price" id="price"></td>
-			</tr>
-			<tr>
-				<td>Goods Img</td>
-				<td><input type="file" id="file" name="file"></td>
+			<form action="<%=request.getContextPath()%>/admin/addGoodsAction.jsp" method="post" enctype="multipart/form-data" id="insertForm">
+				<table style=" margin-left:auto; margin-right:auto; text-align: center;" class="table table-bordered" >
+					<tr>
+						<td>Goods Name</td>
+						<td><input type="text" class="form-control" name="name" id="name"></td>
+					</tr>
+					<tr>
+						<td>Goods Price</td>
+						<td><input type="text" class="form-control" name="price" id="price"></td>
+					</tr>
+					<tr>
+						<td>Goods Img</td>
+						<td><input type="file" id="file" name="file" ></td>
+					
+					<%
+						if(request.getParameter("errorMsg") != null) {
+					%>
+						<td><span style="color:red;"><%=request.getParameter("errorMsg")%></span></td>
+					<%		
+						}
+					%>
+					</tr>		
+				</table>
 			
-	<%
-			if(request.getParameter("errorMsg") != null) {
-	%>
-			<td><span style="color:red;"><%=request.getParameter("errorMsg")%></span></td>
-	<%		
-		}
-	%>
-	</tr>
-		</tbody>		
-		</table>
-		<br>
-		<br>
-		<%
-			if(session.getAttribute("user").equals("Employee") && session.getAttribute("active").equals("Y") ){ %>
-			<button type="button" id="insertBtn" class="btn btn-info">추가하기</button> 	<!-- 관리자 'Y' 인 사람만 추가 가능하게... -->
-		<%
-			}		
-		%>
-		<a href="javascript:history.go(-1)" class="btn btn-danger" title="뒤로">돌아가기</a>
-	</form>
+			<br>
+			<br>
+			
+				<%
+					if(session.getAttribute("user").equals("Employee") && session.getAttribute("active").equals("Y") ){ %>
+					<button type="button" id="insertBtn" class="btn btn-info">추가하기</button> 	<!-- 관리자 'Y' 인 사람만 추가 가능하게... -->
+				<%
+					}		
+				%>
+				<a href="javascript:history.go(-1)" class="btn btn-danger" title="뒤로">돌아가기</a>
+			</form>
+		</div>
 	</div>
-	
 	
 	<!-- Footer -->
 	<%@ include file="/inc/Footer.jsp" %>
@@ -101,4 +101,5 @@
 		}
 	});
 </script>
+
 </html>

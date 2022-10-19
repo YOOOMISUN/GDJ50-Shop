@@ -35,11 +35,9 @@
             <div class="row">
                 <div class="col-md-6 text-center text-lg-left mb-2 mb-lg-0">
                     <div class="d-inline-flex align-items-center">
-                        <a class="text-white pr-3" href="">Cart</a>
+                        <a class="text-white pr-3" href="<%=request.getContextPath()%>/cart.jsp">Cart</a>
                         <span class="text-white">|</span>
-                        <a class="text-white px-3" href="">Help</a>
-                        <span class="text-white">|</span>
-                        <a class="text-white pl-3" href="">Support</a>
+                        <a class="text-white px-3" href="<%=request.getContextPath()%>/">My Order List</a>
                     </div>
                 </div>
                 <div class="col-md-6 text-center text-lg-right">
@@ -85,7 +83,6 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="<%=request.getContextPath()%>/Index.jsp" class="nav-item nav-link active">Home</a>
                         <a href="<%=request.getContextPath()%>/product.jsp" class="nav-item nav-link">Product</a>
                          <a href="<%=request.getContextPath()%>/gallery.jsp" class="nav-item nav-link">Gallery</a>
                     </div>

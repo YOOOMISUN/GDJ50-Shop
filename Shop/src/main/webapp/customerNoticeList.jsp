@@ -25,8 +25,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Customer Notice List</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
 
@@ -39,7 +37,7 @@
 	<h2 style="text-align:center; font-weight :bold;">공지사항</h2>
 	<br>
 	<br>
-			<table style=" margin-left:auto; margin-right:auto; text-align:center;" class="w3-table-all">
+			<table style=" margin-left:auto; margin-right:auto; text-align:center;" class="table table-bordered">
 				<thead>
 					<tr>
 						<td>No</td>

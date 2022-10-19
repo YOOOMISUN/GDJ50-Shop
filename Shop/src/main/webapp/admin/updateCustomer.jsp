@@ -40,19 +40,24 @@
 	<%@ include file="/inc/Header.jsp" %>
 	
 
-
-<!-- 목록 -->
+<div class="container">
+	<!-- 목록 -->
 	<div>
 		<br>
 		<ul>
-			<li><a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp">고객관리</a></li><!-- 고객목록/강제탈퇴/비밀번호수정(수정된 비밀번호 전달 구현X) -->
+			<li><a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp">고객관리</a></li>
 			<li><a href="<%=request.getContextPath()%>/admin/employeeList.jsp">사원관리</a></li>
 			<li><a href="<%=request.getContextPath()%>/admin/adminGoodsList.jsp">상품	관리</a></li>	<!-- 상품목록/등록/수정/삭제(장바구니,주문이 없는 경우=> 품절처리) -->
 			<li><a href="<%=request.getContextPath()%>/admin/adminOrdersList.jsp">주문관리</a></li><!-- 주문목록/수정 -->
 			<li><a href="<%=request.getContextPath()%>/admin/adminNoticeList.jsp">공지관리(게시판)</a></li><!-- 공지 CRUD -->
 		</ul>
 	</div>
-	
+
+
+	<div style="text-align:center;">
+		<h2 style="font-weight :bold;">고객 정보 수정</h2>		
+		<br>
+		<br>
 	<form action="<%=request.getContextPath()%>/admin/updateCustomerAction.jsp?customerId=<%=customerId%>" method="post" id="updateCustomerForm">
 		<table style=" margin-left:auto; margin-right:auto; text-align: center;" class="table table-bordered" >
 			<tr>
@@ -70,7 +75,7 @@
 			<tr>
 				<td>Customer Address</td>
 				<td><input type="text" name="customerAddress" id="customerAddress" readonly="readonly" class="form-control"></td>
-				<td><button type="button" id="addrBtn" onclick="sample2_execDaumPostcode()">주소검색</button></td>
+				<td><button type="button" id="addrBtn" onclick="sample2_execDaumPostcode()" class="btn btn-info">주소검색</button></td>
 				<td>DetailAddr</td>
 				<td><input type="text" name="customerDetailAddr" id="customerDetailAddr" class="form-control"></td>
 			</tr>
@@ -83,6 +88,9 @@
 				<td><%=updateDate%></td>
 			</tr>
 		</table>
+					
+			<br>
+			
 			<a href="javascript:history.go(-1)" class="btn btn-info" title="뒤로" style="float: right; ">BACK</a>
 			<a><input type="reset" class="btn btn-dark" style="float: right; margin-right :30px;"></a>
 			<button type="button" id="updateCustomerBtn" class="btn btn-info" style="float: right; margin-right :30px;">정보수정</button>
@@ -93,8 +101,10 @@
 			<%		
 				}
 			%>
-	</form>
-		
+		</form>
+	</div>	
+</div>
+
 
 	<!-- Footer -->
 	<%@ include file="/inc/Footer.jsp" %>

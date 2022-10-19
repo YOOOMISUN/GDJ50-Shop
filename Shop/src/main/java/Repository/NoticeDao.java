@@ -58,7 +58,7 @@ public class NoticeDao {
 	public Map<String,Object> selectNoticeOne(Connection conn, int noticeNo ) throws SQLException{
 		Map<String,Object> map = new HashMap<String,Object>();
 		
-		String sql = "SELECT notice_no, notice_title, notice_content, update_date, create_date FROM notice WHERE notice_no=?";
+		String sql = "SELECT notice_no, notice_title, notice_content, DATE_FORMAT(update_date,'%Y-%m-%d %T') update_date, DATE_FORMAT(create_date,'%Y-%m-%d %T') create_date FROM notice WHERE notice_no=?";
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
@@ -116,7 +116,7 @@ public class NoticeDao {
 	public ArrayList<Notice> selectNoticeList(Connection conn, int rowPerPage, int beginRow) throws SQLException {
 		ArrayList<Notice> list = new ArrayList<Notice>();
 
-		String sql = "SELECT notice_no, notice_title, notice_content, DATE_FORMAT(create_date,'%Y-%m-%d %T') update_date, DATE_FORMAT(create_date,'%Y-%m-%d %T') create_date FROM notice LIMIT ?,?";
+		String sql = "SELECT notice_no, notice_title, notice_content, DATE_FORMAT(update_date,'%Y-%m-%d %T') update_date, DATE_FORMAT(create_date,'%Y-%m-%d %T') create_date FROM notice LIMIT ?,?";
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 

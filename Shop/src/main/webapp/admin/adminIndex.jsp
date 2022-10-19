@@ -29,7 +29,7 @@
 	<%@ include file="/inc/Header.jsp" %>
 	
 
-
+<div class="container">
 	<div>
 		<ul>
 			<li><a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp">고객관리</a></li>
@@ -52,13 +52,11 @@
 		<a href="<%=request.getContextPath()%>/removeForm.jsp" class="btn btn-danger">회원탈퇴</a>	
 		
 	</div>
-	
+</div>	
+		
 	<!-- Footer -->
 	<%@ include file="/inc/Footer.jsp" %>
 	
-
-
-
 
 </body>
 </html>

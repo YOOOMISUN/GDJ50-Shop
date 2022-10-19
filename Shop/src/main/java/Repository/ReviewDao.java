@@ -46,7 +46,8 @@ public class ReviewDao {
 		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
 		Map<String,Object> map = null;
 		
-		String sql = "SELECT review_no, goods_no, customer_id, review_content, create_date, update_date FROM review WHERE goods_no=? ORDER BY review_no ASC LIMIT ?,?";
+		String sql = "SELECT review_no, goods_no, customer_id, review_content, DATE_FORMAT(create_date,'%Y-%m-%d %T') create_date, DATE_FORMAT(update_date,'%Y-%m-%d %T') update_date "
+				+ "FROM review WHERE goods_no=? ORDER BY review_no ASC LIMIT ?,?";
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		

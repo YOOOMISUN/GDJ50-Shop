@@ -49,77 +49,84 @@
 	<%@ include file="/inc/Header.jsp" %>
 	
 
-
-
+<div class="container">
 	<!-- 목록 -->
 	<div>
 		<br>
-		
 		<ul>
-			<li><a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp">고객관리</a></li><!-- 고객목록/강제탈퇴/비밀번호수정(수정된 비밀번호 전달 구현X) -->
+			<li><a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp">고객관리</a></li>
 			<li><a href="<%=request.getContextPath()%>/admin/employeeList.jsp">사원관리</a></li>
 			<li><a href="<%=request.getContextPath()%>/admin/adminGoodsList.jsp">상품	관리</a></li>	<!-- 상품목록/등록/수정/삭제(장바구니,주문이 없는 경우=> 품절처리) -->
 			<li><a href="<%=request.getContextPath()%>/admin/adminOrdersList.jsp">주문관리</a></li><!-- 주문목록/수정 -->
 			<li><a href="<%=request.getContextPath()%>/admin/adminNoticeList.jsp">공지관리(게시판)</a></li><!-- 공지 CRUD -->
 		</ul>
-		
 	</div>
-	
-	<!-- 주문목록 -->
-	<div>
-		<h2 style="text-align:center; font-weight :bold;">주문 관리</h2>
+
+
+	<div style="text-align:center;">
+		<h2 style="font-weight :bold;">주문 관리</h2>
 		<br>
-		<table style=" margin-left:auto; text-align: center; margin-right:auto; " class="table table-bordered" >
-		<thead>
-			<tr>
-				<td>Order No</td>
-				<td>Customer Id</td>
-				<td>Goods Name</td>
-				<td>Goods Price</td>
-				<td>Order Quantity</td>
-				<td>Order Price</td>
-				<td>Order Address</td>
-				<td>Create Date</td>
-				<td>Order State</td>
-			</tr>
-		</thead>
-		<tbody>
-			<% 
-			for(Map<String, Object> m : list){
-			%>
+		<table style="margin-left:auto; text-align: center; margin-right:auto; " class="table table-bordered" >
+			<thead style="font-weight :bold;">
 				<tr>
-					<td><%=m.get("orderNo")%></td>
-					<td>
-						<a href="<%=request.getContextPath()%>/admin/adminOrdersOne.jsp?ordersNo=<%=m.get("orderNo")%>"><%=m.get("customerId")%></a></td>
-					<td><%=m.get("goodsName")%></td>
-					<td><%=m.get("goodsPrice")%></td>
-					<td><%=m.get("orderQuantity")%></td>
-					<td><%=m.get("orderPrice")%></td>
-					<td><%=m.get("orderAddr")%> <%=m.get("orderDetailAddr")%></td>
-					<td><%=m.get("createDate")%></td>
-					<td><%=m.get("orderState")%>
-						<form action="<%=request.getContextPath()%>/admin/updateOrdersAction.jsp?ordersNo=<%=m.get("orderNo")%>" method="post">
-							<select name="State">
-								<option>결제완료</option>
-								<option>상품준비중</option>
-								<option>배송중</option>
-								<option>배송완료</option>
-							</select>
-						<%
-							if(session.getAttribute("user").equals("Employee") && session.getAttribute("active").equals("Y") ){ %>
-							<button type="submit" class="btn btn-warning">수정하기</button>	<!-- 관리자 'Y' 인 사람만 수정 가능하게... -->
-						<%
-							}
-						%>
-					</form>
-					</td>
+					<td>Order No</td>
+					<td>Customer Id</td>
+					<td>Goods Name</td>
+					<td>Goods Price</td>
+					<td>Order Quantity</td>
+					<td>Order Price</td>
+					<td>Order Address</td>
+					<td>Create Date</td>
+					<td>Order State</td>
 				</tr>
-			<%
-			    }
-			%>
+			</thead>
+			<tbody >
+				<% 
+				for(Map<String, Object> m : list){
+				%>
+					<tr>
+						<td><%=m.get("orderNo")%></td>
+						<td>
+							<a href="<%=request.getContextPath()%>/admin/adminOrdersOne.jsp?ordersNo=<%=m.get("orderNo")%>"><%=m.get("customerId")%></a></td>
+						<td><%=m.get("goodsName")%></td>
+						<td><%=m.get("goodsPrice")%></td>
+						<td><%=m.get("orderQuantity")%></td>
+						<td><%=m.get("orderPrice")%></td>
+						<td><%=m.get("orderAddr")%> <%=m.get("orderDetailAddr")%></td>
+						<td><%=m.get("createDate")%></td>
+						<td><%=m.get("orderState")%>
+						<br>
+						<br>
+							<form action="<%=request.getContextPath()%>/admin/updateOrdersAction.jsp?ordersNo=<%=m.get("orderNo")%>" method="post">
+								<select name="State">
+									<option>결제완료</option>
+									<option>상품준비중</option>
+									<option>배송중</option>
+									<option>배송완료</option>
+								</select>
+							<br>
+							<br>
+							<%
+								if(session.getAttribute("user").equals("Employee") && session.getAttribute("active").equals("Y") ){ %>
+								<button type="submit" class="btn btn-warning" style="width:87pt;height:30pt; ">수정하기</button>	<!-- 관리자 'Y' 인 사람만 수정 가능하게... -->
+							<%
+								}
+							%>
+						</form>
+						</td>
+					</tr>
+				<%
+				    }
+				%>
 			</tbody>
 		</table>
-				<!-- 페이징 -->
+		
+			
+		<br>
+		<br>
+		<br>
+			
+		<!-- 페이징 -->
 		<%
 		if (currentPage > 1) {
 		%>
@@ -135,8 +142,10 @@
 	    	
 	    	for (int i = startPage; i <= endPage; i++) {
 	    		if (i <= lastPage) {
-	    %>			
-		    <a href="<%=request.getContextPath()%>/admin/adminOrdersList.jsp?currentPage=<%=i%>"><%=i%></a>		    	
+	    %>
+	    &nbsp;			
+		    <a href="<%=request.getContextPath()%>/admin/adminOrdersList.jsp?currentPage=<%=i%>"><%=i%></a>	
+		&nbsp;	    	
 	   <%	 
 	   			}
 	    	}
@@ -148,8 +157,9 @@
 	<%
 		  }
 	%>
-	</div>
 	
+	</div>
+</div>	
 	
 	
 	<!-- Footer -->

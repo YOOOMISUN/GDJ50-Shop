@@ -107,8 +107,10 @@
 	    	
 	    	for (int j = startPage; j <= endPage; j++) {
 	    		if (j <= lastPage) {
-	    %>			
-		    <a href="<%=request.getContextPath()%>/Index.jsp?currentPage=<%=j%>"><%=j%></a>		    	
+	    %>	
+	    &nbsp;
+		    <a href="<%=request.getContextPath()%>/Index.jsp?currentPage=<%=j%>"><%=j%></a>	
+		&nbsp;	    	
 	   <%	 
 	   			}
 	    	}

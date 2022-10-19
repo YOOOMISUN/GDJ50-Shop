@@ -43,6 +43,13 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+
+
+	<!-- Header -->
+	<%@ include file="/inc/Header.jsp" %>
+	
+
+<div class="container">
 	<!-- 목록 -->
 	<div>
 		<br>
@@ -55,7 +62,9 @@
 		</ul>
 	</div>
 
-	<h2 style="text-align: center;"><%=customerId%> 주문목록</h2>
+
+	<div style="text-align:center;">
+		<h2 style="font-weight :bold;"><%=customerId%> 주문목록</h2>
 	<br>
 		<form>
 		<table style=" margin-left:auto; margin-right:auto; " class="table table-bordered" >
@@ -106,7 +115,14 @@
 			%>
 			
 		</table>
-			
+
+		<br>
+			<a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp" type="button" class="btn btn-dark" style="text-align: center;">고객목록</a>
+		</form>
+		
+		<br>
+		<br>
+						
 		<!-- 페이징 -->
 		<%
 			if (currentPage > 1) {
@@ -131,15 +147,20 @@
 	    
 			if (currentPage < lastPage) {
 		%>
+		&nbsp;	
 			<a href="<%=request.getContextPath()%>/admin/adminCustomerOrderOne.jsp?currentPage=<%=currentPage+1%>&customerId=<%=customerId%>" type="button" class="btn btn-dark">다음</a>
+		&nbsp;	
 		<%
 			  }
 		%>				
 
-	<br>
-		<a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp" type="button" class="btn btn-dark" style="text-align: center;">고객목록</a>
-	</form>
+	</div>
+</div>	
 	
+	<!-- Footer -->
+	<%@ include file="/inc/Footer.jsp" %>
+	
+		
 	
 </body>
 </html>

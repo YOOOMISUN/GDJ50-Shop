@@ -64,73 +64,78 @@
 	</div>
 
 
-	
-	<h2 style="text-align:center; font-weight :bold;">고객 리스트</h2>		
-	<table style=" margin-left:auto; margin-right:auto; " class="table table-bordered" >
-			<thead>
-				<tr>
-					<th>Customer Id</th>
-					<th>Customer Name</th>
-					<th>Customer Telephone</th>
-					<th>Customer Address</th>
-					<th>Create Date</th>
-					<th>Information Update</th>
-				</tr>
-			</thead>
-			<tbody>
+	<div style="text-align:center;">
+		<h2 style="font-weight :bold;">고객 리스트</h2>		
+		<br>
+		<br>
+		<table style=" margin-left:auto; margin-right:auto; text-align:center; vertical-align:middle;" class="table table-bordered" >
+				<thead>
+					<tr>
+						<th>Customer Id</th>
+						<th>Customer Name</th>
+						<th>Customer Telephone</th>
+						<th>Customer Address</th>
+						<th>Create Date</th>
+						<th>Information Update</th>
+					</tr>
+				</thead>
+				<tbody>
+					<%
+						for(Customer customer : list) {
+					%>
+					<tr>
+						<td>
+							<a href="<%=request.getContextPath()%>/admin/adminCustomerOrderOne.jsp?customerId=<%=customer.getCustomerId()%>">
+							<%=customer.getCustomerId()%></a></td>
+						<td><%=customer.getCustomerName()%></td>
+						<td><%=customer.getCustomerTelephone()%></td>
+						<td><%=customer.getCustomerAddress()%><%=customer.getCustomerDetailAddr()%></td>
+						<td><%=customer.getCreateDate()%></td>
+						<td><a href="<%=request.getContextPath()%>/admin/updateCustomer.jsp?customerId=<%=customer.getCustomerId()%>&updateDate=<%=customer.getUpdateDate()%>">정보수정</a></td>
+					</tr>
+						<%	
+						System.out.println("updateDate @@ " + customer.getUpdateDate());
+							}
+						%>	
+			</table>
+			
+			<br>
+			<br>
+			<br>
+			
+			
+			<!-- 페이징 -->
 			<%
-				for(Customer customer : list) {
+			if (currentPage > 1) {
 			%>
-				<tr>
-					<td>
-						<a href="<%=request.getContextPath()%>/admin/adminCustomerOrderOne.jsp?customerId=<%=customer.getCustomerId()%>">
-						<%=customer.getCustomerId()%></a></td>
-					<td><%=customer.getCustomerName()%></td>
-					<td><%=customer.getCustomerTelephone()%></td>
-					<td><%=customer.getCustomerAddress()%><%=customer.getCustomerDetailAddr()%></td>
-					<td><%=customer.getCreateDate()%></td>
-					<td><a href="<%=request.getContextPath()%>/admin/updateCustomer.jsp?customerId=<%=customer.getCustomerId()%>&updateDate=<%=customer.getUpdateDate()%>">정보수정</a></td>
-				</tr>
-					<%	
-					System.out.println("updateDate @@ " + customer.getUpdateDate());
-						}
-					%>	
-		</table>
-		
-		
-		
-	
-	
-		<!-- 페이징 -->
-		<%
-		if (currentPage > 1) {
-		%>
-		<a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp?currentPage=<%=currentPage-1%>" type="button" class="btn btn-dark">이전</a>
-		<%
-		}
-		
-		// 페이지 번호
-	 	int pageCount = 10;
-		int startPage = ((currentPage - 1) / pageCount) * pageCount + 1;
-	   	int endPage = (((currentPage - 1) / pageCount) + 1) * pageCount;
-	   	if (lastPage < endPage) { endPage = lastPage; }
-	    	
-	   	for (int i = startPage; i <= endPage; i++) {
-	   		if (i <= lastPage) {
-	    %>			
-		    <a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp?currentPage=<%=i%>"><%=i%></a>		    	
-	   <%	 
-	   			}
-	    	}
-	    
-		if (currentPage < lastPage) {
-		%>
-			<a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp?currentPage=<%=currentPage+1%>" type="button" class="btn btn-dark">다음</a>
-		<%
-			  }
-		%>				
+			<a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp?currentPage=<%=currentPage-1%>" type="button" class="btn btn-dark">이전</a>
+			<%
+			}
+			
+			// 페이지 번호
+		 	int pageCount = 10;
+			int startPage = ((currentPage - 1) / pageCount) * pageCount + 1;
+		   	int endPage = (((currentPage - 1) / pageCount) + 1) * pageCount;
+		   	if (lastPage < endPage) { endPage = lastPage; }
+		    	
+		   	for (int i = startPage; i <= endPage; i++) {
+		   		if (i <= lastPage) {
+		    %>
+		    &nbsp;			
+			    <a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp?currentPage=<%=i%>"><%=i%></a>
+			&nbsp;		    	
+		   <%	 
+		   			}
+		    	}
+		    
+			if (currentPage < lastPage) {
+			%>
+				<a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp?currentPage=<%=currentPage+1%>" type="button" class="btn btn-dark">다음</a>
+			<%
+				  }
+			%>				
 	</div>
-		
+</div>	
 	
 	<!-- Footer -->
 	<%@ include file="/inc/Footer.jsp" %>
