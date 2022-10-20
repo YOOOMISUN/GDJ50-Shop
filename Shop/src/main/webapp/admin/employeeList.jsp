@@ -31,7 +31,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Employee List</title>
+<title>▶관리자◀ Employee List</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 <!-- jQuery library -->

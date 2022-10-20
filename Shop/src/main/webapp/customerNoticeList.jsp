@@ -32,64 +32,70 @@
 	<%@ include file="/inc/Header.jsp" %>
 	
 
-
-	<div class="w3-container">
-	<h2 style="text-align:center; font-weight :bold;">공지사항</h2>
-	<br>
-	<br>
-			<table style=" margin-left:auto; margin-right:auto; text-align:center;" class="table table-bordered">
-				<thead>
-					<tr>
-						<td>No</td>
-						<td>Title</td>
-						<td>Update Date</td>
-						<td>Create Date</td>
-					</tr>
-				</thead>
-				<tbody>
-				<%  
-					for(Notice n : list){
+	<div class="container">
+		<div style="text-align:center;">
+			<h2 style="font-weight :bold;">공지사항</h2>
+			<br>
+			<br>
+				<table style=" margin-left:auto; margin-right:auto; text-align:center;" class="table table-bordered">
+					<thead>
+						<tr>
+							<td>No</td>
+							<td>Title</td>
+							<td>Update Date</td>
+							<td>Create Date</td>
+						</tr>
+					</thead>
+					<tbody>
+					<%  
+						for(Notice n : list){
+					%>
+						<tr>
+							<td><%=n.getNoticeNo()%></td>
+							<td><a href="<%=request.getContextPath()%>/customerNoticeOne.jsp?noticeNo=<%=n.getNoticeNo()%>"><%=n.getNoticeTitle()%></a></td>
+							<td><%=n.getUpdateDate()%></td>
+							<td><%=n.getCreateDate()%></td>
+						</tr>
+					<%
+						}
+					%>
+					</tbody>
+				</table>
+			
+				<br>
+				<br>
+	
+				<!-- 페이징 -->
+				<%
+					if (currentPage > 1) {
 				%>
-					<tr>
-						<td><%=n.getNoticeNo()%></td>
-						<td><a href="<%=request.getContextPath()%>/customerNoticeOne.jsp?noticeNo=<%=n.getNoticeNo()%>"><%=n.getNoticeTitle()%></a></td>
-						<td><%=n.getUpdateDate()%></td>
-						<td><%=n.getCreateDate()%></td>
-					</tr>
+					<a href="<%=request.getContextPath()%>/customerNoticeList.jsp?currentPage=<%=currentPage-1%>" type="button" class="btn btn-dark">이전</a>
 				<%
 					}
+				// 페이지 번호
+				 	int pageCount = 10;
+					int startPage = ((currentPage - 1) / pageCount) * pageCount + 1;
+			    	int endPage = (((currentPage - 1) / pageCount) + 1) * pageCount;
+			    	if (lastPage < endPage) { endPage = lastPage; }
+			    	
+			    	for (int i = startPage; i <= endPage; i++) {
+			    		if (i <= lastPage) {
+			    %>
+			    &nbsp;				
+				    <a href="<%=request.getContextPath()%>/customerNoticeList.jsp?currentPage=<%=i%>"><%=i%></a>		    	
+			    &nbsp;	
+			   <%	 
+			   			}
+			    	}
+			    
+				if (currentPage < lastPage) {
 				%>
-				</tbody>
-			</table>
-		<!-- 페이징 -->
-		<%
-			if (currentPage > 1) {
-		%>
-			<a href="<%=request.getContextPath()%>/customerNoticeList.jsp?currentPage=<%=currentPage-1%>" type="button" class="btn btn-dark">이전</a>
-		<%
-			}
-		// 페이지 번호
-		 	int pageCount = 10;
-			int startPage = ((currentPage - 1) / pageCount) * pageCount + 1;
-	    	int endPage = (((currentPage - 1) / pageCount) + 1) * pageCount;
-	    	if (lastPage < endPage) { endPage = lastPage; }
-	    	
-	    	for (int i = startPage; i <= endPage; i++) {
-	    		if (i <= lastPage) {
-	    %>			
-		    <a href="<%=request.getContextPath()%>/customerNoticeList.jsp?currentPage=<%=i%>"><%=i%></a>		    	
-	   <%	 
-	   			}
-	    	}
-	    
-		if (currentPage < lastPage) {
-		%>
-		<a href="<%=request.getContextPath()%>/customerNoticeList.jsp?currentPage=<%=currentPage+1%>" type="button" class="btn btn-dark">다음</a>
-
-		<%
-			  }
-		%>
+				<a href="<%=request.getContextPath()%>/customerNoticeList.jsp?currentPage=<%=currentPage+1%>" type="button" class="btn btn-dark">다음</a>
 		
+				<%
+					  }
+				%>
+		</div>	
 	</div>
 	
 	

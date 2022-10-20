@@ -183,7 +183,7 @@ public class GoodsDao {
 		// SELECT g.*, gi.* FROM goods g INNER JOIN goods_img gi 
 		// ON g.goods_no = gi.goods_no WHERE g.goods_no = 1
 
-		String sql = "SELECT g.goods_no,g.goods_name,g.goods_price, DATE_FORMAT(g.update_date,'%Y-%m-%d %T') g.update_date,  DATE_FORMAT(g.create_date,'%Y-%m-%d %T') g.create_date,"
+		String sql = "SELECT g.goods_no,g.goods_name,g.goods_price, g.update_date, g.create_date,"
 				+ "g.sold_out, gi.goods_no,gi.filename, gi.origin_filename,gi.content_type,gi.create_date FROM goods g INNER JOIN goods_img gi ON g.goods_no = gi.goods_no WHERE g.goods_no = ?";
 		PreparedStatement stmt = null;
 		ResultSet rs = null;

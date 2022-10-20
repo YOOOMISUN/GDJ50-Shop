@@ -34,7 +34,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Customer Order One</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 <!-- jQuery library -->
@@ -48,93 +48,100 @@
 	<!-- Header -->
 	<%@ include file="/inc/Header.jsp" %>
 	
-<h2 style="text-align: center;"><%=customerId%> 주문목록</h2>
-<br>
-	<form>
-	<table style="margin-left:auto; margin-right:auto; text-align:center;"  class="table table-bordered" >
-		<% 
-			for(Map<String, Object> m : list){
-		%>	
-		<tr>	
-			<td>Order No</td>
-			<td><%=m.get("ordersNo")%></td>
-		</tr>
-		<tr>	
-			<td>Customer Id</td>
-			<td><%=m.get("customerId")%></td>
-		</tr>
-		<tr>	
-			<td>Order Quantity</td>
-			<td><%=m.get("ordersQuantity")%></td>
-		</tr>
-		<tr>	
-			<td>Orders Price</td>
-			<td><%=m.get("ordersPrice")%></td>
-		</tr>
-		<tr>	
-			<td>Orders Address</td>
-			<td><%=m.get("ordersAddr")%> <%=m.get("orderDetailAddr")%></td>
-		</tr>
-		<tr>
-			<td>Customer Name</td>
-			<td><%=m.get("customerName")%></td>
-		</tr>
-		<tr>
-			<td>Goods Price</td>
-			<td><%=m.get("goodsPrice")%></td>
-		</tr>
-		<tr>
-			<td>CreateDate</td>
-			<td><%=m.get("createDate")%></td>
-		</tr>
-		
-		<%
-			}
-		%>
-		
-	</table>
-	
-	<br>
 	<br>
 	
-	<a href="<%=request.getContextPath()%>/Index.jsp" type="button" class="btn btn-dark"  style="float: right; margin-right :30px;">상품목록</a>
-	
-	
-	
-	<div style="text-align: center;">
-	<!-- 페이징 -->
-	<%
-		if (currentPage > 1) {
-	%>
-		<a href="<%=request.getContextPath()%>/customerOrderOne.jsp?currentPage=<%=currentPage-1%>&customerId=<%=customerId%>" type="button" class="btn btn-dark">이전</a>
-	<%
-		}
-		
-		// 페이지 번호
-	 	int pageCount = 10;
-		int startPage = ((currentPage - 1) / pageCount) * pageCount + 1;
-	   	int endPage = (((currentPage - 1) / pageCount) + 1) * pageCount;
-	   	if (lastPage < endPage) { endPage = lastPage; }
-	    	
-	   	for (int i = startPage; i <= endPage; i++) {
-	   		if (i <= lastPage) {
-    %>			
-	    <a href="<%=request.getContextPath()%>/customerOrderOne.jsp?currentPage=<%=i%>&customerId=<%=customerId%>"><%=i%></a>		    	
-   <%	 
-   			}
-    	}
-    
-		if (currentPage < lastPage) {
-	%>
-		<a href="<%=request.getContextPath()%>/customerOrderOne.jsp?currentPage=<%=currentPage+1%>&customerId=<%=customerId%>" type="button" class="btn btn-dark">다음</a>
-	<%
-		  }
-	%>				
+	<div class="container">
+		<div style="text-align:center;">
+			<h2 style="font-weight :bold;">주문 상세</h2>
+			<br>
+			<br>
+				<form>
+				<table style="margin-left:auto; margin-right:auto; text-align:center;"  class="table table-bordered" >
+					<% 
+						for(Map<String, Object> m : list){
+					%>	
+					<tr>	
+						<td>Order No</td>
+						<td><%=m.get("ordersNo")%></td>
+					</tr>
+					<tr>	
+						<td>Customer Id</td>
+						<td><%=m.get("customerId")%></td>
+					</tr>
+					<tr>	
+						<td>Order Quantity</td>
+						<td><%=m.get("ordersQuantity")%></td>
+					</tr>
+					<tr>	
+						<td>Orders Price</td>
+						<td><%=m.get("ordersPrice")%></td>
+					</tr>
+					<tr>	
+						<td>Orders Address</td>
+						<td><%=m.get("ordersAddr")%> <%=m.get("orderDetailAddr")%></td>
+					</tr>
+					<tr>
+						<td>Customer Name</td>
+						<td><%=m.get("customerName")%></td>
+					</tr>
+					<tr>
+						<td>Goods Price</td>
+						<td><%=m.get("goodsPrice")%></td>
+					</tr>
+					<tr>
+						<td>CreateDate</td>
+						<td><%=m.get("createDate")%></td>
+					</tr>
+					
+					<%
+						}
+					%>
+					
+				</table>
+				
+					<a href="<%=request.getContextPath()%>/Index.jsp" type="button" class="btn btn-dark"  style="float: right; margin-right :30px;">상품목록</a>
+			
+				</form>
+				
+				<br>
+				<br>
+				
+				
+				<!-- 페이징 -->
+				<%
+					if (currentPage > 1) {
+				%>
+					<a href="<%=request.getContextPath()%>/customerOrderOne.jsp?currentPage=<%=currentPage-1%>&customerId=<%=customerId%>" type="button" class="btn btn-dark">이전</a>
+				<%
+					}
+					
+					// 페이지 번호
+				 	int pageCount = 10;
+					int startPage = ((currentPage - 1) / pageCount) * pageCount + 1;
+				   	int endPage = (((currentPage - 1) / pageCount) + 1) * pageCount;
+				   	if (lastPage < endPage) { endPage = lastPage; }
+				    	
+				   	for (int i = startPage; i <= endPage; i++) {
+				   		if (i <= lastPage) {
+			    %>			
+				    &nbsp;				
+					    <a href="<%=request.getContextPath()%>/customerOrderOne.jsp?currentPage=<%=i%>"><%=i%></a>		    	
+				    &nbsp;	
+				<%	 
+			   			}
+			    	}
+			    
+					if (currentPage < lastPage) {
+				%>
+					<a href="<%=request.getContextPath()%>/customerOrderOne.jsp?currentPage=<%=currentPage+1%>&customerId=<%=customerId%>" type="button" class="btn btn-dark">다음</a>
+				<%
+					  }
+				%>				
+		</div>
 	</div>
+
 <br>
-</form>
-
-
+<br>
 
 	<!-- Footer -->
 	<%@ include file="/inc/Footer.jsp" %>

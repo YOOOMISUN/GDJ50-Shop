@@ -13,7 +13,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Admin Index</title>
+<title>▶관리자◀ Index</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 <!-- jQuery library -->
@@ -38,10 +38,9 @@
 			<li><a href="<%=request.getContextPath()%>/admin/adminOrdersList.jsp">주문관리</a></li><!-- 주문목록/수정 -->
 			<li><a href="<%=request.getContextPath()%>/admin/adminNoticeList.jsp">공지관리(게시판)</a></li><!-- 공지 CRUD -->
 		</ul>
-	
 	</div>
 
-	<div style="position: relative; top: 200px; text-align:center; font-weight :bold;"> <!-- 로그인 화면 -->
+	<div style="position: relative; top:100px; text-align:center; font-weight :bold;"> <!-- 로그인 화면 -->
 		<p style="font-size:30px;"><%=session.getAttribute("name")%>님 반갑습니다!   (<%=session.getAttribute("user")%>) </p> 	<!-- customer / employee -->
 		<br>
 		<p style="font-size:20px;"><%=session.getAttribute("id")%></p>		<!-- 로그인 아이디 -->
@@ -53,7 +52,10 @@
 		
 	</div>
 </div>	
-		
+	
+	<br>
+	<br>
+	
 	<!-- Footer -->
 	<%@ include file="/inc/Footer.jsp" %>
 	

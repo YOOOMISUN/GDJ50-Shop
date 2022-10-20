@@ -83,7 +83,7 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="<%=request.getContextPath()%>/product.jsp" class="nav-item nav-link">Product</a>
+                        <a href="<%=request.getContextPath()%>/customerGoodsList.jsp" class="nav-item nav-link">Product</a>
                          <a href="<%=request.getContextPath()%>/gallery.jsp" class="nav-item nav-link">Gallery</a>
                     </div>
                     <a href="<%=request.getContextPath()%>/Index.jsp" class="navbar-brand mx-5 d-none d-lg-block">

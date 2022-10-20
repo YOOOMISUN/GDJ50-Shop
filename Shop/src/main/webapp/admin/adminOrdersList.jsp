@@ -33,7 +33,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Orders List</title>
+<title>▶관리자◀ Orders List</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 <!-- jQuery library -->
@@ -130,7 +130,7 @@
 		<%
 		if (currentPage > 1) {
 		%>
-		<a href="<%=request.getContextPath()%>/admin/adminOrdersList.jsp?currentPage=<%=currentPage-1%>" type="button" class="btn btn-dark">이전</a>
+			<a href="<%=request.getContextPath()%>/admin/adminOrdersList.jsp?currentPage=<%=currentPage-1%>" type="button" class="btn btn-dark">이전</a>
 		<%
 		}
 		// 페이지 번호
@@ -152,11 +152,10 @@
 	    
 		if (currentPage < lastPage) {
 		%>
-		<a href="<%=request.getContextPath()%>/admin/adminOrdersList.jsp?currentPage=<%=currentPage+1%>" type="button" class="btn btn-dark">다음</a>
-
-	<%
-		  }
-	%>
+			<a href="<%=request.getContextPath()%>/admin/adminOrdersList.jsp?currentPage=<%=currentPage+1%>" type="button" class="btn btn-dark">다음</a>
+		<%
+			  }
+		%>
 	
 	</div>
 </div>	

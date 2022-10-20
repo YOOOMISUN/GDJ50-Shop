@@ -5,11 +5,11 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	// 로그인 안되어 있거나 id가 memberId와 같지 않으면 로그인 폼으로
+/* 	// 로그인 안되어 있거나 id가 memberId와 같지 않으면 로그인 폼으로
 	if(session.getAttribute("id") == null || (!(session.getAttribute("id").equals("customerId"))) ){
 		response.sendRedirect(request.getContextPath() + "/loginForm.jsp");
 		return;
-	} 
+	}  */
 
 	int rowPerPage = 5;
 	int currentPage = 1;
@@ -19,7 +19,10 @@
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 	}
 
-	String customerId = (String)session.getAttribute("id");
+	String customerId = request.getParameter("customerId");
+	
+	// customerId 값 받아오기
+	System.out.println("customerId");
 	
 	OrdersService ordersService = new OrdersService();
 	List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
@@ -35,7 +38,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>customer List</title>
+<title>Customer Order List</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 <!-- jQuery library -->
@@ -52,8 +55,8 @@
 	
 
 
-	<div class="container">
-	<h2 style="text-align:center; font-weight :bold;"><%=session.getAttribute("name")%>님의 주문 리스트</h2>		
+	<div class="container" style="text-align:center; ">
+	<h2 style="font-weight :bold;"><%=session.getAttribute("name")%>님의 주문 리스트</h2>		
 	<table style=" margin-left:auto; margin-right:auto; " class="table table-bordered" >
 			<thead>
 				<tr>

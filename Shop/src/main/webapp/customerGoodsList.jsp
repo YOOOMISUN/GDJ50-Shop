@@ -32,40 +32,62 @@
 <html>
 <head>
 
-<title>Index</title>
+<title>Goods List</title>
 </head>
 <body>
 
 	<!-- Header  -->
 	<%@ include file="/inc/Header.jsp" %>
 	
+	    <!-- Header Start -->
+    <div class="jumbotron jumbotron-fluid page-header" style="margin-bottom: 90px;">
+        <div class="container text-center py-5">
+            <h1 class="text-white display-3 mt-lg-5">Product</h1>
+            <div class="d-inline-flex align-items-center text-white">
+                <p class="m-0"><a class="text-white" href="<%=request.getContextPath()%>/Index.jsp">Home</a></p>
+                <i class="fa fa-circle px-3"></i>
+                <p class="m-0">Product</p>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+	
 	<div class="container" style="background-color:light;">
-	<!-- for / if 대체기술 : 커스텀태그(JSTL & EL) JSP -->
-	<!-- JSP를 쓸수 밖에 없음. HTML은 자바코드랑 커스텀태그를 쓸수 없음 -->
-	<div>
-		<a href="">최신순</a>
-		<a href="">리뷰순</a>
-		<a href="">판매량순</a>			<!-- 기본 디폴트값 -->
-		<a href="">낮은가격 수</a>
-		<a href="">높은가격 수</a>
-	</div>
+		<!-- for / if 대체기술 : 커스텀태그(JSTL & EL) JSP -->
+		<!-- JSP를 쓸수 밖에 없음. HTML은 자바코드랑 커스텀태그를 쓸수 없음 -->
+		<div style="text-align:center;">
+			<a href="">최신순</a>
+			<a href="">리뷰순</a>
+			<a href="">판매량순</a>			<!-- 기본 디폴트값 -->
+			<a href="">낮은가격 수</a>
+			<a href="">높은가격 수</a>
+		</div>
+	
 	<br>
-	<table border="1">
+	<br>
+
+	<table style="border-collapse: separate; border-spacing: 40px 10px; text-align:center;">
 		<tr>
 			<%
 				int i = 1;
 				for(Map<String,Object> m : list){
 			%>
 					<td>
-						<div>
-							<a href ="<%=request.getContextPath()%>/customerGoodsOne.jsp?goodsNo=<%=m.get("goodsNo")%>" >		<!-- 이미지 누르면 상세페이지로 -->
-							<img src="<%=request.getContextPath()%>/upload/<%=m.get("fileName")%>" width="200" height="200">
+						<div >
+							<a href ="<%=request.getContextPath()%>/customerGoodsOne.jsp?goodsNo=<%=m.get("goodsNo")%>">		<!-- 이미지 누르면 상세페이지로 -->
+							<img src="<%=request.getContextPath()%>/upload/<%=m.get("fileName")%>" class="rounded-circle" width="200" height="200">
 							</a>
 						</div>
+						<br>
 						<div><%=m.get("goodsName")%></div>
-						<div><%=m.get("goodsPrice")%></div>
+						<br>
+						<div class="font-weight-bold text-#F195B2 mb-0"><%=m.get("goodsPrice")%></div>
+						<br>
+						<a href ="<%=request.getContextPath()%>/cart.jsp?goodsNo=<%=m.get("goodsNo")%>" class="btn btn-sm btn-secondary">Cart</a>
 						<!-- 리뷰개수 -->
-					</td>	
+						<br>
+					</td>
+						
 			<%	
 				if(i%4==0){
 			%>

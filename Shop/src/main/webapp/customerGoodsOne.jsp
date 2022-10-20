@@ -54,10 +54,11 @@
 	<!-- Header -->
 	<%@ include file="/inc/Header.jsp" %>
 	
-
+	<br>
+<div class="container" >
 	<h2 style="text-align:center; font-weight :bold;">상품 상세페이지</h2>
 	<br>
-	<div class="container">
+	<br>
 		<div class="row">
 			<div class="col-sm-6">
 			<img src="<%=request.getContextPath()%>/upload/<%=map.get("fileName")%>" width="300" height="300">
@@ -90,6 +91,7 @@
 						<td><%=map.get("soldOut")%></td>
 					</tr>	
 				</table>	
+				<br>
 				<!-- soldOut이 Y인 상태로 주문하기 버튼 누르면 "품절입니다" 알림창 뜨기 -->
 				<%
 					// id가 없으면 로그인 폼으로
@@ -103,7 +105,9 @@
 				</form>
 			</div>
 		</div>
-	</div>
+
+	<br>
+	<br>
 	<br>
 	
 	
@@ -114,7 +118,6 @@
 	%>
 	<!-- 리뷰 목록 -->
 	<div>
-	<form >
 		<table style=" margin-left:auto; margin-right:auto; text-align:center;" class="table table-bordered" >
 			<thead>
 				<tr>
@@ -159,55 +162,64 @@
 			%>
 			</tbody>
 		</table>
-	</form>
-
-		<!-- 리뷰 페이징 -->
-		<%
-		if (currentPage > 1) {
-		%>
-		<a href="<%=request.getContextPath()%>/customerGoodsOne.jsp?currentPage=<%=currentPage-1%>&goodsNo=<%=goodsNo%>" type="button" class="btn btn-dark">이전</a>
-		<%
-				}
-			// 페이지 번호
-		 	int pageCount = 5;
-			int startPage = ((currentPage - 1) / pageCount) * pageCount + 1;
-		   	int endPage = (((currentPage - 1) / pageCount) + 1) * pageCount;
-		   	if (lastPage < endPage) { endPage = lastPage; }
-		    	
-		   	for (int i = startPage; i <= endPage; i++) {
-		   		if (i <= lastPage) {
-		%>			
-		    <a href="<%=request.getContextPath()%>/customerGoodsOne.jsp?currentPage=<%=i%>&goodsNo=<%=goodsNo%>"><%=i%></a>	    	
-	   <%	 
-	   			}
-	    	}
-	    
-		if (currentPage < lastPage) {
-		%>
-		<a href="<%=request.getContextPath()%>/customerGoodsOne.jsp?currentPage=<%=currentPage+1%>&goodsNo=<%=goodsNo%>" type="button" class="btn btn-dark">다음</a>
-
-		<%
-		  }	
-		%>
-		 
+		
+		<br>
+		
+		<div class="container" style="text-align:center;">
+			<!-- 리뷰 페이징 -->
+			<%
+			if (currentPage > 1) {
+			%>
+			<a href="<%=request.getContextPath()%>/customerGoodsOne.jsp?currentPage=<%=currentPage-1%>&goodsNo=<%=goodsNo%>" type="button" class="btn btn-dark">이전</a>
+			<%
+					}
+				// 페이지 번호
+			 	int pageCount = 5;
+				int startPage = ((currentPage - 1) / pageCount) * pageCount + 1;
+			   	int endPage = (((currentPage - 1) / pageCount) + 1) * pageCount;
+			   	if (lastPage < endPage) { endPage = lastPage; }
+			    	
+			   	for (int i = startPage; i <= endPage; i++) {
+			   		if (i <= lastPage) {
+			%>
+			 &nbsp;			
+			    <a href="<%=request.getContextPath()%>/customerGoodsOne.jsp?currentPage=<%=i%>&goodsNo=<%=goodsNo%>"><%=i%></a>	    	
+		    &nbsp;
+		   <%	 
+		   			}
+		    	}
+		    
+			if (currentPage < lastPage) {
+			%>
+			<a href="<%=request.getContextPath()%>/customerGoodsOne.jsp?currentPage=<%=currentPage+1%>&goodsNo=<%=goodsNo%>" type="button" class="btn btn-dark">다음</a>
+	
+			<%
+			  }	
+			%>
+		 </div>
 	</div>	
 	<br>
+	<br>
 	
-	<!-- 리뷰 입력 폼 -->
-	<div>
-		<form action="<%=request.getContextPath()%>/addGoodsReviewAction.jsp?goodsNo=<%=map.get("goodsNo")%>" method="post">
-			<fieldset>리뷰</fieldset>
-			<table>
-				<tr>
-					<td><textarea class = "form-control" name="reviewContent" rows="3" cols="100"  class="form-control" ></textarea>
-					<input type="hidden" name="customerId" value="<%=session.getAttribute("id")%>"></td>
-				</tr>
-			</table>
-			<br>
-				<button type="submit" class="btn btn-info">리뷰입력</button>
-		</form>
+		<!-- 리뷰 입력 폼 -->
+		<div class="container">
+			<form action="<%=request.getContextPath()%>/addGoodsReviewAction.jsp?goodsNo=<%=map.get("goodsNo")%>" method="post">
+				<fieldset style="font-weight :bold; margin-left :20px;">★ 리뷰 ★</fieldset>
+				<br>
+				<table>
+					<tr>
+						<td><textarea class = "form-control" name="reviewContent" rows="3" cols="100"  class="form-control" ></textarea>
+						<input type="hidden" name="customerId" value="<%=session.getAttribute("id")%>"></td>
+					</tr>
+				</table>
+				<br>
+					<button type="submit" class="btn btn-info" style="float:right; margin-right :150px;" >리뷰입력</button>
+			</form>
+		</div>
 	</div>
-
+	
+	
+	
  	<%
 		if(map.get("soldOut").equals("Y")){
 	%>
@@ -221,6 +233,7 @@
 		}
 	%> 
 
+	
 	<!-- Footer -->
 	<%@ include file="/inc/Footer.jsp" %>
 	
