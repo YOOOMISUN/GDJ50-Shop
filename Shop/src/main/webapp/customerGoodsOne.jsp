@@ -65,29 +65,29 @@
 			</div>
 			<div class="col-sm-6">
 				<form action="<%=request.getContextPath()%>/customerOrderForm.jsp?goodsNo=<%=goodsNo%>" method="post" id="goodsOneForm">
-				<table style=" margin-left:auto; margin-right:auto; " class="table table-bordered" >	
+				<table style=" margin-left:auto; margin-right:auto; text-align:center;" class="table table-bordered" >	
 					<tr>	
-						<td>No</td>
+						<td>번호</td>
 						<td><%=map.get("goodsNo")%></td>
 					</tr>
 					<tr>
-						<td>Name</td>
+						<td>이름</td>
 						<td><%=map.get("goodsName")%></td>
 					</tr>
 					<tr>
-						<td>Price</td>
+						<td>가격</td>
 						<td><%=map.get("goodsPrice")%></td>
 					</tr>
 					<tr>
-						<td>Update Date</td>
+						<td>수정일</td>
 						<td><%=map.get("updateDate")%></td>
 					</tr>
 					<tr>
-						<td>Create Date</td>
+						<td>생성일</td>
 						<td><%=map.get("createDate")%></td>
 					</tr>
 					<tr>
-						<td>Sold Out</td>
+						<td>품절여부</td>
 						<td><%=map.get("soldOut")%></td>
 					</tr>	
 				</table>	
@@ -101,7 +101,8 @@
 				<%
 					}
 				%>
-					<a href="<%=request.getContextPath()%>/customerGoodsList.jsp" type="button" class="btn btn-dark"  style="float: right; margin-right :30px;">상품목록</a>
+					<a href="<%=request.getContextPath()%>/customerGoodsList.jsp" type="button" class="btn btn-dark"  style="float: right; margin-right :10px;">상품목록</a>
+					<a href="<%=request.getContextPath()%>/cart.jsp" type="button" class="btn btn-info" style="float: right; margin-right :20px;">장바구니</a>
 				</form>
 			</div>
 		</div>

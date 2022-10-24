@@ -39,11 +39,11 @@
 			<br>
 				<table style=" margin-left:auto; margin-right:auto; text-align:center;" class="table table-bordered">
 					<thead>
-						<tr>
-							<td>No</td>
-							<td>Title</td>
-							<td>Update Date</td>
-							<td>Create Date</td>
+						<tr style="font-weight :bold;">
+							<td>번호</td>
+							<td>제목</td>
+							<td>수정날짜</td>
+							<td>생성날짜</td>
 						</tr>
 					</thead>
 					<tbody>

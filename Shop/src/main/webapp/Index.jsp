@@ -242,6 +242,8 @@
                             </div>
                             <div class="position-relative bg-primary rounded-circle mt-n3 mb-4 p-3" style="width: 150px; height: 150px;">
                                 <img class="rounded-circle w-100 h-100" src="<%=request.getContextPath()%>/inc/img/product-1.jpg" style="object-fit: cover;">
+                           
+                           
                             </div>
                             <h5 class="font-weight-bold mb-4">Vanilla Ice Cream</h5>
                             <a href="" class="btn btn-sm btn-secondary">Order Now</a>

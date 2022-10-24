@@ -87,7 +87,7 @@
 					<td><input type="hidden" name="orderPrice" value="0"></td>
 				</tr>
 			</table>
-			<a href="<%=request.getContextPath()%>/Index.jsp" type="button" class="btn btn-dark" style="float: right;">상품목록</a>
+			<a href="<%=request.getContextPath()%>/customerGoodsList.jsp" type="button" class="btn btn-dark" style="float: right;">상품목록</a>
 			<button type="submit" class="btn btn-info" style="float: right; margin-right :30px;">주문하기</button>
 		</form>
 </div>

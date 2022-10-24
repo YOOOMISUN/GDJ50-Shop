@@ -41,25 +41,23 @@ Map<String, Object> map = noticeService.getNoticeOne(noticeNo);
 
 			<table style="margin-left: auto; margin-right: auto;" class="table-bordered">
 				<tr>
-					<td style="font-weight: bold; padding: 20px 20px 20px 20px;">No</td>
+					<td style="font-weight: bold; padding: 20px 20px 20px 20px;">번호</td>
 					<td style="padding: 1em;"><%=map.get("noticeNo")%></td>
 				</tr>
 				<tr>
-					<td style="font-weight: bold; padding: 20px 20px 20px 20px;">Create
-						Date</td>
+					<td style="font-weight: bold; padding: 20px 20px 20px 20px;">생성 날짜</td>
 					<td style="padding: 1em;"><%=map.get("createDate")%></td>
 				</tr>
 				<tr>
-					<td style="font-weight: bold; padding: 20px 20px 20px 20px;">Update
-						Date</td>
+					<td style="font-weight: bold; padding: 20px 20px 20px 20px;">수정 날짜</td>
 					<td style="padding: 1em;"><%=map.get("updateDate")%></td>
 				</tr>
 				<tr>
-					<td style="font-weight: bold; padding: 10px 10px 10px 10px;">Title</td>
+					<td style="font-weight: bold; padding: 10px 10px 10px 10px;">제목</td>
 					<td style="size: 50; maxlength: 100; padding: 1em;"><%=map.get("noticeTitle")%></td>
 				</tr>
 				<tr>
-					<td style="font-weight: bold; padding: 10px 10px 10px 10px;">Content</td>
+					<td style="font-weight: bold; padding: 10px 10px 10px 10px;">내용</td>
 					<td style="size: 50; maxlength: 100; padding: 10em;"><%=map.get("noticeContent")%></td>
 				</tr>
 			</table>

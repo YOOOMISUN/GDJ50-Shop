@@ -73,7 +73,7 @@
 				for(Map<String,Object> m : list){
 			%>
 					<td>
-						<div >
+						<div>
 							<a href ="<%=request.getContextPath()%>/customerGoodsOne.jsp?goodsNo=<%=m.get("goodsNo")%>">		<!-- 이미지 누르면 상세페이지로 -->
 							<img src="<%=request.getContextPath()%>/upload/<%=m.get("fileName")%>" class="rounded-circle" width="200" height="200">
 							</a>

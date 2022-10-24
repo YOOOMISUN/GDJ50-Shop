@@ -5,11 +5,11 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-/* 	// 로그인 안되어 있거나 id가 memberId와 같지 않으면 로그인 폼으로
-	if(session.getAttribute("id") == null || (!(session.getAttribute("id").equals("customerId"))) ){
+	// 로그인 안되어 있으면 로그인폼으로
+	if(session.getAttribute("id") == null ){
 		response.sendRedirect(request.getContextPath() + "/loginForm.jsp");
 		return;
-	}  */
+	}  
 
 	int rowPerPage = 5;
 	int currentPage = 1;
@@ -53,19 +53,21 @@
 	<!-- Header -->
 	<%@ include file="/inc/Header.jsp" %>
 	
+	<br>
 
-
-	<div class="container" style="text-align:center; ">
-	<h2 style="font-weight :bold;"><%=session.getAttribute("name")%>님의 주문 리스트</h2>		
+	<div class="container" style="text-align:center;">
+	<h2 style="font-weight :bold;"><%=session.getAttribute("name")%>님의 주문 리스트</h2>	
+	<br>	
+	<br>	
 	<table style=" margin-left:auto; margin-right:auto; " class="table table-bordered" >
 			<thead>
 				<tr>
-					<th>Customer Id</th>
-					<th>Customer Name</th>
-					<th>Customer Telephone</th>
-					<th>Customer Address</th>
-					<th>Create Date</th>
-					<th>Information Update</th>
+					<th>아이디</th>
+					<th>이름</th>
+					<th>전화번호</th>
+					<th>주소</th>
+					<th>생성일</th>
+					<th>정보 수정</th>
 				</tr>
 			</thead>
 			<tbody>

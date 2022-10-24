@@ -39,6 +39,7 @@
 		<br>
 		<a href="<%=request.getContextPath()%>/customerGoodsList.jsp" class="btn btn-info">상품리스트</a>	
 		<a href="<%=request.getContextPath()%>/customerOrderList.jsp?customerId=<%=session.getAttribute("id")%>" class="btn btn-info">주문목록</a>	
+		<a href="<%=request.getContextPath()%>/cart.jsp?customerId=<%=session.getAttribute("id")%>" class="btn btn-info">장바구니</a>	
 		<a href="<%=request.getContextPath()%>/logout.jsp" class="btn btn-info">로그아웃</a>	
 		<a href="<%=request.getContextPath()%>/removeForm.jsp" class="btn btn-danger">회원탈퇴</a>	
 		

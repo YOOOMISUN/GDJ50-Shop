@@ -39,11 +39,11 @@
 				<table style=" margin-left:auto; margin-right:auto; text-align:center;" class="table table-bordered" >
 					<tr>
 						<td>ID</td>
-						<td><input type="text" name="customerId" id="customerId" class="form-control"></td>
+						<td><input type="text" name="customerId" id="customerId" class="form-control" value="guest"></td>
 					</tr>
 					<tr>
 						<td>PASSWORD</td>
-						<td><input type="password" name="customerPass" id="customerPass" class="form-control"></td>
+						<td><input type="password" name="customerPass" id="customerPass" class="form-control" value="1234"></td>
 					</tr>
 				</table>
 				<br>
@@ -61,11 +61,11 @@
 				<table style=" margin-left:auto; margin-right:auto; text-align:center;" class="table table-bordered" >
 					<tr>
 						<td>ID</td>
-						<td><input type="text" name="employeeId" id="employeeId" class="form-control"></td>
+						<td><input type="text" name="employeeId" id="employeeId" class="form-control" value="admin"></td>
 					</tr>
 					<tr>
 						<td>PASSWORD</td>
-						<td><input type="password" name="employeePass" id="employeePass" class="form-control"></td>
+						<td><input type="password" name="employeePass" id="employeePass" class="form-control" value="1234"></td>
 					</tr>
 				</table>
 				<br>

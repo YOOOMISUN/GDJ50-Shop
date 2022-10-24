@@ -37,7 +37,7 @@
                     <div class="d-inline-flex align-items-center">
                         <a class="text-white pr-3" href="<%=request.getContextPath()%>/cart.jsp">Cart</a>
                         <span class="text-white">|</span>
-                        <a class="text-white px-3" href="<%=request.getContextPath()%>/">My Order List</a>
+                        <a class="text-white px-3" href="<%=request.getContextPath()%>/customerOrderList.jsp?customerId="<%=session.getAttribute("id")%>>My Order List</a>
                     </div>
                 </div>
                 <div class="col-md-6 text-center text-lg-right">
