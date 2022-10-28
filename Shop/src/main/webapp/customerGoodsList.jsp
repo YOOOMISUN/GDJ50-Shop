@@ -83,7 +83,7 @@
 						<br>
 						<div class="font-weight-bold text-#F195B2 mb-0"><%=m.get("goodsPrice")%></div>
 						<br>
-						<a href ="<%=request.getContextPath()%>/cart.jsp?goodsNo=<%=m.get("goodsNo")%>" class="btn btn-sm btn-secondary">Cart</a>
+						<a href ="<%=request.getContextPath()%>/addCartAction.jsp?goodsNo=<%=m.get("goodsNo")%>&goodsPrice=<%=m.get("goodsPrice")%>&goodsName=<%=m.get("goodsName")%>" class="btn btn-sm btn-secondary">Cart</a>
 						<!-- 리뷰개수 -->
 						<br>
 					</td>
@@ -117,7 +117,7 @@
 		<%
 		if (currentPage > 1) {
 		%>
-		<a href="<%=request.getContextPath()%>/Index.jsp?currentPage=<%=currentPage-1%>" type="button" class="btn btn-dark">이전</a>
+		<a href="<%=request.getContextPath()%>/customerGoodsList.jsp?currentPage=<%=currentPage-1%>" type="button" class="btn btn-dark">이전</a>
 		<%
 		}
 		// 페이지 번호
@@ -131,7 +131,7 @@
 	    		if (j <= lastPage) {
 	    %>	
 	    &nbsp;
-		    <a href="<%=request.getContextPath()%>/Index.jsp?currentPage=<%=j%>"><%=j%></a>	
+		    <a href="<%=request.getContextPath()%>/customerGoodsList.jsp?currentPage=<%=j%>"><%=j%></a>	
 		&nbsp;	    	
 	   <%	 
 	   			}
@@ -139,7 +139,7 @@
 	    
 		if (currentPage < lastPage) {
 		%>
-		<a href="<%=request.getContextPath()%>/Index.jsp?currentPage=<%=currentPage+1%>" type="button" class="btn btn-dark">다음</a>
+		<a href="<%=request.getContextPath()%>/customerGoodsList.jsp?currentPage=<%=currentPage+1%>" type="button" class="btn btn-dark">다음</a>
 
 	<%
 		  }

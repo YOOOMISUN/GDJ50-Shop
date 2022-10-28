@@ -172,7 +172,7 @@ public class GoodsService {
 			
 			
 		} catch(Exception e) {
-			e.addSuppressed(e);
+			e.printStackTrace();
 			try {
 				conn.rollback();
 			} catch (SQLException e1) {

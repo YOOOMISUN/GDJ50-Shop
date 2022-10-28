@@ -102,7 +102,7 @@
 					}
 				%>
 					<a href="<%=request.getContextPath()%>/customerGoodsList.jsp" type="button" class="btn btn-dark"  style="float: right; margin-right :10px;">상품목록</a>
-					<a href="<%=request.getContextPath()%>/cart.jsp" type="button" class="btn btn-info" style="float: right; margin-right :20px;">장바구니</a>
+					<a href="<%=request.getContextPath()%>/addCartAction.jsp?goodsNo=<%=map.get("goodsNo")%>&goodsPrice=<%=map.get("goodsPrice")%>&goodsName=<%=map.get("goodsName")%>" type="button" class="btn btn-info" style="float: right; margin-right :20px;">Cart</a>
 				</form>
 			</div>
 		</div>

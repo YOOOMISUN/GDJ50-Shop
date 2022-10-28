@@ -2,11 +2,13 @@ package vo;
 
 public class Cart {
 	private int cartNo;
+	private String customerId;
 	private int goodsNo;
 	private String goodsName;
-	private String customerId;
+	private int gooodsPrice;
 	private int goodsQuantity;
 	private String createDate;
+	
 	
 	
 	public int getCartNo() {
@@ -14,6 +16,12 @@ public class Cart {
 	}
 	public void setCartNo(int cartNo) {
 		this.cartNo = cartNo;
+	}
+	public String getCustomerId() {
+		return customerId;
+	}
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
 	}
 	public int getGoodsNo() {
 		return goodsNo;
@@ -27,11 +35,11 @@ public class Cart {
 	public void setGoodsName(String goodsName) {
 		this.goodsName = goodsName;
 	}
-	public String getCustomerId() {
-		return customerId;
+	public int getGooodsPrice() {
+		return gooodsPrice;
 	}
-	public void setCustomerId(String customerId) {
-		this.customerId = customerId;
+	public void setGooodsPrice(int gooodsPrice) {
+		this.gooodsPrice = gooodsPrice;
 	}
 	public int getGoodsQuantity() {
 		return goodsQuantity;
@@ -46,19 +54,34 @@ public class Cart {
 		this.createDate = createDate;
 	}
 	
+	
+	@Override
+	public String toString() {
+		return "Cart [cartNo=" + cartNo + ", customerId=" + customerId + ", goodsNo=" + goodsNo + ", goodsName="
+				+ goodsName + ", gooodsPrice=" + gooodsPrice + ", goodsQuantity=" + goodsQuantity + ", createDate="
+				+ createDate + "]";
+	}
+	
+	
+	public Cart(int cartNo, String customerId, int goodsNo, String goodsName, int gooodsPrice, int goodsQuantity,
+			String createDate) {
+		super();
+		this.cartNo = cartNo;
+		this.customerId = customerId;
+		this.goodsNo = goodsNo;
+		this.goodsName = goodsName;
+		this.gooodsPrice = gooodsPrice;
+		this.goodsQuantity = goodsQuantity;
+		this.createDate = createDate;
+	}
+	
+	
 	public Cart() {
 		super();
 		
 	}
-	public Cart(int cartNo, int goodsNo, String goodsName, String customerId, int goodsQuantity, String createDate) {
-		super();
-		this.cartNo = cartNo;
-		this.goodsNo = goodsNo;
-		this.goodsName = goodsName;
-		this.customerId = customerId;
-		this.goodsQuantity = goodsQuantity;
-		this.createDate = createDate;
-	}
+	
+	
 	
 	
 	
