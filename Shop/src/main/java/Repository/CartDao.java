@@ -16,14 +16,15 @@ public class CartDao {
 		
 		List<Cart> list = new ArrayList<>();
 		
-		String sql = "SELECT cart_no cartNo, customer_id customerId, goods_no goodsNo, goods_name goodsName, goods_price goodsPrice, goods_quantity goodsQuantity, create_date createDate"
-				+ "FROM cart ORDER BY create_date DECS LIMIT ?,?";
+		String sql = "SELECT cart_no cartNo, customer_id customerId, goods_no goodsNo, goods_name goodsName, goods_price goodsPrice, goods_quantity goodsQuantity, create_date createDate FROM cart ORDER BY create_date DESC LIMIT ?,?";
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
 		stmt = conn.prepareStatement(sql);
 		stmt.setInt(1, beginRow);
 		stmt.setInt(2, rowPerPage);
+		
+		
 		
 		rs = stmt.executeQuery();
 		
@@ -37,7 +38,11 @@ public class CartDao {
 			cart.setGoodsQuantity(rs.getInt("goods_quantity"));
 			cart.setCreateDate(rs.getString("create_date"));
 			
+			System.out.println("cart : " + cart);
+			
 			list.add(cart);
+			
+			System.out.println("list : " + list);
 		}
 		
 		if(rs!=null) {
@@ -86,9 +91,7 @@ public class CartDao {
 	// 장바구니 추가
 	public int insertCart(Connection conn, Cart addCart) throws SQLException {
 		
-		String sql = "INSERT INTO cart "
-				+ "(cart_no, customer_id, goods_no, goods_name, goods_price, goods_quantity, create_date) "
-				+ "VALUES (?,?,?,?,?,1,NOW())";
+		String sql = "INSERT INTO cart (cart_no, customer_id, goods_no, goods_name, goods_price, goods_quantity, create_date) VALUES (?,?,?,?,?,?,NOW())";
 		PreparedStatement stmt = null;
 		int insertCart = 0;
 		
@@ -114,6 +117,37 @@ public class CartDao {
 		return insertCart;
 		
 	}	//	end insertCart
+	
+	
+	// 장바구니 삭제
+	public int deleteCart(Connection conn, int deleteCart) throws SQLException {
+		
+		String sql = "DELETE FROM cart WHERE cart_no=?";
+		PreparedStatement stmt = null;
+		int cart = 0;
+		
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, deleteCart);
+			
+			cart = stmt.executeUpdate();
+			
+			// 디버깅
+			System.out.println("cart : " + cart);
+			
+		} finally {
+			if(stmt!=null) {
+				stmt.close();
+			}
+		}
+		return cart;
+		
+	}	// end deleteCart
+	
+	
+	
+	
+	
 	
 	
 }

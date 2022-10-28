@@ -63,38 +63,41 @@
 			</thead>
 			
 			<tbody>
-		 	<% 
-				for(Cart l : list){
-			%> 
+			 	<% 
+					for(Cart l : list){
+						if(session.getAttribute("id").equals(l.getCustomerId()) ){		// 로그인한 id와 같은 id의 장바구니만 보여주기
+				%> 
 					<tr>
-						<td><input type="checkbox" id="cartCheck" name="cartCheck" value="<%-- ${uc.lectureNo} --%>" checked></td>
+						<td><input type="checkbox" id="cartCheck" name="cartCheck" value="<%=l.getCartNo()%>" checked></td>
 						<td><%=l.getGoodsNo()%></td>
 						<td><%=l.getGoodsName()%></td>
 						<td><%=l.getGoodsQuantity()%></td>
 						<td><%=l.getGooodsPrice()%></td>
 						<td><%=l.getCreateDate()%></td>
-						<td><a class="btn btn-primary" href="<%=request.getContextPath()%>/removeCart?goodsNo=<%=l.getGoodsNo()%>">삭제</a></td>
+						<td><a class="btn btn-primary" href="<%=request.getContextPath()%>/removeCart.jsp?cartNo=<%=l.getCartNo()%>">삭제</a></td>
 					</tr>
-			<%
+				<%
+						}
 				}
 			%> 
 			</tbody>
 		</table>
-		<button class="btn btn-primary" id="order" type="button" style="float:right;" value="cntCheck">주문</button>
-		<a href="<%=request.getContextPath()%>/customerGoodsList.jsp" class="btn btn-primary" style="float:right; margin-right:10px;">상품목록</a>
+			<button class="btn btn-primary" id="order" type="button" style="float:right;" value="cntCheck">주문</button>
+			<a href="<%=request.getContextPath()%>/customerGoodsList.jsp" class="btn btn-primary" style="float:right; margin-right:10px;">상품목록</a>
 	</form>
-	
+
 	<!-- 장바구니 리스트 END -->
+
+
 
 		<!-- 페이징 -->
 		<%
-		if (currentPage > 1) {
+			if (currentPage > 1) {
 		%>
-		<a href="<%=request.getContextPath()%>/cart.jsp?currentPage=<%=currentPage-1%>" type="button" class="btn btn-dark">이전</a>
+			<a href="<%=request.getContextPath()%>/cart.jsp?currentPage=<%=currentPage-1%>" type="button" class="btn btn-dark">이전</a>
 		<%
 		}
-		// 페이지 번호
-		
+			// 페이지 번호
 		 	int pageCount = 10;
 			int startPage = ((currentPage - 1) / pageCount) * pageCount + 1;
 	    	int endPage = (((currentPage - 1) / pageCount) + 1) * pageCount;
@@ -110,13 +113,12 @@
 	   			}
 	    	}
 	    
-		if (currentPage < lastPage) {
+			if (currentPage < lastPage) {
 		%>
-		<a href="<%=request.getContextPath()%>/cart.jsp?currentPage=<%=currentPage+1%>" type="button" class="btn btn-dark">다음</a>
-
-	<%
-		  }
-	%>
+			<a href="<%=request.getContextPath()%>/cart.jsp?currentPage=<%=currentPage+1%>" type="button" class="btn btn-dark">다음</a>
+		<%
+			  }
+		%>
 	
 	</div>
 	

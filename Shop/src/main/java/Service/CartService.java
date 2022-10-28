@@ -108,6 +108,8 @@ public class CartService {
 				throw new ELException();
 			}
 			
+			conn.commit();
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 			try {
@@ -124,6 +126,49 @@ public class CartService {
 		}
 		return addCart;
 	}	// end addCart
+	
+	
+	// 장바구니 삭제
+	public int removeCart(int cartNo) {
+		Connection conn = null;
+		int removeCart = 0;
+		
+		try {
+			conn = new DBUtil().getConnection();
+			conn.setAutoCommit(false);
+			
+			this.cartDao = new CartDao();
+			removeCart = cartDao.deleteCart(conn, cartNo);
+			
+			// 디버깅
+			System.out.println("removeCart : " + removeCart);
+			
+			if(removeCart == 0) {
+				throw new ELException();
+			}
+			
+			conn.commit();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			try {
+				conn.rollback();
+			} catch(SQLException e1) {
+				e1.printStackTrace();
+			}
+		} finally {
+			try {
+				conn.close(); 
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return removeCart;
+		
+	}	// end removeCart
+	
+	
+	
 	
 	
 }
