@@ -14,7 +14,7 @@ import vo.Goods;
 
 public class GoodsDao {
 
-	// 고객 상품 리스트 페이지에서 사용 (Index.jsp)
+	// 고객 상품 리스트 페이지에서 사용 (customerGoodsList.jsp)
 	public List<Map<String,Object>> selectCustomerGoodsListByPage (Connection conn, int rowPerPage, int beginRow) throws SQLException{
 		
 		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();

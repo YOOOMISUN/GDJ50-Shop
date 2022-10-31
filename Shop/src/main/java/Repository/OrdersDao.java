@@ -174,7 +174,7 @@ public class OrdersDao {
 	      
 	      String sql = "SELECT o.order_no ordersNo, o.order_quantity ordersQuantity"
 	            + ", o.order_price ordersPrice, o.order_addr ordersAddr, o.order_detailAddr orderDetailAddr, o.order_state ordersState"
-	            + ", o.create_date createDate"
+	            + ", DATE_FORMAT(o.create_date,'%Y-%m-%d %T') createDate"
 	            + ", g.goods_no goodsNo, g.goods_name goodsName, g.goods_price goodsPrice"
 	            + ", c.customer_id customerId, c.customer_name customerName"
 	            + " FROM orders o INNER JOIN goods g ON o.goods_no = g.goods_no"

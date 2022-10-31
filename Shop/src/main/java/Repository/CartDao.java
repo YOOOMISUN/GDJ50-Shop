@@ -16,7 +16,7 @@ public class CartDao {
 		
 		List<Cart> list = new ArrayList<>();
 		
-		String sql = "SELECT cart_no cartNo, customer_id customerId, goods_no goodsNo, goods_name goodsName, goods_price goodsPrice, goods_quantity goodsQuantity, create_date createDate FROM cart ORDER BY create_date DESC LIMIT ?,?";
+		String sql = "SELECT cart_no cartNo, customer_id customerId, goods_no goodsNo, goods_name goodsName, goods_price goodsPrice, goods_quantity goodsQuantity, DATE_FORMAT(create_date,'%Y-%m-%d %T') create_date FROM cart ORDER BY create_date DESC LIMIT ?,?";
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
@@ -91,7 +91,7 @@ public class CartDao {
 	// 장바구니 추가
 	public int insertCart(Connection conn, Cart addCart) throws SQLException {
 		
-		String sql = "INSERT INTO cart (cart_no, customer_id, goods_no, goods_name, goods_price, goods_quantity, create_date) VALUES (?,?,?,?,?,?,NOW())";
+		String sql = "INSERT INTO cart (cart_no, customer_id, goods_no, goods_name, goods_price, goods_quantity, create_date) VALUES (?,?,?,?,?,1,NOW())";
 		PreparedStatement stmt = null;
 		int insertCart = 0;
 		
@@ -102,7 +102,6 @@ public class CartDao {
 			stmt.setInt(3, addCart.getGoodsNo());
 			stmt.setString(4, addCart.getGoodsName());
 			stmt.setInt(5, addCart.getGooodsPrice());
-			stmt.setInt(6, addCart.getGoodsQuantity());
 			
 			insertCart = stmt.executeUpdate();
 			

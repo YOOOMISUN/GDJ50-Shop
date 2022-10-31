@@ -38,7 +38,7 @@
 		session.setAttribute("name", employee.getEmployeeName());
 		session.setAttribute("pw", employee.getEmployeePass());
 		session.setAttribute("active", employee.getActive());
-		response.sendRedirect(request.getContextPath() + "/admin/adminIndex.jsp");
+		response.sendRedirect(request.getContextPath() + "/myPage.jsp");
 		System.out.println("로그인성공");
 	} else {
 		response.sendRedirect(request.getContextPath()+"/loginForm.jsp?");

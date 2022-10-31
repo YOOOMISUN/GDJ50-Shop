@@ -55,8 +55,10 @@
 	<%@ include file="/inc/Header.jsp" %>
 	
 	<br>
-<div class="container" >
-	<h2 style="text-align:center; font-weight :bold;">상품 상세페이지</h2>
+	<br>
+<div class="container" style="text-align:center;">
+	<h2 style="font-weight :bold;">상품 상세페이지</h2>
+	<br>
 	<br>
 	<br>
 		<div class="row">
@@ -109,11 +111,8 @@
 
 	<br>
 	<br>
-	<br>
 	
 	
-	
-	<br>
 	<%
 		for (Map<String,Object> re : list) {
 	%>

@@ -43,55 +43,56 @@
 	<%@ include file="/inc/Header.jsp" %>
 	
 
-
-<div style="position: relative; top: 200px;">
-	<h2 style="text-align:center; font-weight :bold;">주문하기</h2>
-	<br>
-		<form action="<%=request.getContextPath()%>/customerOrderAction.jsp" method="post" id="ordersForm">
-			<table style=" margin-left:auto; margin-right:auto; " class="table table-bordered" >
-				<tr>
-					<td>상품 번호</td>
-					<td><input type="text" name="goodsNo" id="goodsNo"  class="form-control" readonly="readonly" value="<%=goodsNo%>"></td>
-				</tr>
-				<tr>
-					<td>아이디</td>
-					<td><input type="text" name="customerId" id="customerId" class="form-control" readonly="readonly" value="<%=customerId%>"></td>
-				</tr>
-				<tr>
-					<td>수량</td>
-					<td>
-						<select name="orderQuantity">
-							<option >1</option>
-							<option >2</option>
-							<option >3</option>
-							<option >4</option>
-							<option >5</option>
-							<option >6</option>
-							<option >7</option>
-							<option >8</option>
-							<option >9</option>
-							<option >10</option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td>주소</td>
-					<td><input type="text" name="ordersAddress" id="ordersAddress" readonly="readonly" class="form-control"></td>
-					<td><button type="button" id="ordersBtn" onclick="sample2_execDaumPostcode()">주소검색</button></td>
-					<td>DetailAddr</td>
-					<td><input type="text" name="ordersDetailAddr" id="ordersDetailAddr" class="form-control"></td>
-				</tr>
-				<tr>
-					<td><input type="hidden" name="ordersState" value="결제완료"></td>
-					<td><input type="hidden" name="goodsPrice" value="<%=(Integer)map.get("goodsPrice")%>"></td>
-					<td><input type="hidden" name="orderPrice" value="0"></td>
-				</tr>
-			</table>
-			<a href="<%=request.getContextPath()%>/customerGoodsList.jsp" type="button" class="btn btn-dark" style="float: right;">상품목록</a>
-			<button type="submit" class="btn btn-info" style="float: right; margin-right :30px;">주문하기</button>
-		</form>
+<div class="container" style="text-align:center;">
+	<div style="position: relative; top: 100px;">
+		<h2 style="font-weight :bold;">주문하기</h2>
+		<br>
+		<br>
+			<form action="<%=request.getContextPath()%>/customerOrderAction.jsp" method="post" id="ordersForm">
+				<table style="margin-left:auto; margin-right:auto; " class="table table-bordered" >
+					<tr>
+						<td>상품 번호</td>
+						<td><input type="text" name="goodsNo" id="goodsNo"  class="form-control" readonly="readonly" value="<%=goodsNo%>"></td>
+					</tr>
+					<tr>
+						<td>아이디</td>
+						<td><input type="text" name="customerId" id="customerId" class="form-control" readonly="readonly" value="<%=customerId%>"></td>
+					</tr>
+					<tr>
+						<td>수량</td>
+						<td>
+							<select name="orderQuantity">
+								<option >1</option>
+								<option >2</option>
+								<option >3</option>
+								<option >4</option>
+								<option >5</option>
+								<option >6</option>
+								<option >7</option>
+								<option >8</option>
+								<option >9</option>
+								<option >10</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>주소</td>
+						<td><input type="text" name="ordersAddress" id="ordersAddress" readonly="readonly" class="form-control"></td>
+						<td><button type="button" id="ordersBtn" onclick="sample2_execDaumPostcode()" class="btn btn-info" >주소검색</button></td>
+						<td>DetailAddr</td>
+						<td><input type="text" name="ordersDetailAddr" id="ordersDetailAddr" class="form-control"></td>
+					</tr>
+					<tr>
+						<td><input type="hidden" name="ordersState" value="결제완료"></td>
+						<td><input type="hidden" name="goodsPrice" value="<%=(Integer)map.get("goodsPrice")%>"></td>
+						<td><input type="hidden" name="orderPrice" value="0"></td>
+					</tr>
+				</table>
+				<a href="<%=request.getContextPath()%>/customerGoodsList.jsp" type="button" class="btn btn-dark" style="float: right;">상품목록</a>
+				<button type="submit" class="btn btn-info" style="float: right; margin-right :30px;">주문하기</button>
+			</form>
+	</div>
 </div>
-
 
 	<!-- Footer -->
 	<%@ include file="/inc/Footer.jsp" %>

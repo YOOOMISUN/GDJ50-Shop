@@ -44,12 +44,13 @@
 	
 
 	<!-- 장바구니 리스트 -->
-	<div class="container">
-		<h2 style="text-align: center; font-weight :bold;"> <%=session.getAttribute("name")%>님의 장바구니</h2>
+	<div class="container" style="text-align:center;">
+		<h2 style="font-weight :bold;"> <%=session.getAttribute("name")%>님의 장바구니</h2>
 		<br>
 		<hr>
 		<br>
-	<form method="post" action="<%=request.getContextPath()%>/customerOrderForm.jsp" id="cartList">
+
+	<form method="get" action="<%=request.getContextPath()%>/customerOrderForm.jsp" id="cartList">
 		<table class="table" style="text-align: center;">
 			<thead>
 				<tr>
@@ -64,11 +65,11 @@
 			
 			<tbody>
 			 	<% 
-					for(Cart l : list){
-						if(session.getAttribute("id").equals(l.getCustomerId()) ){		// 로그인한 id와 같은 id의 장바구니만 보여주기
-				%> 
+			for(Cart l : list){
+				if(session.getAttribute("id").equals(l.getCustomerId()) ){		// 로그인한 id와 같은 id의 장바구니만 보여주기
+		%> 
 					<tr>
-						<td><input type="checkbox" id="cartCheck" name="cartCheck" value="<%=l.getCartNo()%>" checked></td>
+						<td><input type="radio" id="goodsNo" name="goodsNo" value="<%=l.getCartNo()%>" checked></td>
 						<td><%=l.getGoodsNo()%></td>
 						<td><%=l.getGoodsName()%></td>
 						<td><%=l.getGoodsQuantity()%></td>
@@ -82,13 +83,16 @@
 			%> 
 			</tbody>
 		</table>
-			<button class="btn btn-primary" id="order" type="button" style="float:right;" value="cntCheck">주문</button>
+		<br>
+			<button class="btn btn-primary" id="order" type="submit" style="float:right;">주문</button>
 			<a href="<%=request.getContextPath()%>/customerGoodsList.jsp" class="btn btn-primary" style="float:right; margin-right:10px;">상품목록</a>
 	</form>
 
 	<!-- 장바구니 리스트 END -->
 
-
+	<br>
+	<br>
+	<br>
 
 		<!-- 페이징 -->
 		<%

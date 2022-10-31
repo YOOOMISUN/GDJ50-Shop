@@ -15,6 +15,10 @@
 	int currentPage = 1;
 	int lastPage = 0;
 	
+	if(request.getParameter("rowPerPage") != null){
+		rowPerPage = Integer.parseInt(request.getParameter("rowPerPage"));
+	}
+	
 	if(request.getParameter("currentPage") !=(null)){
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 	}
@@ -59,40 +63,37 @@
 	<h2 style="font-weight :bold;"><%=session.getAttribute("name")%>님의 주문 리스트</h2>	
 	<br>	
 	<br>	
-	<table style=" margin-left:auto; margin-right:auto; " class="table table-bordered" >
+	<table style=" margin-left:auto; margin-right:auto; vertical-align:middle; " class="table table-bordered" >
 			<thead>
 				<tr>
-					<th>아이디</th>
-					<th>이름</th>
-					<th>전화번호</th>
-					<th>주소</th>
-					<th>생성일</th>
-					<th>정보 수정</th>
+					<th><a>[주문번호]</a><br><a>주문일자</a></th>
+					<th><a>[상품번호]</a><br><a>상품이름</a></th>
+					<th>수량</th>
+					<th>가격</th>
+					<th>주문처리상태</th>
 				</tr>
 			</thead>
 			<tbody>
 			<%
 				for(Map<String,Object> m : list) {
 			%>
-	<%-- 			<tr>
+				<tr>
 					<td>
-						<a href="<%=request.getContextPath()%>/admin/adminCustomerOrderOne.jsp?customerId=<%=m.getCustomerId()%>">
-						<%=m.getCustomerId()%></a></td>
-					<td><%=m.getCustomerName()%></td>
-					<td><%=m.getCustomerTelephone()%></td>
-					<td><%=m.getCustomerAddress()%><%=m.getCustomerDetailAddr()%></td>
-					<td><%=m.getCreateDate()%></td>
-					<td><a href="<%=request.getContextPath()%>/admin/updateCustomer.jsp?customerId=<%=m.getCustomerId()%>&updateDate=<%=m.getUpdateDate()%>">정보수정</a></td>
-				</tr> --%>
+						<a href="<%=request.getContextPath()%>/customerOrderOne.jsp?customerId=<%=m.get("customerId")%>&orderNo=<%=m.get("ordersNo")%>">
+						[<%=m.get("ordersNo")%>]</a><br><a><%=m.get("createDate")%></a></td>
+					<td><a>[<%=m.get("goodsNo")%>]</a><br>
+						<a href="<%=request.getContextPath()%>/customerGoodsOne.jsp?goodsNo=<%=m.get("goodsNo")%>"><%=m.get("goodsName")%></a></td>
+					<td><%=m.get("ordersQuantity")%></td>
+					<td><%=m.get("ordersPrice")%></td>
+					<td><%=m.get("ordersState")%></td>
+				</tr> 
 					<%	
 					
 						}	
 					%>	 
 		</table>
 	
-		
-		
-	
+
 	
 		<!-- 페이징 -->
 		<%

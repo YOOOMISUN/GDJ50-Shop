@@ -37,11 +37,22 @@
                     <div class="d-inline-flex align-items-center">
                         <a class="text-white pr-3" href="<%=request.getContextPath()%>/cart.jsp">Cart</a>
                         <span class="text-white">|</span>
-                        <a class="text-white px-3" href="<%=request.getContextPath()%>/customerOrderList.jsp?customerId="<%=session.getAttribute("id")%>>My Order List</a>
+                        <a class="text-white px-3" href="<%=request.getContextPath()%>/customerOrderList.jsp?customerId=<%=session.getAttribute("id")%>">My Order List</a>
                     </div>
                 </div>
                 <div class="col-md-6 text-center text-lg-right">
                     <div class="d-inline-flex align-items-center">
+                    <%
+                  	  if(session.getAttribute("id") != null){
+                    %>
+                    <span class="text-danger pr-3" style="color:#9c27b0; font-weight :bold; float:right; margin-right:30px;"> <%=session.getAttribute("id")%>님</span>
+                    
+                    <%
+                  	  }
+                    %>
+                    
+                   
+                    
                     	<!-- 고객 회원가입 -->
                        <a href="<%=request.getContextPath()%>/addCustomer.jsp" class="text-white pr-3" style="float:right; margin-right:50px;">
 				     	<span class="glyphicon glyphicon-user"></span>Sign Up</a> 
@@ -102,7 +113,7 @@
 					<% if(session.getAttribute("id") != null && session.getAttribute("user").equals("Employee") )
 						{
 					%>
-                        <a href="<%=request.getContextPath()%>/admin/adminIndex.jsp" class="nav-item nav-link">Admin</a>
+                        <a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp" class="nav-item nav-link">Admin</a>
                     <%
 						} 
 					%>
