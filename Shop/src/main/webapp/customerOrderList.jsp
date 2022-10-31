@@ -79,7 +79,7 @@
 			%>
 				<tr>
 					<td>
-						<a href="<%=request.getContextPath()%>/customerOrderOne.jsp?customerId=<%=m.get("customerId")%>&orderNo=<%=m.get("ordersNo")%>">
+						<a href="<%=request.getContextPath()%>/customerOrderOne.jsp?customerId=<%=m.get("customerId")%>&ordersNo=<%=m.get("ordersNo")%>">
 						[<%=m.get("ordersNo")%>]</a><br><a><%=m.get("createDate")%></a></td>
 					<td><a>[<%=m.get("goodsNo")%>]</a><br>
 						<a href="<%=request.getContextPath()%>/customerGoodsOne.jsp?goodsNo=<%=m.get("goodsNo")%>"><%=m.get("goodsName")%></a></td>

@@ -69,7 +69,7 @@
 				if(session.getAttribute("id").equals(l.getCustomerId()) ){		// 로그인한 id와 같은 id의 장바구니만 보여주기
 		%> 
 					<tr>
-						<td><input type="radio" id="goodsNo" name="goodsNo" value="<%=l.getCartNo()%>" checked></td>
+						<td><input type="radio" id="goodsNo" name="goodsNo" value="<%=l.getCartNo()%>"></td>
 						<td><%=l.getGoodsNo()%></td>
 						<td><%=l.getGoodsName()%></td>
 						<td><%=l.getGoodsQuantity()%></td>

@@ -13,6 +13,7 @@
 	String ordersAddress = request.getParameter("ordersAddress");
 	String ordersDetailAddr = request.getParameter("ordersDetailAddr");
 	String ordersState = request.getParameter("ordersState");
+	String payment = request.getParameter("payment");
 	
 	// form에서 받아온 값 디버깅
 	System.out.println("goodsNo : " + goodsNo);
@@ -23,6 +24,7 @@
 	System.out.println("ordersAddress : " + ordersAddress);
 	System.out.println("ordersDetailAddr : " + ordersDetailAddr);
 	System.out.println("ordersState : " + ordersState);
+	System.out.println("payment : " + payment);
 	
 	Orders orders = new Orders();
 	orders.setGoodsNo(goodsNo);
@@ -32,6 +34,7 @@
 	orders.setOrderAddr(ordersAddress);
 	orders.setOrderDetailAddr(ordersDetailAddr);
 	orders.setOrderState(ordersState);
+	orders.setPayment(payment);
 	
 	// orders에 넣은 값 디버깅
 	System.out.println("goodsNo ++ " + goodsNo);
@@ -42,17 +45,19 @@
 	System.out.println("ordersAddress ++ " + ordersAddress);
 	System.out.println("ordersDetailAddr ++ " + ordersDetailAddr);
 	System.out.println("ordersState ++ " + ordersState);
+	System.out.println("payment ++ " + payment);
 	
 	
 	OrdersService ordersService = new OrdersService();
 	int order = ordersService.addOrders(orders);
 	
+	
 	if(order==1){
 		System.out.println("주문 성공!");
-		response.sendRedirect(request.getContextPath()+"/customerOrderOne.jsp?customerId="+customerId);
+		response.sendRedirect(request.getContextPath()+"/customerOrderList.jsp?customerId="+customerId);
 	} else{
 		System.out.println("주문 실패!");
-		response.sendRedirect(request.getContextPath()+"/customerOrderOne.jsp?customerId="+customerId);
+		response.sendRedirect(request.getContextPath()+"/customerOrderList.jsp?customerId="+customerId);
 	}
 	
 	

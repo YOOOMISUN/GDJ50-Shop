@@ -49,22 +49,29 @@
 	<%@ include file="/inc/Header.jsp" %>
 	
 
+
+
 <div class="container">
 	<!-- 목록 -->
 	<div>
 		<br>
-		<ul>
-			<li><a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp">고객관리</a></li>
-			<li><a href="<%=request.getContextPath()%>/admin/employeeList.jsp">사원관리</a></li>
-			<li><a href="<%=request.getContextPath()%>/admin/adminGoodsList.jsp">상품	관리</a></li>	<!-- 상품목록/등록/수정/삭제(장바구니,주문이 없는 경우=> 품절처리) -->
-			<li><a href="<%=request.getContextPath()%>/admin/adminOrdersList.jsp">주문관리</a></li><!-- 주문목록/수정 -->
-			<li><a href="<%=request.getContextPath()%>/admin/adminNoticeList.jsp">공지관리(게시판)</a></li><!-- 공지 CRUD -->
-		</ul>
+		<table style="margin-left:auto; margin-right:auto; text-align:center;" class="table table-bordered" >
+			<tr>
+				<td><a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp">고객관리</a></td>
+				<td><a href="<%=request.getContextPath()%>/admin/employeeList.jsp">사원관리</a></td>
+				<td><a href="<%=request.getContextPath()%>/admin/adminGoodsList.jsp">상품	관리</a></td>	<!-- 상품목록/등록/수정/삭제(장바구니,주문이 없는 경우=> 품절처리) -->
+				<td><a href="<%=request.getContextPath()%>/admin/adminOrdersList.jsp">주문관리</a></td><!-- 주문목록/수정 -->
+				<td><a href="<%=request.getContextPath()%>/admin/adminNoticeList.jsp">공지관리(게시판)</a></td><!-- 공지 CRUD -->
+			</tr>
+		</table>
 	</div>
-
+	
+	<br>
+	<br>
 
 	<div style="text-align:center;">
 		<h2 style="font-weight :bold;"><%=customerId%> 주문목록</h2>
+	<br>
 	<br>
 		<form>
 		<table style=" margin-left:auto; margin-right:auto; " class="table table-bordered" >
@@ -118,7 +125,7 @@
 
 		<br>
 			<a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp" type="button" class="btn btn-dark" style="text-align: center;">고객목록</a>
-		</form>
+		
 		
 		<br>
 		<br>
@@ -153,7 +160,7 @@
 		<%
 			  }
 		%>				
-
+		</form>
 	</div>
 </div>	
 	

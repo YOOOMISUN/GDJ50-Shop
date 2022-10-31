@@ -77,7 +77,7 @@ public class GoodsDao {
 		
 	}
 	
-	// Index.jsp 페이징
+	// customerGoodsList.jsp 페이징
 	public int CustomerGoodsListLastPage (Connection conn, int rowPerPage) throws SQLException {
 		
 		String sql = "SELECT COUNT(*) FROM goods";
@@ -144,34 +144,38 @@ public class GoodsDao {
 	
 	
 	
-	// 반환값 : key값 (jdbc api)
+	// addGoodsAction.jsp => 반환값 : key값 (jdbc api)
 	public int insertGoods(Connection conn, Goods goods) throws SQLException {
 		
 		int keyId = 0;
-		String sql = "INSERT INTO goods (goods_no, goods_name,goods_price, update_date, create_date,sold_out) VALUES (?,?,?,NOW(),NOW(),'Y')";									
+		String sql = "INSERT INTO goods (goods_no, goods_name,goods_price, update_date, create_date,sold_out) VALUES (?,?,?,NOW(),NOW(),'N')";									
 		PreparedStatement stmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);	// key 값을 리턴하게 만듦
 		// 1) insert 											// 1이 들어가면 실행, 0이면 실행 안되고 앞의 쿼리만 실행됨
 		// 2) select	=> last_ai_key 세팅		1로 호출			INSERT쿼리 실행 후 자동 증가 키값 받아오기  JDBC API 
 		
+		ResultSet rs = null;
+		
+		try {
 		stmt.setInt(1, goods.getGoodsNo());
 		stmt.setString(2, goods.getGoodsName());
 		stmt.setInt(3, goods.getGoodsPrice());
 		stmt.executeUpdate();					// insert 성공한 row 의 수
 		
-		ResultSet rs = stmt.getGeneratedKeys();	// select last_key	
+		rs = stmt.getGeneratedKeys();	// select last_key	
 		
-		if(rs.next()) {
-			keyId = rs.getInt(1);				// 1로 호출
+		} finally {
+			if(rs.next()) {
+				keyId = rs.getInt(1);				// 1로 호출
+			}
+			
+			if(rs!=null) {
+				rs.close();
+			}
+			
+			if(stmt!=null) {
+				stmt.close();
+			}
 		}
-		
-		if(rs!=null) {
-			rs.close();
-		}
-		
-		if(stmt!=null) {
-			stmt.close();
-		}
-		
 		return keyId;
 	}
 	

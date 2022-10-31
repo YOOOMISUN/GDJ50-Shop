@@ -297,19 +297,6 @@ public class OrdersService {
 	
 	
 	
-	public List<Orders> selectCustomerMyList(Connection conn, int rowPerPage, int beginRow){
-		
-		List<Orders> myList = new ArrayList<>();
-		
-		String sql = "SELECT FROM orders WHERE customer_id=?";
-		
-		
-		return null;
-		
-	}
-	
-	
-	
 	
 	
 	

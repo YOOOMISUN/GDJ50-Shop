@@ -47,7 +47,8 @@ public class OrdersDao {
 			FROM orders o OUTER JOIN goods g ON o.goods_no = g.goods_no OUT JOIN customer c  ON o.customer_id = c.customer_id WHERE o.order_no = ?"; 
 		 */
 
-		String sql = "SELECT o.order_no, o.goods_no, o.order_quantity, o.order_price, o.order_addr, o.order_detailAddr,o.order_state,o.update_date, o.create_date,g.goods_name,g.goods_price,\r\n"
+		String sql = "SELECT o.order_no, o.goods_no, o.order_quantity, o.order_price, o.order_addr, o.order_detailAddr,o.order_state, o.payment, o.update_date, "
+				+ "	  DATE_FORMAT(o.create_date,'%Y-%m-%d %T') create_date , g.goods_name,g.goods_price,\r\n"
 				+ "	  c.customer_id,c.customer_name, c.customer_address,c.customer_detailAddr, c.customer_telephone\r\n"
 				+ "	  FROM orders o INNER JOIN goods g ON o.goods_no = g.goods_no INNER JOIN customer c ON o.customer_id = c.customer_id WHERE o.order_no = ?";
 		
@@ -69,6 +70,7 @@ public class OrdersDao {
 			map.put("orderAddr", rs.getString("order_addr"));
 			map.put("orderDetailAddr", rs.getString("order_detailAddr"));
 			map.put("orderState", rs.getString("order_state"));
+			map.put("payment", rs.getString("payment"));
 			map.put("updateDate", rs.getString("update_date"));
 			map.put("createDate", rs.getString("create_date"));
 			map.put("goodsName", rs.getString("goods_name"));
@@ -79,6 +81,7 @@ public class OrdersDao {
 			map.put("customerDetailAddr", rs.getString("customer_detailAddr"));
 			map.put("customerTelephone", rs.getString("customer_telephone"));
 
+			System.out.println("map * " + map);
 		}
 
 		if (rs != null) {
@@ -100,8 +103,8 @@ public class OrdersDao {
 		FROM orders o INNER JOIN goods g ON o.goods_no = g.goods_no ORDER BY create_date DESC LIMIT ?, ?";
 		 */
 
-		String sql = "SELECT o.order_no, o.goods_no, o.customer_id, o.order_quantity, o.order_price, o.order_state ,o.order_addr, o.order_detailAddr ,o.update_date,o.create_date, g.goods_name,g.goods_price, g.sold_out \r\n"
-				+ "	  FROM orders o INNER JOIN goods g ON o.goods_no = g.goods_no ORDER BY create_date DESC LIMIT ?, ?";
+		String sql = "SELECT o.order_no, o.goods_no, o.customer_id, o.order_quantity, o.order_price, o.order_state ,o.order_addr, o.order_detailAddr, o.payment, o.update_date,o.create_date, g.goods_name,g.goods_price, g.sold_out \r\n"
+				+ "FROM orders o INNER JOIN goods g ON o.goods_no = g.goods_no ORDER BY create_date DESC LIMIT ?, ?";
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 
@@ -121,6 +124,7 @@ public class OrdersDao {
 			map.put("orderAddr", rs.getString("order_addr"));
 			map.put("orderDetailAddr", rs.getString("order_detailAddr"));
 			map.put("orderState", rs.getString("order_state"));
+			map.put("payment", rs.getString("payment"));
 			map.put("createDate", rs.getString("create_date"));
 			map.put("goodsName", rs.getString("goods_name"));
 			map.put("goodsPrice", rs.getString("goods_price"));
@@ -173,7 +177,7 @@ public class OrdersDao {
 	      Map<String, Object> map = null;
 	      
 	      String sql = "SELECT o.order_no ordersNo, o.order_quantity ordersQuantity"
-	            + ", o.order_price ordersPrice, o.order_addr ordersAddr, o.order_detailAddr orderDetailAddr, o.order_state ordersState"
+	            + ", o.order_price ordersPrice, o.order_addr ordersAddr, o.order_detailAddr orderDetailAddr, o.order_state ordersState, o.payment payment"
 	            + ", DATE_FORMAT(o.create_date,'%Y-%m-%d %T') createDate"
 	            + ", g.goods_no goodsNo, g.goods_name goodsName, g.goods_price goodsPrice"
 	            + ", c.customer_id customerId, c.customer_name customerName"
@@ -203,6 +207,7 @@ public class OrdersDao {
 	            map.put("ordersAddr", rs.getString("ordersAddr"));
 	            map.put("orderDetailAddr", rs.getString("orderDetailAddr"));
 	            map.put("ordersState", rs.getString("ordersState"));
+	            map.put("payment", rs.getString("payment"));
 	            map.put("createDate", rs.getString("createDate"));
 	            map.put("goodsNo", rs.getInt("goodsNo"));
 	            map.put("goodsName", rs.getString("goodsName"));
@@ -265,7 +270,8 @@ public class OrdersDao {
 	// 주문하기 (ordersAction.jsp)	
 	public int insertOrders(Connection conn, Orders orders) throws SQLException {
 		
-		String sql = "INSERT INTO orders (order_no, goods_no, customer_id, order_quantity, order_price, order_addr, order_detailAddr,order_state, create_date,update_date) VALUES (?,?,?,?,?,?,?,?,NOW(),NOW())";
+		String sql = "INSERT INTO orders (order_no, goods_no, customer_id, order_quantity, order_price, order_addr, order_detailAddr, order_state, payment, create_date, update_date) VALUES (?,?,?,?,?,?,?,?,?,NOW(),NOW())";
+		
 		PreparedStatement stmt = null;
 		int insertOrders = 0;
 		
@@ -279,6 +285,7 @@ public class OrdersDao {
 			stmt.setString(6, orders.getOrderAddr());
 			stmt.setString(7, orders.getOrderDetailAddr());
 			stmt.setString(8, orders.getOrderState());
+			stmt.setString(9, orders.getPayment());
 			
 			insertOrders = stmt.executeUpdate();
 			
@@ -290,6 +297,7 @@ public class OrdersDao {
 				stmt.close();
 			}
 		}
+		
 		return insertOrders;
 		
 	}	//	end insertOrders

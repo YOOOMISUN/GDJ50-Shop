@@ -34,22 +34,28 @@
 	
 
 
-	<div class="container">
+<div class="container">
 	<!-- 목록 -->
 	<div>
 		<br>
-		<ul>
-			<li><a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp">고객관리</a></li><!-- 고객목록/강제탈퇴/비밀번호수정(수정된 비밀번호 전달 구현X) -->
-			<li><a href="<%=request.getContextPath()%>/admin/employeeList.jsp">사원관리</a></li>
-			<li><a href="<%=request.getContextPath()%>/admin/adminGoodsList.jsp">상품	관리</a></li>	<!-- 상품목록/등록/수정/삭제(장바구니,주문이 없는 경우=> 품절처리) -->
-			<li><a href="<%=request.getContextPath()%>/admin/adminOrdersList.jsp">주문관리</a></li><!-- 주문목록/수정 -->
-			<li><a href="<%=request.getContextPath()%>/admin/adminNoticeList.jsp">공지관리(게시판)</a></li><!-- 공지 CRUD -->
-		</ul>
+		<table style="margin-left:auto; margin-right:auto; text-align:center;" class="table table-bordered" >
+			<tr>
+				<td><a href="<%=request.getContextPath()%>/admin/adminCustomerList.jsp">고객관리</a></td>
+				<td><a href="<%=request.getContextPath()%>/admin/employeeList.jsp">사원관리</a></td>
+				<td><a href="<%=request.getContextPath()%>/admin/adminGoodsList.jsp">상품	관리</a></td>	<!-- 상품목록/등록/수정/삭제(장바구니,주문이 없는 경우=> 품절처리) -->
+				<td><a href="<%=request.getContextPath()%>/admin/adminOrdersList.jsp">주문관리</a></td><!-- 주문목록/수정 -->
+				<td><a href="<%=request.getContextPath()%>/admin/adminNoticeList.jsp">공지관리(게시판)</a></td><!-- 공지 CRUD -->
+			</tr>
+		</table>
 	</div>
-
-
-	<h2 style="text-align: center;">공지사항 상세페이지</h2>
+	
 	<br>
+	<br>
+
+	<div style="text-align:center;">
+		<h2 style="font-weight :bold;">공지사항 상세페이지</h2>
+		<br>
+		<br>
 		<form action="<%=request.getContextPath()%>/admin/updateNoticeForm.jsp?noticeNo=<%=map.get("noticeNo")%>" method="post">
 		<table style=" margin-left:auto; margin-right:auto; text-align:center; " class="table-bordered" >
 		 	<tr>
@@ -84,7 +90,7 @@
 			<a href="<%=request.getContextPath()%>/admin/adminNoticeList.jsp" type="button" class="btn btn-dark" style="float: right; margin-right :20px;">공지사항목록</a>
 		</form>
 	</div>
-	
+</div>
 	
 	
 	<!-- Footer -->

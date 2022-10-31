@@ -7,10 +7,34 @@ public class Orders {
 	private int orderQuantity;
 	private int orderPrice;
 	private String orderAddr;
-	private String orderState;
 	private String orderDetailAddr;
+	private String orderState;
+	private String payment;
 	private String updateDate;
 	private String createDate;
+	
+	
+	public Orders() {
+		super();
+
+	}
+	
+	
+	public Orders(int orderNo, int goodsNo, String customerId, int orderQuantity, int orderPrice, String orderAddr,
+			String orderDetailAddr, String orderState, String payment, String updateDate, String createDate) {
+		super();
+		this.orderNo = orderNo;
+		this.goodsNo = goodsNo;
+		this.customerId = customerId;
+		this.orderQuantity = orderQuantity;
+		this.orderPrice = orderPrice;
+		this.orderAddr = orderAddr;
+		this.orderDetailAddr = orderDetailAddr;
+		this.orderState = orderState;
+		this.payment = payment;
+		this.updateDate = updateDate;
+		this.createDate = createDate;
+	}
 	
 	
 	public int getOrderNo() {
@@ -49,17 +73,23 @@ public class Orders {
 	public void setOrderAddr(String orderAddr) {
 		this.orderAddr = orderAddr;
 	}
+	public String getOrderDetailAddr() {
+		return orderDetailAddr;
+	}
+	public void setOrderDetailAddr(String orderDetailAddr) {
+		this.orderDetailAddr = orderDetailAddr;
+	}
 	public String getOrderState() {
 		return orderState;
 	}
 	public void setOrderState(String orderState) {
 		this.orderState = orderState;
 	}
-	public String getOrderDetailAddr() {
-		return orderDetailAddr;
+	public String getPayment() {
+		return payment;
 	}
-	public void setOrderDetailAddr(String orderDetailAddr) {
-		this.orderDetailAddr = orderDetailAddr;
+	public void setPayment(String payment) {
+		this.payment = payment;
 	}
 	public String getUpdateDate() {
 		return updateDate;
@@ -72,33 +102,6 @@ public class Orders {
 	}
 	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
-	}
-	
-	@Override
-	public String toString() {
-		return "Orders [orderNo=" + orderNo + ", goodsNo=" + goodsNo + ", customerId=" + customerId + ", orderQuantity="
-				+ orderQuantity + ", orderPrice=" + orderPrice + ", orderAddr=" + orderAddr + ", orderState="
-				+ orderState + ", orderDetailAddr=" + orderDetailAddr + ", updateDate=" + updateDate + ", createDate="
-				+ createDate + "]";
-	}
-	
-	public Orders(int orderNo, int goodsNo, String customerId, int orderQuantity, int orderPrice, String orderAddr,
-			String orderState, String orderDetailAddr, String updateDate, String createDate) {
-		super();
-		this.orderNo = orderNo;
-		this.goodsNo = goodsNo;
-		this.customerId = customerId;
-		this.orderQuantity = orderQuantity;
-		this.orderPrice = orderPrice;
-		this.orderAddr = orderAddr;
-		this.orderState = orderState;
-		this.orderDetailAddr = orderDetailAddr;
-		this.updateDate = updateDate;
-		this.createDate = createDate;
-	}
-	
-	public Orders() {
-		super();
 	}
 	
 	

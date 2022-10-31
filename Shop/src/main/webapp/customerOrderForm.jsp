@@ -83,11 +83,20 @@
 						<td><input type="text" name="ordersDetailAddr" id="ordersDetailAddr" class="form-control"></td>
 					</tr>
 					<tr>
-						<td><input type="hidden" name="ordersState" value="결제완료"></td>
-						<td><input type="hidden" name="goodsPrice" value="<%=(Integer)map.get("goodsPrice")%>"></td>
-						<td><input type="hidden" name="orderPrice" value="0"></td>
+						<td><input type="hidden" name="ordersState" value="결제완료">
+						<input type="hidden" name="goodsPrice" value="<%=(Integer)map.get("goodsPrice")%>">
+						<input type="hidden" name="orderPrice" value="0"></td>
+					</tr>
+					<tr>
+						<td>결제수단</td>
+						<td><input type="radio" name="payment" id="카카오페이" value="카카오페이">&nbsp;&nbsp;&nbsp;카카오페이</td>
+						<td><input type="radio" name="payment" id="네이버페이" value="네이버페이">&nbsp;&nbsp;&nbsp;네이버페이</td>
+						<td><input type="radio" name="payment" id="신용카드" value="신용카드">&nbsp;&nbsp;&nbsp;신용카드</td>
+						<td><input type="radio" name="payment" id="무통장입금" value="무통장입금">&nbsp;&nbsp;&nbsp;무통장입금</td>
 					</tr>
 				</table>
+				<br>
+				<br>
 				<a href="<%=request.getContextPath()%>/customerGoodsList.jsp" type="button" class="btn btn-dark" style="float: right;">상품목록</a>
 				<button type="submit" class="btn btn-info" style="float: right; margin-right :30px;">주문하기</button>
 			</form>
