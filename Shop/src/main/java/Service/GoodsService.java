@@ -16,10 +16,10 @@ public class GoodsService {
 	private GoodsImgDao goodsImgDao;
 	
 	// 고객 상품 리스트 페이지에서 사용 (customerGoodsList.jsp)
-	public List<Map<String,Object>> getCustomerGoodsListByPage(int rowPerPage, int currentPage){
+	public List<Map<String,Object>> getCustomerGoodsListByPage(int rowPerPage, int currentPage, String caseList){
 		
 		List<Map<String,Object>> list = null;
-		
+
 		Connection conn = null;
 		this.goodsDao = new GoodsDao();
 		this.goodsImgDao = new GoodsImgDao();
@@ -30,7 +30,7 @@ public class GoodsService {
 			conn = new DBUtil().getConnection();
 			conn.setAutoCommit(false);
 			
-			list = goodsDao.selectCustomerGoodsListByPage(conn, rowPerPage, beginRow);
+			list = goodsDao.selectCustomerGoodsListByPage(conn, rowPerPage, beginRow, caseList);
 			
 			// 디버깅
 			System.out.println("list : " + list);

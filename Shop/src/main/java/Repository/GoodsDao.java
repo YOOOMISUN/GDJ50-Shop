@@ -15,7 +15,7 @@ import vo.Goods;
 public class GoodsDao {
 
 	// 고객 상품 리스트 페이지에서 사용 (customerGoodsList.jsp)
-	public List<Map<String,Object>> selectCustomerGoodsListByPage (Connection conn, int rowPerPage, int beginRow) throws SQLException{
+	public List<Map<String,Object>> selectCustomerGoodsListByPage (Connection conn, int rowPerPage, int beginRow, final String caseList) throws SQLException{
 		
 		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
 		Map<String,Object> map = null;
@@ -29,50 +29,70 @@ public class GoodsDao {
              , gi.filename filename
        FROM
        goods g LEFT JOIN (SELECT goods_no, SUM(order_quantity) sumNum
-                      FROM orders
-                      GROUP BY goods_no) t
-                      ON g.goods_no = t.goods_no
-                         INNER JOIN goods_img gi
-                         ON g.goods_no = gi.goods_no
-       ORDER BY IFNULL(t.sumNUm, 0) DESC
+                      FROM orders GROUP BY goods_no) t ON g.goods_no = t.goods_no
+                      INNER JOIN goods_img gi ON g.goods_no = gi.goods_no ORDER BY IFNULL(t.sumNUm, 0) DESC
 		*/ 
 		
-		String sql = "  SELECT g.goods_no goodsNo\r\n"
-				+ "             , g.goods_name goodsName\r\n"
-				+ "             , g.goods_price goodsPrice\r\n"
-				+ "             , gi.filename filename\r\n"
-				+ "       FROM\r\n"
-				+ "       goods g LEFT JOIN (SELECT goods_no, SUM(order_quantity) sumNum\r\n"
-				+ "                      FROM orders\r\n"
-				+ "                      GROUP BY goods_no) t\r\n"
-				+ "                      ON g.goods_no = t.goods_no\r\n"
-				+ "                         INNER JOIN goods_img gi\r\n"
-				+ "                         ON g.goods_no = gi.goods_no\r\n"
-				+ "       ORDER BY IFNULL(t.sumNUm, 0) DESC";
+		// 판매량순
+		String orderListsql = "SELECT g.goods_no goodsNo, g.goods_name goodsName, g.goods_price goodsPrice, gi.filename filename FROM\r\n"
+				+ "       goods g LEFT JOIN (SELECT goods_no, SUM(order_quantity) sumNum FROM orders GROUP BY goods_no) t\r\n"
+				+ "       ON g.goods_no = t.goods_no INNER JOIN goods_img gi ON g.goods_no = gi.goods_no\r\n"
+				+ "       ORDER BY IFNULL(t.sumNUm, 0) DESC LIMIT ?,?";
 		
-		stmt = conn.prepareStatement(sql);
-		rs = stmt.executeQuery();
+		// 낮은 금액순
+		String lowPriceListsql = "SELECT g.goods_no goodsNo, g.goods_name goodsName, g.goods_price goodsPrice, gi.filename filename FROM\r\n"
+				+ "       goods g LEFT JOIN (SELECT goods_no, SUM(order_quantity) sumNum FROM orders GROUP BY goods_no) t\r\n"
+				+ "       ON g.goods_no = t.goods_no INNER JOIN goods_img gi ON g.goods_no = gi.goods_no\r\n"
+				+ "       ORDER BY g.goods_price ASC LIMIT ?,?";
+		// 높은 금액순
+		String highPriceListsql = "SELECT g.goods_no goodsNo, g.goods_name goodsName, g.goods_price goodsPrice, gi.filename filename FROM\r\n"
+				+ "       goods g LEFT JOIN (SELECT goods_no, SUM(order_quantity) sumNum FROM orders GROUP BY goods_no) t\r\n"
+				+ "       ON g.goods_no = t.goods_no INNER JOIN goods_img gi ON g.goods_no = gi.goods_no\r\n"
+				+ "       ORDER BY g.goods_price DESC LIMIT ?,?";
+		// 최신순
+		String createDateListsql = "SELECT g.goods_no goodsNo, g.goods_name goodsName, g.goods_price goodsPrice, gi.filename filename FROM\r\n"
+				+ "       goods g LEFT JOIN (SELECT goods_no, SUM(order_quantity) sumNum FROM orders GROUP BY goods_no) t\r\n"
+				+ "       ON g.goods_no = t.goods_no INNER JOIN goods_img gi ON g.goods_no = gi.goods_no\r\n"
+				+ "       ORDER BY g.create_date DESC LIMIT ?,?";
 		
-		while(rs.next()) {
-			map = new HashMap<String,Object>();
-			map.put("goodsNo", rs.getInt("goods_no"));
-			map.put("goodsName", rs.getString("goods_name"));
-			map.put("goodsPrice", rs.getString("goods_price"));
-			map.put("fileName", rs.getString("filename"));
+		String sql = "";
+		
+		switch(caseList) {
+			case "orderList" : sql = orderListsql; break;
+			case "lowPriceList" : sql = lowPriceListsql; break;
+			case "highPriceList" : sql = highPriceListsql; break;
+			case "createDateList" : sql = createDateListsql; break;
+				}
+	
+		
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, beginRow);
+			stmt.setInt(2, rowPerPage);
+			rs = stmt.executeQuery();
 			
-			list.add(map);
+			rs = stmt.executeQuery();
 			
-			System.out.println("list >> "+ list);
+			while(rs.next()) {
+				map = new HashMap<String,Object>();
+				map.put("goodsNo", rs.getInt("goods_no"));
+				map.put("goodsName", rs.getString("goods_name"));
+				map.put("goodsPrice", rs.getString("goods_price"));
+				map.put("fileName", rs.getString("filename"));
+				
+				list.add(map);
+				
+				System.out.println("list >> "+ list);
+			}
+		} finally {
+			if(rs!=null) {
+				rs.close();
+			}
+			
+			if(stmt!=null) {
+				stmt.close();
+			}
 		}
-		
-		if(rs!=null) {
-			rs.close();
-		}
-		
-		if(stmt!=null) {
-			stmt.close();
-		}
-		
 		return list;
 		
 	}

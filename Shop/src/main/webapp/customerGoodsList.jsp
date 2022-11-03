@@ -17,9 +17,16 @@
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 	}
 	
+	// 최신순
+	String caseList = "createDateList";
+	if(request.getParameter("caseList") != null){
+		caseList = request.getParameter("caseList");
+	}
+	
+	
 	GoodsService goodsService = new GoodsService();
 	
-	List<Map<String,Object>> list = goodsService.getCustomerGoodsListByPage(rowPerPage, currentPage);
+	List<Map<String,Object>> list = goodsService.getCustomerGoodsListByPage(rowPerPage, currentPage, caseList);
 	
 	lastPage = goodsService.getCustomerGoodsListLastPage(rowPerPage);
 %>
@@ -31,8 +38,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <title>Goods List</title>
+
 </head>
 <body>
 
@@ -56,11 +63,16 @@
 		<!-- for / if 대체기술 : 커스텀태그(JSTL & EL) JSP -->
 		<!-- JSP를 쓸수 밖에 없음. HTML은 자바코드랑 커스텀태그를 쓸수 없음 -->
 		<div style="text-align:center;">
-			<a href="">최신순</a>
-			<a href="">리뷰순</a>
-			<a href="">판매량순</a>			<!-- 기본 디폴트값 -->
-			<a href="">낮은가격 수</a>
-			<a href="">높은가격 수</a>
+			<ul class="nav nav-tabs">
+			  <li><a style="margin-right:20px;"
+			  			href="<%=request.getContextPath()%>/customerGoodsList.jsp?caseList=createDateList">최신순</a></li> <!-- 기본 디폴트값 -->
+			  <li><a style="margin-right:20px;" 
+			  			href="<%=request.getContextPath()%>/customerGoodsList.jsp?caseList=orderList">판매량순</a></li>
+			  <li><a style="margin-right:20px;" 
+			  			href="<%=request.getContextPath()%>/customerGoodsList.jsp?caseList=lowPriceList">낮은가격순</a></li>
+			  <li><a style="margin-right:20px;" 
+			  			href="<%=request.getContextPath()%>/customerGoodsList.jsp?caseList=highPriceList">높은가격순</a></li>
+			</ul>
 		</div>
 	
 	<br>
@@ -144,7 +156,7 @@
 	<%
 		  }
 	%>
-	
+
 	</div>
 	
 	
